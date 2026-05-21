@@ -311,15 +311,16 @@ def main():
         print("No jobs found. The websites may have changed or blocked the request.")
         return
 
-    new_jobs = []
+       new_jobs = []
 
     for job in all_jobs:
         if job["id"] not in seen_jobs:
             new_jobs.append(job)
 
     if not new_jobs:
-        print("No new jobs found.")
-        print(f"Checked {len(all_jobs)} jobs total.")
+        message = f"No new jobs found.\nChecked {len(all_jobs)} jobs total."
+        print(message)
+        send_telegram_message(message)
         return
 
     print(f"Found {len(new_jobs)} new job(s).")
@@ -331,9 +332,9 @@ def main():
 
     save_seen_jobs(seen_jobs)
 
-    print("\nDone.")
-    print(f"Checked {len(all_jobs)} jobs total.")
-    print(f"Saved {len(seen_jobs)} seen job(s).")
+    message = f"Job Radar: found {len(new_jobs)} new job(s).\nChecked {len(all_jobs)} jobs total."
+    print(message)
+    send_telegram_message(message)
 
 
 if __name__ == "__main__":
