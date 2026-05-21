@@ -3,6 +3,8 @@ import os
 from pathlib import Path
 from urllib.parse import urljoin
 
+# Telegram version
+
 import requests
 from bs4 import BeautifulSoup
 
