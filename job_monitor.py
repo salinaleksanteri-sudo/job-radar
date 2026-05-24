@@ -1,5 +1,7 @@
 import json
 import os
+import sys
+from datetime import datetime
 from pathlib import Path
 from urllib.parse import urljoin, urlparse, parse_qs
 
@@ -9,6 +11,7 @@ from playwright.sync_api import sync_playwright
 
 
 SEEN_FILE = Path("seen_jobs.json")
+LOG_FILE = Path("last_run.log")
 DEBUG = False
 SOURCE_STATS = {}
 
@@ -99,6 +102,11 @@ NEGATIVE_KEYWORDS = {
         "palkanlaskenta", "te-maksatus", "työvoimapalvelut",
         "lainsäädäntö"
     ],
+    "sales / commercial": [
+        "myynti", "myynnillinen", "sales", "b2b-myynti",
+        "asiakashankinta", "uusasiakashankinta", "cold calling",
+        "tulostavoite", "provisio"
+    ],
 }
 
 
@@ -109,6 +117,20 @@ HARD_REQUIREMENT_MARKERS = [
     "edellytämme kokemusta",
     "usean vuoden kokemus",
 ]
+
+
+class TeeLogger:
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, message):
+        for stream in self.streams:
+            stream.write(message)
+            stream.flush()
+
+    def flush(self):
+        for stream in self.streams:
+            stream.flush()
 
 
 def load_seen_jobs():
@@ -768,6 +790,19 @@ def fetch_duunitori_jobs():
     return jobs
 
 
+    def format_match_summary(matches, limit_groups=3, limit_words=4):
+        if not matches:
+            return "- No strong matches"
+
+        lines = []
+
+        for match in matches[:limit_groups]:
+            words = ", ".join(match["keywords"][:limit_words])
+            lines.append(f"- {match['group']}: {words}")
+
+        return "\n".join(lines)
+
+
 def print_job_card(job, analysis):
     print("\n" + "=" * 70)
     print(f"{job['company']} — {job['title']}")
@@ -802,6 +837,11 @@ def print_job_card(job, analysis):
 
 
 def main():
+    log_file = open(LOG_FILE, "w", encoding="utf-8")
+    original_stdout = sys.stdout
+    sys.stdout = TeeLogger(original_stdout, log_file)
+
+    print(f"Job Radar run: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("Checking jobs...")
 
     seen_jobs = load_seen_jobs()
@@ -853,19 +893,26 @@ def main():
 
     if os.getenv("TELEGRAM_BOT_TOKEN") and os.getenv("TELEGRAM_CHAT_ID"):
         for job, analysis in new_jobs:
+            positive_summary = format_match_summary(analysis["positive_matches"])
+            risk_summary = format_match_summary(analysis["negative_matches"], limit_groups=2)
+
             message = (
                 f"{job['company']} — {job['title']}\n"
                 f"Fit score: {analysis['score']}/100\n"
-                f"Recommendation: {analysis['recommendation']}\n"
+                f"Recommendation: {analysis['recommendation']}\n\n"
+                f"Why:\n{positive_summary}\n\n"
+                f"Risks:\n{risk_summary}\n\n"
                 f"Link: {job['url']}"
             )
+
             send_telegram_message(message)
-    elif new_jobs:
-        print("Telegram secrets are missing.")
     elif new_jobs:
         print("Telegram secrets are missing.")
 
     save_seen_jobs(seen_jobs)
+
+    sys.stdout = original_stdout
+    log_file.close()
 
 
 if __name__ == "__main__":
