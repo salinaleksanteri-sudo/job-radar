@@ -803,6 +803,18 @@ def fetch_duunitori_jobs():
         return "\n".join(lines)
 
 
+def format_match_summary(matches, limit_groups=3, limit_words=4):
+    if not matches:
+        return "- No strong matches"
+
+    lines = []
+
+    for match in matches[:limit_groups]:
+        words = ", ".join(match["keywords"][:limit_words])
+        lines.append(f"- {match['group']}: {words}")
+
+    return "\n".join(lines)
+
 def print_job_card(job, analysis):
     print("\n" + "=" * 70)
     print(f"{job['company']} — {job['title']}")
