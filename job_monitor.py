@@ -52,7 +52,19 @@ KUNTAREKRY_URLS = [
     "https://www.kuntarekry.fi/fi/tyopaikat/turku/",
 ]
 
+TARGET_LOCATIONS = [
+    "turku", "varsinais-suomi", "kaarina", "raisio", "naantali",
+    "lieto", "parainen", "salo", "uusikaupunki",
+    "helsinki", "vantaa", "espoo", "uusimaa",
+    "hybridi", "hybrid", "etätyö", "remote", "monipaikkainen"
+]
 
+NON_TARGET_LOCATIONS = [
+    "oulu", "rovaniemi", "kuopio", "joensuu", "jyväskylä",
+    "lahti", "tampere", "vaasa", "seinäjoki", "kokkola",
+    "pietarsaari", "sodankylä", "tohmajärvi", "kuusamo",
+    "mariehamn", "ahvenanmaa"
+]
 
 POSITIVE_KEYWORDS = {
     "SAP / P2P / invoices": [
@@ -87,6 +99,22 @@ POSITIVE_KEYWORDS = {
 
 
 NEGATIVE_KEYWORDS = {
+    "seniority risk": [
+        "johtava asiantuntija", "johtava",
+        "päällikkö", "paallikko",
+        "manager", "director",
+        "head of", "lead",
+        "senior architect", "enterprise architect",
+        "principal consultant"
+    ],
+    "domain experience risk": [
+        "laiteturvallisuus", "lääketurvallisuus", "fimea",
+        "medical device", "terveydenhuolto", "sote",
+        "verohallinto", "verotus", "verolainsäädäntö",
+        "energiaverkot", "sähkömarkkina", "energia-ala",
+        "data vault", "data engineer", "architect",
+        "deep sap", "sap consultant", "sap fico", "sap sd", "sap mm consultant"
+    ],
     "tax domain": [
         "verolainsäädäntö", "oikaisuvaatimus", "verovalvonta",
         "oikeuskäytäntö", "lautakuntaesittely"
@@ -229,23 +257,48 @@ def calculate_fit_score(job):
     for match in negative_matches:
         score -= 18
 
-    title_lower = normalize(job.get("title", ""))
+    location_text = normalize(
+        f"{job.get('title', '')} {job.get('location', '')} {job.get('description', '')}"
+    )
 
-    target_locations = ["vantaa", "helsinki", "turku", "hybridi", "hybrid", "etätyö", "remote"]
-    non_target_locations = ["oulu", "tampere", "kuopio", "joensuu", "jyväskylä", "lahti", "rovaniemi"]
+    remote_possible = any(word in location_text for word in [
+        "etätyö", "remote", "hybridi", "hybrid", "monipaikkainen"
+    ])
 
-    if any(location in title_lower for location in target_locations):
+    target_location_found = any(location in location_text for location in TARGET_LOCATIONS)
+    non_target_location_found = any(location in location_text for location in NON_TARGET_LOCATIONS)
+
+    if target_location_found:
         score += 10
-    elif any(location in title_lower for location in non_target_locations):
-        score -= 20
+    elif non_target_location_found and not remote_possible:
+        score -= 25
+    elif non_target_location_found and remote_possible:
+        score -= 5
 
     hard_domain_detected = any(marker in text_lower for marker in HARD_REQUIREMENT_MARKERS)
     if hard_domain_detected and negative_matches:
         score -= 15
 
+    domain_risk_detected = any(
+        match["group"] == "domain experience risk"
+        for match in negative_matches
+    )
+
+    if domain_risk_detected:
+        score -= 20
+    seniority_risk_detected = any(
+        match["group"] == "seniority risk"
+        for match in negative_matches
+    )
+
+    if seniority_risk_detected:
+        score -= 15
+
     score = max(0, min(100, score))
 
-    if score >= 75:
+    if (domain_risk_detected or seniority_risk_detected) and score >= 55:
+        recommendation = "Maybe"
+    elif score >= 75:
         recommendation = "Apply"
     elif score >= 55:
         recommendation = "Maybe"
@@ -257,6 +310,8 @@ def calculate_fit_score(job):
         "recommendation": recommendation,
         "positive_matches": positive_matches,
         "negative_matches": negative_matches,
+        "domain_risk_detected": domain_risk_detected,
+        "seniority_risk_detected": seniority_risk_detected,
         "hard_domain_detected": hard_domain_detected,
     }
 
@@ -842,6 +897,12 @@ def print_job_card(job, analysis):
     else:
         print("- No obvious hard-domain risks found")
 
+    if analysis.get("domain_risk_detected"):
+        print("- Domain experience risk detected")
+
+    if analysis.get("seniority_risk_detected"):
+        print("- Seniority / too high level risk detected")
+
     if analysis["hard_domain_detected"]:
         print("- Text may contain a hard experience requirement")
 
@@ -871,7 +932,8 @@ def main():
     all_jobs.extend(generic_jobs)
     all_jobs.extend(duunitori_jobs)
 
-    print("\nSource summary:")
+    print("\nSource summary:")    
+
     print(f"- Finavia: {len(finavia_jobs)} job(s)")
     print(f"- Kuntarekry: {len(kuntarekry_jobs)} job(s)")
     print(f"- Valtiolle: {len(valtiolle_jobs)} job(s)")
@@ -882,12 +944,18 @@ def main():
     print_source_health_report()
 
     new_jobs = []
+    recommendation_counts = {
+        "Apply": 0,
+        "Maybe": 0,
+        "Skip": 0,
+    }
 
     for job in all_jobs:
+        analysis = calculate_fit_score(job)
+        recommendation_counts[analysis["recommendation"]] += 1
+
         if job["id"] in seen_jobs:
             continue
-
-        analysis = calculate_fit_score(job)
 
         print_job_card(job, analysis)
 
@@ -895,6 +963,11 @@ def main():
 
         if analysis["recommendation"] in ["Apply", "Maybe"]:
             new_jobs.append((job, analysis))
+
+    print("\nRecommendation summary:")
+    print(f"- 🟢 APPLY: {recommendation_counts['Apply']}")
+    print(f"- 🟡 MAYBE: {recommendation_counts['Maybe']}")
+    print(f"- ⚪ SKIP: {recommendation_counts['Skip']}")
 
     if new_jobs:
         print(f"Job Radar: found {len(new_jobs)} new job(s).")
