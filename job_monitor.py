@@ -283,6 +283,28 @@ def normalize(text):
     return text.lower().strip()
 
 
+def normalize_job_title_for_dedupe(title):
+    title = normalize(title)
+
+    for char in ["(", ")", "[", "]", "{", "}", "\"", "'", "–", "—", "-", "/", "\\", ":", ";", ",", "."]:
+        title = title.replace(char, " ")
+
+    title = " ".join(title.split())
+
+    generic_titles = [
+        "asiantuntija",
+        "erityisasiantuntija",
+        "suunnittelija",
+        "koordinaattori",
+        "palveluneuvoja",
+    ]
+
+    if title in generic_titles:
+        return ""
+
+    return title
+
+
 def debug_print(message):
     if DEBUG:
         print(message)
@@ -1132,6 +1154,25 @@ def main():
     all_jobs.extend(valtiolle_jobs)
     all_jobs.extend(generic_jobs)
     all_jobs.extend(duunitori_jobs)
+    deduped_jobs = []
+    seen_dedupe_keys = set()
+    duplicates_removed = 0
+
+    for job in all_jobs:
+        title_key = normalize_job_title_for_dedupe(job.get("title", ""))
+
+        if not title_key:
+            deduped_jobs.append(job)
+            continue
+
+        if title_key in seen_dedupe_keys:
+            duplicates_removed += 1
+            continue
+
+        seen_dedupe_keys.add(title_key)
+        deduped_jobs.append(job)
+
+    all_jobs = deduped_jobs
 
     print("\nSource summary:")    
 
@@ -1140,6 +1181,7 @@ def main():
     print(f"- Valtiolle: {len(valtiolle_jobs)} job(s)")
     print(f"- Company career pages: {len(generic_jobs)} job(s)")
     print(f"- Duunitori: {len(duunitori_jobs)} job(s)")
+    print(f"- Duplicates removed: {duplicates_removed}")
     print(f"- Total after filters: {len(all_jobs)} job(s)\n")
 
     print_source_health_report()
@@ -1185,7 +1227,23 @@ def main():
 
     print(f"Checked {len(all_jobs)} jobs total.")
 
-    if os.getenv("TELEGRAM_BOT_TOKEN") and os.getenv("TELEGRAM_CHAT_ID"):
+    if (
+        os.getenv("TELEGRAM_BOT_TOKEN")
+        and os.getenv("TELEGRAM_CHAT_ID")
+        and not WEEKLY_REVIEW_EMAIL
+    ):
+        summary_message = (
+            f"Job Radar checked {len(all_jobs)} job(s).\n"
+            f"🟢 APPLY: {recommendation_counts['Apply']}\n"
+            f"🟡 MAYBE: {recommendation_counts['Maybe']}\n"
+            f"🔵 REVIEW: {recommendation_counts['Review']}\n"
+            f"⚪ SKIP: {recommendation_counts['Skip']}\n"
+            f"New Apply/Maybe: {len(new_jobs)}\n"
+            f"Review reservoir: {len(review_jobs)}"
+        )
+
+        send_telegram_message(summary_message)
+    
         for job, analysis in new_jobs:
             positive_summary = format_match_summary(analysis["positive_matches"])
             risk_summary = format_match_summary(analysis["negative_matches"], limit_groups=2)
