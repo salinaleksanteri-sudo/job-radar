@@ -12,6 +12,7 @@ from playwright.sync_api import sync_playwright
 
 SEEN_FILE = Path("seen_jobs.json")
 LOG_FILE = Path("last_run.log")
+REVIEW_FILE = Path("review_reservoir.json")
 DEBUG = False
 SOURCE_STATS = {}
 
@@ -103,7 +104,7 @@ NEGATIVE_KEYWORDS = {
         "johtava asiantuntija", "johtava",
         "päällikkö", "paallikko",
         "manager", "director",
-        "head of", "lead",
+        "head of", "team lead",
         "senior architect", "enterprise architect",
         "principal consultant"
     ],
@@ -134,6 +135,27 @@ NEGATIVE_KEYWORDS = {
         "myynti", "myynnillinen", "sales", "b2b-myynti",
         "asiakashankinta", "uusasiakashankinta", "cold calling",
         "tulostavoite", "provisio"
+    ],
+    "data / BI / analytics risk": [
+        "power bi", "dax", "sql", "databricks", "purview",
+        "data governance", "metadata", "master data", "data quality",
+        "data model", "data vault", "snowflake", "azure synapse",
+        "etl", "etl/elt", "pipeline", "semantic layer",
+        "business intelligence", " bi ", "analytics engineer",
+        "tietoasiantuntija", "analytiikka", "raportointi ja analytiikka",
+        "kpi management system", "dashboard", "visualisointi",
+        "asiakasdata", "asiointidata", "asiakaskokemusdata"
+    ],
+    "hard reject domain": [
+        "machine learning", "deep learning", "neural networks",
+        "model training", "hpc", "satellite modeling", "crop modeling",
+        "optimointimalli", "simulointimalli",
+        "postdoc", "väitöskirja", "väitöskirjatutkija",
+        "tutkija", "lehtori", "opettaja", "s2",
+        "laiteturvallisuus", "lääkinnälliset laitteet", "fimea",
+        "tekninen arkkitehti", "toiminnallinen arkkitehti",
+        "lastensuojelu", "sijaishuolto", "vastaava ohjaaja",
+        "pohjavesi", "vesikemia", "povet", "pisara"
     ],
 }
 
@@ -171,6 +193,50 @@ def load_seen_jobs():
 def save_seen_jobs(seen_jobs):
     with open(SEEN_FILE, "w", encoding="utf-8") as file:
         json.dump(sorted(seen_jobs), file, indent=2, ensure_ascii=False)
+
+
+def save_review_jobs(review_jobs):
+    existing_items = []
+
+    if REVIEW_FILE.exists():
+        try:
+            with open(REVIEW_FILE, "r", encoding="utf-8") as file:
+                existing_items = json.load(file)
+        except Exception:
+            existing_items = []
+
+    existing_urls = {item.get("url", "") for item in existing_items}
+
+    for job, analysis in review_jobs:
+        url = job.get("url", "")
+
+        if url in existing_urls:
+            continue
+
+        existing_items.append({
+            "date_seen": datetime.now().strftime("%Y-%m-%d"),
+            "company": job.get("company", ""),
+            "title": job.get("title", ""),
+            "location": job.get("location", ""),
+            "score": analysis.get("score", 0),
+            "recommendation": analysis.get("recommendation", ""),
+                        "risk_groups": [
+                match.get("group", "")
+                for match in analysis.get("negative_matches", [])
+            ],
+            "trigger_terms": [
+                keyword
+                for match in analysis.get("negative_matches", [])
+                for keyword in match.get("keywords", [])
+            ],
+            "risks": analysis.get("negative_matches", []),
+            "url": url,
+        })
+
+    with open(REVIEW_FILE, "w", encoding="utf-8") as file:
+        json.dump(existing_items, file, indent=2, ensure_ascii=False)
+
+    print(f"Review reservoir saved: {len(existing_items)} item(s).")
 
 
 def normalize(text):
@@ -262,7 +328,8 @@ def calculate_fit_score(job):
     )
 
     remote_possible = any(word in location_text for word in [
-        "etätyö", "remote", "hybridi", "hybrid", "monipaikkainen"
+        "fully remote", "100% etätyö", "kokonaan etätyö",
+        "työ onnistuu suomesta käsin", "remote work from finland"
     ])
 
     target_location_found = any(location in location_text for location in TARGET_LOCATIONS)
@@ -287,21 +354,48 @@ def calculate_fit_score(job):
     if domain_risk_detected:
         score -= 20
     seniority_risk_detected = any(
-        match["group"] == "seniority risk"
+        keyword in normalize(job.get("title", ""))
         for match in negative_matches
+        if match["group"] == "seniority risk"
+        for keyword in match["keywords"]
     )
 
     if seniority_risk_detected:
         score -= 15
 
+    data_bi_risk_detected = any(
+        match["group"] == "data / BI / analytics risk"
+        for match in negative_matches
+    )
+
+    hard_reject_domain_detected = any(
+        match["group"] == "hard reject domain"
+        for match in negative_matches
+    )
+
+    if data_bi_risk_detected:
+        score -= 15
+
+    if hard_reject_domain_detected:
+        score -= 50
+
     score = max(0, min(100, score))
 
-    if (domain_risk_detected or seniority_risk_detected) and score >= 55:
-        recommendation = "Maybe"
+    geo_hard_reject_detected = non_target_location_found and not remote_possible
+    if geo_hard_reject_detected:
+        recommendation = "Skip"
+    elif hard_reject_domain_detected:
+        recommendation = "Skip"
+    elif data_bi_risk_detected and positive_matches and score >= 25:
+        recommendation = "Review"
+    elif (domain_risk_detected or seniority_risk_detected) and positive_matches and score >= 25:
+        recommendation = "Review"
     elif score >= 75:
         recommendation = "Apply"
     elif score >= 55:
         recommendation = "Maybe"
+    elif positive_matches and score >= 35:
+        recommendation = "Review"
     else:
         recommendation = "Skip"
 
@@ -312,6 +406,8 @@ def calculate_fit_score(job):
         "negative_matches": negative_matches,
         "domain_risk_detected": domain_risk_detected,
         "seniority_risk_detected": seniority_risk_detected,
+        "data_bi_risk_detected": data_bi_risk_detected,
+        "hard_reject_domain_detected": hard_reject_domain_detected,
         "hard_domain_detected": hard_domain_detected,
     }
 
@@ -845,19 +941,6 @@ def fetch_duunitori_jobs():
     return jobs
 
 
-    def format_match_summary(matches, limit_groups=3, limit_words=4):
-        if not matches:
-            return "- No strong matches"
-
-        lines = []
-
-        for match in matches[:limit_groups]:
-            words = ", ".join(match["keywords"][:limit_words])
-            lines.append(f"- {match['group']}: {words}")
-
-        return "\n".join(lines)
-
-
 def format_match_summary(matches, limit_groups=3, limit_words=4):
     if not matches:
         return "- No strong matches"
@@ -903,6 +986,12 @@ def print_job_card(job, analysis):
     if analysis.get("seniority_risk_detected"):
         print("- Seniority / too high level risk detected")
 
+    if analysis.get("data_bi_risk_detected"):
+        print("- Data / BI / analytics risk detected")
+
+    if analysis.get("hard_reject_domain_detected"):
+        print("- Hard reject domain detected")
+
     if analysis["hard_domain_detected"]:
         print("- Text may contain a hard experience requirement")
 
@@ -944,15 +1033,20 @@ def main():
     print_source_health_report()
 
     new_jobs = []
+    review_jobs = []
     recommendation_counts = {
         "Apply": 0,
         "Maybe": 0,
+        "Review": 0,
         "Skip": 0,
     }
 
     for job in all_jobs:
         analysis = calculate_fit_score(job)
         recommendation_counts[analysis["recommendation"]] += 1
+
+        if analysis["recommendation"] == "Review":
+            review_jobs.append((job, analysis))
 
         if job["id"] in seen_jobs:
             continue
@@ -964,9 +1058,14 @@ def main():
         if analysis["recommendation"] in ["Apply", "Maybe"]:
             new_jobs.append((job, analysis))
 
+        if analysis["recommendation"] == "Review":
+            review_jobs.append((job, analysis))
+
     print("\nRecommendation summary:")
     print(f"- 🟢 APPLY: {recommendation_counts['Apply']}")
     print(f"- 🟡 MAYBE: {recommendation_counts['Maybe']}")
+    print(f"- 🔵 REVIEW: {recommendation_counts['Review']}")
+    print(f"- Review reservoir candidates: {len(review_jobs)}")
     print(f"- ⚪ SKIP: {recommendation_counts['Skip']}")
 
     if new_jobs:
@@ -995,6 +1094,7 @@ def main():
         print("Telegram secrets are missing.")
 
     save_seen_jobs(seen_jobs)
+    save_review_jobs(review_jobs)
 
     sys.stdout = original_stdout
     log_file.close()
