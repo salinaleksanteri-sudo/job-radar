@@ -1,0 +1,49 @@
+name: Weekly Review Reservoir
+
+on:
+  schedule:
+    - cron: "0 8 * * 5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  weekly-review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install playwright
+
+      - name: Install Playwright browser
+        run: python -m playwright install chromium
+
+      - name: Send weekly review email
+        env:
+          WEEKLY_REVIEW_EMAIL: "true"
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          REVIEW_EMAIL_TO: ${{ secrets.REVIEW_EMAIL_TO }}
+        run: python job_monitor.py
+
+      - name: Save review reservoir
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add review_reservoir.json review_reservoir.csv seen_jobs.json last_run.log
+          git commit -m "Update weekly review reservoir" || echo "No review changes"
+          git push
