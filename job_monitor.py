@@ -1,6 +1,9 @@
 import json
+import csv
 import os
 import sys
+import smtplib
+from email.message import EmailMessage
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import urljoin, urlparse, parse_qs
@@ -13,6 +16,8 @@ from playwright.sync_api import sync_playwright
 SEEN_FILE = Path("seen_jobs.json")
 LOG_FILE = Path("last_run.log")
 REVIEW_FILE = Path("review_reservoir.json")
+REVIEW_CSV_FILE = Path("review_reservoir.csv")
+WEEKLY_REVIEW_EMAIL = os.getenv("WEEKLY_REVIEW_EMAIL", "false").lower() == "true"
 DEBUG = False
 SOURCE_STATS = {}
 
@@ -205,6 +210,17 @@ def save_review_jobs(review_jobs):
         except Exception:
             existing_items = []
 
+    
+    today = datetime.now()
+
+    existing_items = [
+        item for item in existing_items
+        if (
+            "date_seen" in item
+            and (today - datetime.strptime(item["date_seen"], "%Y-%m-%d")).days <= 30
+        )
+    ]
+
     existing_urls = {item.get("url", "") for item in existing_items}
 
     for job, analysis in review_jobs:
@@ -220,7 +236,7 @@ def save_review_jobs(review_jobs):
             "location": job.get("location", ""),
             "score": analysis.get("score", 0),
             "recommendation": analysis.get("recommendation", ""),
-                        "risk_groups": [
+            "risk_groups": [
                 match.get("group", "")
                 for match in analysis.get("negative_matches", [])
             ],
@@ -235,6 +251,30 @@ def save_review_jobs(review_jobs):
 
     with open(REVIEW_FILE, "w", encoding="utf-8") as file:
         json.dump(existing_items, file, indent=2, ensure_ascii=False)
+
+    with open(REVIEW_CSV_FILE, "w", encoding="utf-8-sig", newline="") as file:
+        writer = csv.DictWriter(
+            file,
+            fieldnames=[
+                "date_seen", "company", "title", "location",
+                "score", "recommendation", "risk_groups",
+                "trigger_terms", "url"
+            ]
+        )
+        writer.writeheader()
+
+        for item in existing_items:
+            writer.writerow({
+                "date_seen": item.get("date_seen", ""),
+                "company": item.get("company", ""),
+                "title": item.get("title", ""),
+                "location": item.get("location", ""),
+                "score": item.get("score", ""),
+                "recommendation": item.get("recommendation", ""),
+                "risk_groups": ", ".join(item.get("risk_groups", [])),
+                "trigger_terms": ", ".join(item.get("trigger_terms", [])),
+                "url": item.get("url", ""),
+            })
 
     print(f"Review reservoir saved: {len(existing_items)} item(s).")
 
@@ -381,7 +421,11 @@ def calculate_fit_score(job):
 
     score = max(0, min(100, score))
 
-    geo_hard_reject_detected = non_target_location_found and not remote_possible
+    geo_hard_reject_detected = (
+        non_target_location_found
+        and not target_location_found
+        and not remote_possible
+    )
     if geo_hard_reject_detected:
         recommendation = "Skip"
     elif hard_reject_domain_detected:
@@ -410,6 +454,49 @@ def calculate_fit_score(job):
         "hard_reject_domain_detected": hard_reject_domain_detected,
         "hard_domain_detected": hard_domain_detected,
     }
+
+
+def send_weekly_review_email():
+    if not WEEKLY_REVIEW_EMAIL:
+        return
+
+    smtp_server = os.getenv("SMTP_SERVER")
+    smtp_port = int(os.getenv("SMTP_PORT", "587"))
+    smtp_user = os.getenv("SMTP_USER")
+    smtp_password = os.getenv("SMTP_PASSWORD")
+    email_to = os.getenv("REVIEW_EMAIL_TO")
+
+    if not all([smtp_server, smtp_user, smtp_password, email_to]):
+        print("Weekly review email secrets are missing.")
+        return
+
+    if not REVIEW_CSV_FILE.exists():
+        print("No review CSV file to send.")
+        return
+
+    message = EmailMessage()
+    message["Subject"] = "Weekly Job Radar Review Reservoir"
+    message["From"] = smtp_user
+    message["To"] = email_to
+    message.set_content(
+        "Attached is the weekly Job Radar review reservoir with skipped/review-risk vacancies."
+    )
+
+    with open(REVIEW_CSV_FILE, "rb") as file:
+        message.add_attachment(
+            file.read(),
+            maintype="text",
+            subtype="csv",
+            filename=REVIEW_CSV_FILE.name
+        )
+
+    with smtplib.SMTP(smtp_server, smtp_port) as server:
+        server.starttls()
+        server.login(smtp_user, smtp_password)
+        server.send_message(message)
+
+    print("Weekly review email sent.")
+
 
 def send_telegram_message(message):
     token = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -850,6 +937,7 @@ def fetch_duunitori_jobs():
     jobs = []
     seen_links = set()
     total_links_read = 0
+    error_count = 0
 
     relevant_words = [
         "sap", "p2p", "ostolasku", "laskutus", "hankinta",
@@ -928,13 +1016,20 @@ def fetch_duunitori_jobs():
                 })
 
         except Exception as error:
+            error_count += 1
             print(f"Could not fetch Duunitori: {search_url} — {error}")
 
     update_source_stats(
         "Duunitori",
         total_links_read,
         len(jobs),
-        note="HTML parsed from configured searches; read means links scanned, not job count"
+        status="WARNING" if error_count else "OK",
+        note=(
+            f"HTML parsed; read means links scanned, not job count; "
+            f"{error_count} search URL(s) failed"
+            if error_count
+            else "HTML parsed from configured searches; read means links scanned, not job count"
+        )
     )
 
     print(f"Duunitori found: {len(jobs)}")
@@ -973,8 +1068,25 @@ def print_job_card(job, analysis):
         print("- No strong positive matches yet")
 
     print("\nRisks:")
-    if analysis["negative_matches"]:
-        for match in analysis["negative_matches"][:2]:
+
+    visible_negative_matches = []
+
+    for match in analysis["negative_matches"]:
+        group = match["group"]
+
+        if group == "seniority risk" and not analysis.get("seniority_risk_detected"):
+            continue
+
+        if group == "data / BI / analytics risk" and not analysis.get("data_bi_risk_detected"):
+            continue
+
+        if group == "hard reject domain" and not analysis.get("hard_reject_domain_detected"):
+            continue
+
+        visible_negative_matches.append(match)
+
+    if visible_negative_matches:
+        for match in visible_negative_matches[:2]:
             words = ", ".join(match["keywords"][:4])
             print(f"- {match['group']}: {words}")
     else:
@@ -1058,8 +1170,6 @@ def main():
         if analysis["recommendation"] in ["Apply", "Maybe"]:
             new_jobs.append((job, analysis))
 
-        if analysis["recommendation"] == "Review":
-            review_jobs.append((job, analysis))
 
     print("\nRecommendation summary:")
     print(f"- 🟢 APPLY: {recommendation_counts['Apply']}")
@@ -1095,6 +1205,7 @@ def main():
 
     save_seen_jobs(seen_jobs)
     save_review_jobs(review_jobs)
+    send_weekly_review_email()
 
     sys.stdout = original_stdout
     log_file.close()
