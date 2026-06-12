@@ -1,7 +1,7 @@
-Job Radar run: 2026-06-06 11:12:43
+Job Radar run: 2026-06-12 17:42:19
 Checking jobs...
-Kuntarekry found: 0
-Valtiolle found: 5
+Kuntarekry found: 3
+Valtiolle found: 3
 Could not fetch job description: https://www.turunvesihuolto.fi/tyopaikat/ — 404 Client Error: Not Found for url: https://www.turunvesihuolto.fi/tyopaikat/
 Company career pages found: 0
 Could not fetch Duunitori: https://duunitori.fi/tyopaikat?haku=sap — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=sap
@@ -11,28 +11,29 @@ Could not fetch Duunitori: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue
 Duunitori found: 0
 
 Source summary:
-- Finavia: 14 job(s)
-- Kuntarekry: 0 job(s)
-- Valtiolle: 5 job(s)
+- Finavia: 12 job(s)
+- Kuntarekry: 3 job(s)
+- Valtiolle: 3 job(s)
 - Company career pages: 0 job(s)
 - Duunitori: 0 job(s)
-- Total after filters: 19 job(s)
+- Duplicates removed: 0
+- Total after filters: 18 job(s)
 
 
 Source health report:
-- Finavia: read 14, matched 14 — OK. read OK
-- Kuntarekry: read 24, matched 0 — OK. read OK, no suitable jobs after filters
-- Valtiolle: read 24, matched 5 — OK. read OK
+- Finavia: read 12, matched 12 — OK. read OK
+- Kuntarekry: read 24, matched 3 — OK. read OK
+- Valtiolle: read 24, matched 3 — OK. read OK
 - Company career pages: read 3, matched 0 — OK. checked configured generic pages; matched job links only
 - Duunitori: read 0, matched 0 — WARNING. HTML parsed; read means links scanned, not job count; 4 search URL(s) failed
 
 Recommendation summary:
-- 🟢 APPLY: 1
-- 🟡 MAYBE: 8
-- 🔵 REVIEW: 2
-- Review reservoir candidates: 2
-- ⚪ SKIP: 8
+- 🟢 APPLY: 2
+- 🟡 MAYBE: 4
+- 🔵 REVIEW: 5
+- Review reservoir candidates: 5
+- ⚪ SKIP: 7
 No new jobs found.
-Checked 19 jobs total.
-Review reservoir saved: 2 item(s).
+Checked 18 jobs total.
+Review reservoir saved: 7 item(s).
 Weekly review email sent.
