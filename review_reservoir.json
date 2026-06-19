@@ -167,5 +167,78 @@
       }
     ],
     "url": "https://valtiolle.fi/fi/tyopaikat/palveluvastaava-22222/"
+  },
+  {
+    "date_seen": "2026-06-19",
+    "company": "Finavia",
+    "title": "Head of Service Partners, Helsinki-Vantaan lentoasema",
+    "location": "Head of Service Partners, Helsinki-Vantaan lentoasema",
+    "score": 45,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "johtava",
+      "head of"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "johtava",
+          "head of"
+        ]
+      }
+    ],
+    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1028&key=&o=A_RJ&rspvt=5t1smjj7zysc4ogccckc884kw8ckwww"
+  },
+  {
+    "date_seen": "2026-06-19",
+    "company": "Finavia",
+    "title": "Head of Airport Operations Centre (APOC)",
+    "location": "Head of Airport Operations Centre (APOC)",
+    "score": 40,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "johtava",
+      "head of"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "johtava",
+          "head of"
+        ]
+      }
+    ],
+    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1029&key=&o=A_RJ&rspvt=5t1smjj7zysc4ogccckc884kw8ckwww"
+  },
+  {
+    "date_seen": "2026-06-19",
+    "company": "Finavia",
+    "title": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
+    "location": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
+    "score": 45,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "johtava"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "johtava"
+        ]
+      }
+    ],
+    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1018&key=&o=A_RJ&rspvt=5t1smjj7zysc4ogccckc884kw8ckwww"
   }
 ]
