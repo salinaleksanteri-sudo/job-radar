@@ -319,5 +319,98 @@
       }
     ],
     "url": "https://valtiolle.fi/fi/tyopaikat/palveluasiantuntija-hrd-23541/"
+  },
+  {
+    "date_seen": "2026-07-03",
+    "company": "Finavia",
+    "title": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
+    "location": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
+    "score": 45,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "johtava"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "johtava"
+        ]
+      }
+    ],
+    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1018&key=&o=A_RJ&rspvt=hkrr8l2ndtkwckcckcs8g44so4o8w4s"
+  },
+  {
+    "date_seen": "2026-07-03",
+    "company": "Kuntarekry",
+    "title": "Hallintosihteeri, tekniset palvelut",
+    "location": "Euran kunta",
+    "score": 39,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "public procurement",
+      "sales / commercial"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "cloudia",
+      "myynti"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "public procurement",
+        "keywords": [
+          "cloudia"
+        ]
+      },
+      {
+        "group": "sales / commercial",
+        "keywords": [
+          "myynti"
+        ]
+      }
+    ],
+    "url": "https://www.kuntarekry.fi/fi/tyopaikat/hallintosihteeri-tekniset-palvelut-734167/"
+  },
+  {
+    "date_seen": "2026-07-03",
+    "company": "Valtiolle",
+    "title": "Tietosuoja-asiantuntija",
+    "location": "Lupa- ja valvontavirasto",
+    "score": 42,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "data / BI / analytics risk"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "analytiikka"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "data / BI / analytics risk",
+        "keywords": [
+          "analytiikka"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/tietosuoja-asiantuntija-22040/"
   }
 ]
