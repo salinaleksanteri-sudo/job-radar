@@ -1,7 +1,7 @@
-Job Radar run: 2026-07-03 10:39:28
+Job Radar run: 2026-07-10 10:57:55
 Checking jobs...
 Kuntarekry found: 3
-Valtiolle found: 7
+Valtiolle found: 9
 Could not fetch job description: https://www.turunvesihuolto.fi/tyopaikat/ — 404 Client Error: Not Found for url: https://www.turunvesihuolto.fi/tyopaikat/
 Company career pages found: 0
 Could not fetch Duunitori: https://duunitori.fi/tyopaikat?haku=sap — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=sap
@@ -11,87 +11,29 @@ Could not fetch Duunitori: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue
 Duunitori found: 0
 
 Source summary:
-- Finavia: 15 job(s)
+- Finavia: 16 job(s)
 - Kuntarekry: 3 job(s)
-- Valtiolle: 7 job(s)
+- Valtiolle: 9 job(s)
 - Company career pages: 0 job(s)
 - Duunitori: 0 job(s)
 - Duplicates removed: 0
-- Total after filters: 25 job(s)
+- Total after filters: 28 job(s)
 
 
 Source health report:
-- Finavia: read 15, matched 15 — OK. read OK
+- Finavia: read 16, matched 16 — OK. read OK
 - Kuntarekry: read 24, matched 3 — OK. read OK
-- Valtiolle: read 24, matched 7 — OK. read OK
+- Valtiolle: read 24, matched 9 — OK. read OK
 - Company career pages: read 3, matched 0 — OK. checked configured generic pages; matched job links only
 - Duunitori: read 0, matched 0 — WARNING. HTML parsed; read means links scanned, not job count; 4 search URL(s) failed
 
-======================================================================
-Kuntarekry — Liikunta- ja nuorisokoordinaattori
-======================================================================
-Location: Laitilan kaupunki
-Posted: 3.7.2026
-Deadline: 29.7.2026
-Fit score: 70/100
-Recommendation: Maybe
-
-Why it may fit:
-- coordination / project: koordinaattori, asiakaspalvelu
-- location: etätyö
-
-Risks:
-- No obvious hard-domain risks found
-
-Link: https://www.kuntarekry.fi/fi/tyopaikat/liikunta-ja-nuorisokoordinaattori-734195/
-
-======================================================================
-Kuntarekry — Toimistosihteeri
-======================================================================
-Location: Rantasalmen kunta
-Posted: 3.7.2026
-Deadline: 10.8.2026
-Fit score: 78/100
-Recommendation: Apply
-
-Why it may fit:
-- SAP / P2P / invoices: sap, lasku
-- coordination / project: asiakaspalvelu, asiantuntija
-- location: etätyö
-
-Risks:
-- No obvious hard-domain risks found
-
-Link: https://www.kuntarekry.fi/fi/tyopaikat/toimistosihteeri-734165/
-
-======================================================================
-Valtiolle — Tietosuoja-asiantuntija
-======================================================================
-Location: Lupa- ja valvontavirasto
-Posted: Unknown
-Deadline: Unknown
-Fit score: 42/100
-Recommendation: Review
-
-Why it may fit:
-- SAP / P2P / invoices: ratkaisu
-- process development: koulutus
-- coordination / project: asiantuntija
-
-Risks:
-- data / BI / analytics risk: analytiikka
-- Data / BI / analytics risk detected
-
-Link: https://valtiolle.fi/fi/tyopaikat/tietosuoja-asiantuntija-22040/
-
 Recommendation summary:
-- 🟢 APPLY: 3
-- 🟡 MAYBE: 9
+- 🟢 APPLY: 5
+- 🟡 MAYBE: 6
 - 🔵 REVIEW: 3
 - Review reservoir candidates: 3
-- ⚪ SKIP: 10
-Job Radar: found 2 new job(s).
-Checked 25 jobs total.
-Telegram secrets are missing.
-Review reservoir saved: 16 item(s).
+- ⚪ SKIP: 14
+No new jobs found.
+Checked 28 jobs total.
+Review reservoir saved: 17 item(s).
 Weekly review email sent.

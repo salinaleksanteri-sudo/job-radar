@@ -1,55 +1,5 @@
 [
   {
-    "date_seen": "2026-06-06",
-    "company": "Finavia",
-    "title": "Head of Service Partners, Helsinki-Vantaan lentoasema",
-    "location": "Head of Service Partners, Helsinki-Vantaan lentoasema",
-    "score": 45,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "johtava",
-      "head of"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "johtava",
-          "head of"
-        ]
-      }
-    ],
-    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1028&key=&o=A_RJ&rspvt=1pm8mr2a83xcks0gk0cos8oosokswk8"
-  },
-  {
-    "date_seen": "2026-06-06",
-    "company": "Finavia",
-    "title": "Head of APOC",
-    "location": "Head of APOC",
-    "score": 40,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "johtava",
-      "head of"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "johtava",
-          "head of"
-        ]
-      }
-    ],
-    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1029&key=&o=A_RJ&rspvt=1pm8mr2a83xcks0gk0cos8oosokswk8"
-  },
-  {
     "date_seen": "2026-06-12",
     "company": "Finavia",
     "title": "Head of Service Partners, Helsinki-Vantaan lentoasema",
@@ -412,5 +362,82 @@
       }
     ],
     "url": "https://valtiolle.fi/fi/tyopaikat/tietosuoja-asiantuntija-22040/"
+  },
+  {
+    "date_seen": "2026-07-10",
+    "company": "Finavia",
+    "title": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
+    "location": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
+    "score": 45,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "johtava"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "johtava"
+        ]
+      }
+    ],
+    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1018&key=&o=A_RJ&rspvt=g514c1hj2rcwwccg8ggw8k4cwscwcs4"
+  },
+  {
+    "date_seen": "2026-07-10",
+    "company": "Kuntarekry",
+    "title": "Työllisyyskoordinaattori",
+    "location": "Sipoon kunta",
+    "score": 52,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "päällikkö"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      }
+    ],
+    "url": "https://www.kuntarekry.fi/fi/tyopaikat/tyollisyyskoordinaattori-730922/"
+  },
+  {
+    "date_seen": "2026-07-10",
+    "company": "Valtiolle",
+    "title": "Lakimies",
+    "location": "Lounais-Suomen elinvoimakeskus",
+    "score": 49,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "tax domain"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "oikaisuvaatimus"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "tax domain",
+        "keywords": [
+          "oikaisuvaatimus"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/lakimies-23768/"
   }
 ]
