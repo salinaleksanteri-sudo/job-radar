@@ -1,84 +1,5 @@
 [
   {
-    "date_seen": "2026-06-26",
-    "company": "Finavia",
-    "title": "Head of Airport Operations Centre (APOC)",
-    "location": "Head of Airport Operations Centre (APOC)",
-    "score": 40,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "johtava",
-      "head of"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "johtava",
-          "head of"
-        ]
-      }
-    ],
-    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1029&key=&o=A_RJ&rspvt=cjeste6vtl44g044g4kscsscosgo08k"
-  },
-  {
-    "date_seen": "2026-06-26",
-    "company": "Finavia",
-    "title": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
-    "location": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
-    "score": 45,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "johtava"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "johtava"
-        ]
-      }
-    ],
-    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1018&key=&o=A_RJ&rspvt=cjeste6vtl44g044g4kscsscosgo08k"
-  },
-  {
-    "date_seen": "2026-06-26",
-    "company": "Valtiolle",
-    "title": "Palveluasiantuntija, HRD",
-    "location": "Valtion talous- ja henkilöstöhallinnon palvelukeskus Palkeet",
-    "score": 34,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk",
-      "data / BI / analytics risk"
-    ],
-    "trigger_terms": [
-      "päällikkö",
-      "etl"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "päällikkö"
-        ]
-      },
-      {
-        "group": "data / BI / analytics risk",
-        "keywords": [
-          "etl"
-        ]
-      }
-    ],
-    "url": "https://valtiolle.fi/fi/tyopaikat/palveluasiantuntija-hrd-23541/"
-  },
-  {
     "date_seen": "2026-07-03",
     "company": "Finavia",
     "title": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
@@ -293,5 +214,59 @@
       }
     ],
     "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1018&key=&o=A_RJ&rspvt=bcqjj3hlnuo0sos4004sk8ksgckkkok"
+  },
+  {
+    "date_seen": "2026-07-31",
+    "company": "Finavia",
+    "title": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
+    "location": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
+    "score": 45,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "johtava"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "johtava"
+        ]
+      }
+    ],
+    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1018&key=&o=A_RJ&rspvt=1z8oyec07zwg8k4w40gg0kcwk04s4gs"
+  },
+  {
+    "date_seen": "2026-07-31",
+    "company": "Kuntarekry",
+    "title": "Hallintoassisitentti, Yleishallinnon tuki",
+    "location": "Helsingin kaupunki",
+    "score": 37,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "domain experience risk"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "sote"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "domain experience risk",
+        "keywords": [
+          "sote"
+        ]
+      }
+    ],
+    "url": "https://www.kuntarekry.fi/fi/tyopaikat/hallintoassisitentti-yleishallinnon-tuki-sotepe-04-62-26/"
   }
 ]
