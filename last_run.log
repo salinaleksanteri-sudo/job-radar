@@ -1,6 +1,6 @@
-Job Radar run: 2026-08-07 08:18:48
+Job Radar run: 2026-08-07 09:02:32
 Checking jobs...
-Kuntarekry found: 0
+Kuntarekry found: 2
 Valtiolle found: 4
 Could not fetch job description: https://www.turunvesihuolto.fi/tyopaikat/ — 404 Client Error: Not Found for url: https://www.turunvesihuolto.fi/tyopaikat/
 Company career pages found: 0
@@ -12,28 +12,48 @@ Duunitori found: 0
 
 Source summary:
 - Finavia: 9 job(s)
-- Kuntarekry: 0 job(s)
+- Kuntarekry: 2 job(s)
 - Valtiolle: 4 job(s)
 - Company career pages: 0 job(s)
 - Duunitori: 0 job(s)
-- Duplicates removed: 0
-- Total after filters: 13 job(s)
+- Duplicates removed: 1
+- Total after filters: 14 job(s)
 
 
 Source health report:
 - Finavia: read 9, matched 9 — OK. read OK
-- Kuntarekry: read 24, matched 0 — OK. read OK, no suitable jobs after filters
+- Kuntarekry: read 24, matched 2 — OK. read OK
 - Valtiolle: read 24, matched 4 — OK. read OK
 - Company career pages: read 3, matched 0 — OK. checked configured generic pages; matched job links only
 - Duunitori: read 0, matched 0 — WARNING. HTML parsed; read means links scanned, not job count; 4 search URL(s) failed
 
+======================================================================
+Kuntarekry — Työllisyysasiantuntija
+======================================================================
+Location: Salon kaupunki
+Posted: 7.8.2026
+Deadline: 21.8.2026
+Fit score: 61/100
+Recommendation: Maybe
+
+Why it may fit:
+- process development: koulutus
+- coordination / project: asiakaspalvelu, neuvonta, asiantuntija
+- location: etätyö
+
+Risks:
+- No obvious hard-domain risks found
+
+Link: https://www.kuntarekry.fi/fi/tyopaikat/tyollisyysasiantuntija-sal-05-26-26/
+
 Recommendation summary:
 - 🟢 APPLY: 1
-- 🟡 MAYBE: 3
+- 🟡 MAYBE: 4
 - 🔵 REVIEW: 1
 - Review reservoir candidates: 1
 - ⚪ SKIP: 8
-No new jobs found.
-Checked 13 jobs total.
-Review reservoir saved: 8 item(s).
+Job Radar: found 1 new job(s).
+Checked 14 jobs total.
+Telegram secrets are missing.
+Review reservoir saved: 9 item(s).
 Weekly review email sent.
