@@ -2,6 +2,7 @@ import json
 import csv
 import os
 import sys
+import re
 import smtplib
 from email.message import EmailMessage
 from datetime import datetime
@@ -69,8 +70,165 @@ NON_TARGET_LOCATIONS = [
     "oulu", "rovaniemi", "kuopio", "joensuu", "jyväskylä",
     "lahti", "tampere", "vaasa", "seinäjoki", "kokkola",
     "pietarsaari", "sodankylä", "tohmajärvi", "kuusamo",
-    "mariehamn", "ahvenanmaa"
+    "mariehamn", "ahvenanmaa", "rovaniemi", "kittilä", "kittila", "kouvola", "pori"
 ]
+
+ALLOWED_LOCATION_TERMS = [
+    "turku", "varsinais-suomi", "kaarina", "raisio", "naantali",
+    "lieto", "parainen", "salo", "uusikaupunki",
+    "helsinki", "vantaa", "espoo", "uusimaa", "kerava"
+]
+
+EXPLICIT_FULL_REMOTE_TERMS = [
+    "fully remote", "100 % etätyö", "100% etätyö", "kokonaan etätyö",
+    "paikkariippumaton", "paikkariippumaton työ",
+    "työ onnistuu kaikkialta suomesta",
+    "työskentely mahdollista mistä tahansa suomesta",
+    "virkapaikka voidaan sopia",
+    "valtakunnallinen etätyö"
+]
+
+ONSITE_TERMS = [
+    "palvelupiste", "käyntiasiakaspalvelu",
+    "kasvokkain tapahtuva asiakaspalvelu",
+    "jalkautuminen", "yrityskäynnit", "asiakaskäynnit",
+    "paikallinen työmarkkina", "paikallistuntemus",
+    "toimipisteessä", "virkapaikka",
+    "koulu", "laitos", "vastaanottokeskus", "säilöönottoyksikkö",
+    "keittiö", "tuotanto", "työmaa", "maatila", "navetta",
+    "tapahtumatuotanto", "kenttätyö", "liikkuva työ",
+    "oma auto", "henkilökuljetus"
+]
+
+MANDATORY_LANGUAGE_TERMS = [
+    "edellytämme hyvää ruotsin kielen",
+    "edellytämme tyydyttävää ruotsin kielen",
+    "vaaditaan hyvää ruotsin kielen",
+    "vaaditaan tyydyttävää ruotsin kielen",
+    "hyvä ruotsin kielen suullinen ja kirjallinen taito",
+    "tyydyttävä ruotsin kielen suullinen ja kirjallinen taito",
+    "säädetty kielitaitovaatimus",
+    "kelpoisuusvaatimus",
+    "kielitaitovaatimus"
+]
+
+LANGUAGE_ADVANTAGE_TERMS = [
+    "ruotsin kielen taito katsotaan eduksi",
+    "ruotsi katsotaan eduksi",
+    "ruotsin osaaminen katsotaan eduksi",
+    "ruotsin osaaminen on hyödyksi"
+]
+
+HARD_SKIP_CATEGORIES = {
+    "kitchen_cleaning_production": [
+        "kokki", "suurtalouskokki", "keittiö", "ruoanvalmistus",
+        "astiahuolto", "omavalvonta", "laitoshuoltaja", "siivous",
+        "puhdistuspalvelu", "ruoka- ja vaatehuolto",
+        "tuotantovastaava", "elintarviketuotanto", "teurastamo",
+        "hygieniapassi"
+    ],
+    "agriculture_animals": [
+        "maatalouslomittaja", "agrologi", "porotalous", "navetta",
+        "robottinavetta", "parsinavetta", "pihatto", "karja",
+        "tuotantoeläimet", "lypsy", "hevosten hoito",
+        "lampaiden hoito", "maatalousalan tutkinto", "maatila"
+    ],
+    "av_media_technician": [
+        "av-palvelut", "striimaus", "monikamerastriimaus", "vmix",
+        "ääni- ja valaistustekniikka", "videotuotanto"
+    ],
+    "legal_court": [
+        "holhoustoimi", "edunvalvonta", "tuomioistuin",
+        "perhe- ja perintöoikeus", "oikeustieteen maisteri",
+        "juridinen neuvonta", "säädösvalmistelu",
+        "lainsäädäntövalmistelu"
+    ],
+    "public_procurement": [
+        "julkiset hankinnat", "cloudia", "dynasty",
+        "hankintapäätökset", "hankintasopimukset", "hankintalaki"
+    ],
+    "rescue_security_nuclear": [
+        "pelastustoimi", "eu:n pelastuspalvelumekanismi", "ercc",
+        "kansainvälinen avunanto", "ydinturvallisuus",
+        "säteilyturvallisuus", "ydinalan sopimukset",
+        "voimankäyttö", "vartiointi"
+    ],
+    "technical_infrastructure": [
+        "lan", "wlan", "wan", "palomuuri", "firewall", "dns",
+        "dhcp", "radius", "verkkoturvallisuus",
+        "tietoliikenneympäristö", "palvelinympäristö",
+        "network monitoring", "verkon valvonta",
+        "sähkönjakelu", "sähköverkko", "sähkötekniikka",
+        "lvias", "bim", "autocad", "rakennusautomaatio"
+    ],
+    "social_health_education_sport": [
+        "sosionomi", "sairaanhoitaja", "lähihoitaja",
+        "yhteisöpedagogi", "psykososiaalinen tuki",
+        "sosiaaliohjaus", "hoitotyö", "kasvatusala",
+        "lastensuojelu", "opiskeluhuolto", "oppilashuolto",
+        "lasten ja nuorten", "nuorisotyö", "liikkuva koulu",
+        "move!", "liikuntaneuvonta", "harrastamisen suomen malli",
+        "rikosrekisteriote lasten kanssa työskentelyyn"
+    ],
+    "corporate_finance": [
+        "omistajaohjaus", "omistajapolitiikka", "omistajastrategia",
+        "arvonmääritys", "yritysjärjestely", "m&a",
+        "corporate finance", "due diligence", "pääomajärjestely",
+        "yritysjuridiikka"
+    ],
+    "professional_transport": [
+        "henkilökuljetustehtävät", "virkahenkilöiden kuljetus",
+        "pääjohtajan kuljettaminen", "edustuskuljetukset",
+        "vahva näyttö henkilökuljetuksesta", "executive driver",
+        "chauffeur"
+    ],
+        "maintenance_manual_work": [
+        "kunnossapidon työntekijä",
+        "kunnossapidon moniosaaja",
+        "kunnossapidon ammattihenkilö",
+        "kunnossapito",
+        "huoltotyö",
+        "kiinteistönhoito",
+        "lumityöt",
+        "ulkotyö",
+        "fyysinen työ",
+        "koneiden käyttö",
+        "ajoneuvon käyttö",
+    ],
+    "education_eu_programmes": [
+        "erasmus",
+        "opiskelijaliikkuvuus",
+        "eu-ohjelmien koordinaatio",
+        "opetushallitus",
+        "valtionavustus",
+        "valtionavustukset",
+        "koulutuksen kehittäminen",
+    ],
+}
+
+PROFILE_KEYWORDS = {
+    "ERP / talous / process support": [
+        "ostolaskut", "ostolasku", "ostolaskuautomaatio",
+        "tositteet", "myyntilaskut", "p2p", "procure-to-pay",
+        "sap", "sap s/4hana", "sap vim", "erp", "taloushallinto",
+        "laskujen käsittely", "käyttäjätuki", "pääkäyttäjä",
+        "käyttövaltuushallinta", "prosessin seuranta",
+        "työjonot", "poikkeamien selvitys", "asiakkaiden neuvonta"
+    ],
+    "HRD / recruitment / admin": [
+        "rekrytointiprosessi", "hakijaviestintä",
+        "hakemusten käsittely", "esikarsinta", "nimitysmuistio",
+        "hallinnolliset asiakirjat", "valtiolle",
+        "turvallisuusselvitys", "hr-tuki"
+    ],
+    "Työllisyys / employer services / integration": [
+        "työllisyyspalvelut", "työnantajapalvelut",
+        "työnhakijat", "työnvälitys", "työkokeilu",
+        "palkkatuki", "starttiraha", "työpaikkailmoitukset",
+        "kohtaanto", "international house", "maahan muuttaneet",
+        "työnantajayhteistyö"
+    ],
+}
 
 POSITIVE_KEYWORDS = {
     "SAP / P2P / invoices": [
@@ -339,6 +497,19 @@ def print_source_health_report():
         print(f"- {source}: read {read_count}, matched {matched_count} — {status}. {note}")
 
 
+def keyword_found(text, keyword):
+    text = normalize(text)
+    keyword = normalize(keyword)
+
+    # Short technical terms must be matched as separate words only.
+    # Prevents false matches like "lan" inside Finnish words.
+    if keyword in ["lan", "wan", "dns", "dhcp", "sql", "bi", "ai"]:
+        pattern = r"(?<![a-zåäö0-9])" + re.escape(keyword) + r"(?![a-zåäö0-9])"
+        return re.search(pattern, text) is not None
+
+    return keyword in text
+
+
 def find_matches(text, keyword_groups):
     text = normalize(text)
     matches = []
@@ -347,7 +518,7 @@ def find_matches(text, keyword_groups):
         found_words = []
 
         for keyword in keywords:
-            if keyword.lower() in text:
+            if keyword_found(text, keyword):
                 found_words.append(keyword)
 
         if found_words:
@@ -359,62 +530,132 @@ def find_matches(text, keyword_groups):
     return matches
 
 
+def detect_hard_gates(job):
+    text = normalize(
+        f"{job.get('title', '')} {job.get('location', '')} {job.get('description', '')}"
+    )
+    title_location_text = normalize(
+        f"{job.get('title', '')} {job.get('location', '')}"
+    )
+
+    explicit_remote = any(term in text for term in EXPLICIT_FULL_REMOTE_TERMS)
+    allowed_location_found = any(term in title_location_text for term in ALLOWED_LOCATION_TERMS)
+    non_target_location_found = any(term in title_location_text for term in NON_TARGET_LOCATIONS)
+    onsite_found = any(term in text for term in ONSITE_TERMS)
+
+    mandatory_language_found = (
+        any(term in text for term in MANDATORY_LANGUAGE_TERMS)
+        and not any(term in text for term in LANGUAGE_ADVANTAGE_TERMS)
+    )
+
+    hard_skip_matches = find_matches(text, HARD_SKIP_CATEGORIES)
+
+    gate_limit = 100
+    gate_reasons = []
+
+    if hard_skip_matches:
+        gate_limit = min(gate_limit, 20)
+        gate_reasons.append("hard skip professional domain")
+
+    if non_target_location_found and onsite_found and not allowed_location_found and not explicit_remote:
+        gate_limit = min(gate_limit, 35)
+        gate_reasons.append("wrong geography + on-site/location-bound work")
+    elif non_target_location_found and not allowed_location_found and not explicit_remote:
+        gate_limit = min(gate_limit, 40)
+        gate_reasons.append("wrong geography")
+
+    if mandatory_language_found:
+        gate_limit = min(gate_limit, 55)
+        gate_reasons.append("formal language requirement risk")
+
+    return {
+        "gate_limit": gate_limit,
+        "gate_reasons": gate_reasons,
+        "hard_skip_matches": hard_skip_matches,
+        "explicit_remote": explicit_remote,
+        "allowed_location_found": allowed_location_found,
+        "non_target_location_found": non_target_location_found,
+        "onsite_found": onsite_found,
+        "mandatory_language_found": mandatory_language_found,
+    }
+
+
 def calculate_fit_score(job):
     text = f"{job.get('title', '')} {job.get('location', '')} {job.get('description', '')}"
     text_lower = normalize(text)
 
+    gates = detect_hard_gates(job)
+
     positive_matches = find_matches(text, POSITIVE_KEYWORDS)
+    profile_matches = find_matches(text, PROFILE_KEYWORDS)
     negative_matches = find_matches(text, NEGATIVE_KEYWORDS)
 
-    score = 35
+    if gates["hard_skip_matches"]:
+        negative_matches.extend(gates["hard_skip_matches"])
 
+    score = 30
+
+    # Strong profile-based scoring
+    for match in profile_matches:
+        group = match["group"]
+
+        if group == "ERP / talous / process support":
+            score += 30
+        elif group == "HRD / recruitment / admin":
+            score += 25
+        elif group == "Työllisyys / employer services / integration":
+            score += 25
+
+    # Existing softer positive signals
     for match in positive_matches:
         group = match["group"]
 
-        if group == "resource planning":
-            score += 25
-        elif group == "coordination / project":
+        if group == "SAP / P2P / invoices":
+            score += 18
+        elif group == "resource planning":
             score += 15
         elif group == "process development":
-            score += 15
-        elif group == "location":
             score += 10
+        elif group == "coordination / project":
+            score += 6
+        elif group == "location":
+            score += 5
         else:
-            score += 8
+            score += 5
 
     for match in negative_matches:
-        score -= 18
+        group = match["group"]
 
-    location_text = normalize(
-        f"{job.get('title', '')} {job.get('location', '')} {job.get('description', '')}"
-    )
-
-    remote_possible = any(word in location_text for word in [
-        "fully remote", "100% etätyö", "kokonaan etätyö",
-        "työ onnistuu suomesta käsin", "remote work from finland"
-    ])
-
-    target_location_found = any(location in location_text for location in TARGET_LOCATIONS)
-    non_target_location_found = any(location in location_text for location in NON_TARGET_LOCATIONS)
-
-    if target_location_found:
-        score += 10
-    elif non_target_location_found and not remote_possible:
-        score -= 25
-    elif non_target_location_found and remote_possible:
-        score -= 5
+        if group in [
+            "kitchen_cleaning_production",
+            "agriculture_animals",
+            "av_media_technician",
+            "legal_court",
+            "public_procurement",
+            "rescue_security_nuclear",
+            "technical_infrastructure",
+            "social_health_education_sport",
+            "corporate_finance",
+            "professional_transport",
+        ]:
+            score -= 60
+        elif group == "data / BI / analytics risk":
+            score -= 15
+        elif group == "seniority risk":
+            score -= 15
+        else:
+            score -= 18
 
     hard_domain_detected = any(marker in text_lower for marker in HARD_REQUIREMENT_MARKERS)
-    if hard_domain_detected and negative_matches:
-        score -= 15
 
     domain_risk_detected = any(
         match["group"] == "domain experience risk"
         for match in negative_matches
     )
 
-    if domain_risk_detected:
+    if hard_domain_detected and (domain_risk_detected or gates["hard_skip_matches"]):
         score -= 20
+
     seniority_risk_detected = any(
         keyword in normalize(job.get("title", ""))
         for match in negative_matches
@@ -422,42 +663,36 @@ def calculate_fit_score(job):
         for keyword in match["keywords"]
     )
 
-    if seniority_risk_detected:
-        score -= 15
-
     data_bi_risk_detected = any(
         match["group"] == "data / BI / analytics risk"
         for match in negative_matches
     )
 
-    hard_reject_domain_detected = any(
+    hard_reject_domain_detected = bool(gates["hard_skip_matches"]) or any(
         match["group"] == "hard reject domain"
         for match in negative_matches
     )
 
-    if data_bi_risk_detected:
-        score -= 15
+    # Hard gate cap: final score cannot exceed gate limit
+    score = max(0, min(100, score))
+    score = min(score, gates["gate_limit"])
 
     if hard_reject_domain_detected:
-        score -= 50
-
-    score = max(0, min(100, score))
-
-    geo_hard_reject_detected = (
-        non_target_location_found
-        and not target_location_found
-        and not remote_possible
-    )
-    if geo_hard_reject_detected:
         recommendation = "Skip"
-    elif hard_reject_domain_detected:
+    elif "wrong geography + on-site/location-bound work" in gates["gate_reasons"]:
         recommendation = "Skip"
+    elif "wrong geography" in gates["gate_reasons"]:
+        recommendation = "Skip"
+    elif gates["gate_limit"] <= 55 and positive_matches:
+        recommendation = "Review"
     elif data_bi_risk_detected and positive_matches and score >= 25:
         recommendation = "Review"
     elif (domain_risk_detected or seniority_risk_detected) and positive_matches and score >= 25:
         recommendation = "Review"
-    elif score >= 75:
+    elif score >= 75 and profile_matches:
         recommendation = "Apply"
+    elif score >= 75:
+        recommendation = "Maybe"
     elif score >= 55:
         recommendation = "Maybe"
     elif positive_matches and score >= 35:
@@ -469,12 +704,16 @@ def calculate_fit_score(job):
         "score": score,
         "recommendation": recommendation,
         "positive_matches": positive_matches,
+        "profile_matches": profile_matches,
         "negative_matches": negative_matches,
         "domain_risk_detected": domain_risk_detected,
         "seniority_risk_detected": seniority_risk_detected,
         "data_bi_risk_detected": data_bi_risk_detected,
         "hard_reject_domain_detected": hard_reject_domain_detected,
         "hard_domain_detected": hard_domain_detected,
+        "gate_limit": gates["gate_limit"],
+        "gate_reasons": gates["gate_reasons"],
+        "mandatory_language_found": gates["mandatory_language_found"],
     }
 
 
@@ -1080,6 +1319,13 @@ def print_job_card(job, analysis):
     print(f"Deadline: {job.get('deadline') or 'Unknown'}")
     print(f"Fit score: {analysis['score']}/100")
     print(f"Recommendation: {analysis['recommendation']}")
+    if analysis.get("gate_limit", 100) < 100:
+        print(f"Gate limit: {analysis['gate_limit']}/100")
+
+    if analysis.get("gate_reasons"):
+        print("Gate reasons:")
+        for reason in analysis["gate_reasons"]:
+            print(f"- {reason}")
 
     print("\nWhy it may fit:")
     if analysis["positive_matches"]:
