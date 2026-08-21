@@ -1,7 +1,7 @@
-Job Radar run: 2026-08-14 09:10:32
+Job Radar run: 2026-08-21 08:43:28
 Checking jobs...
 Kuntarekry found: 1
-Valtiolle found: 7
+Valtiolle found: 3
 Could not fetch job description: https://www.turunvesihuolto.fi/tyopaikat/ — 404 Client Error: Not Found for url: https://www.turunvesihuolto.fi/tyopaikat/
 Company career pages found: 0
 Could not fetch Duunitori: https://duunitori.fi/tyopaikat?haku=sap — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=sap
@@ -11,55 +11,69 @@ Could not fetch Duunitori: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue
 Duunitori found: 0
 
 Source summary:
-- Finavia: 8 job(s)
+- Finavia: 7 job(s)
 - Kuntarekry: 1 job(s)
-- Valtiolle: 7 job(s)
+- Valtiolle: 3 job(s)
 - Company career pages: 0 job(s)
 - Duunitori: 0 job(s)
 - Duplicates removed: 0
-- Total after filters: 16 job(s)
+- Total after filters: 11 job(s)
 
 
 Source health report:
-- Finavia: read 8, matched 8 — OK. read OK
+- Finavia: read 7, matched 7 — OK. read OK
 - Kuntarekry: read 24, matched 1 — OK. read OK
-- Valtiolle: read 24, matched 7 — OK. read OK
+- Valtiolle: read 24, matched 3 — OK. read OK
 - Company career pages: read 3, matched 0 — OK. checked configured generic pages; matched job links only
 - Duunitori: read 0, matched 0 — WARNING. HTML parsed; read means links scanned, not job count; 4 search URL(s) failed
 
 ======================================================================
-Kuntarekry — Koulutuspäällikkö
+Finavia — Sähköinsinööri, Vantaa
 ======================================================================
-Location: Etelä-Karjalan koulutuskuntayhtymä
-Posted: 14.8.2026
-Deadline: 30.8.2026
-Fit score: 0/100
+Location: Sähköinsinööri, Vantaa
+Posted: Unknown
+Deadline: Unknown
+Fit score: 9/100
 Recommendation: Skip
 Gate limit: 20/100
 Gate reasons:
 - hard skip professional domain
-- wrong geography + on-site/location-bound work
 
 Why it may fit:
-- process development: koulutus
-- coordination / project: muutos
-- location: etätyö
+- SAP / P2P / invoices: ratkaisu
+- coordination / project: asiantuntija
+- location: vantaa, hybridi, hybrid
 
 Risks:
-- seniority risk: päällikkö
-- hard reject domain: opettaja
-- Seniority / too high level risk detected
+- technical_infrastructure: sähkönjakelu
 - Hard reject domain detected
 
-Link: https://www.kuntarekry.fi/fi/tyopaikat/koulutuspaallikko-738074/
+Link: https://finavia.rekrytointi.com/paikat/index.php?jid=1013&key=&o=A_RJ&rspvt=gok7u5svt5sk4k8w848c0wcokg88w0o
+
+======================================================================
+Kuntarekry — Palveluasiantuntija, Lähipalvelut
+======================================================================
+Location: Monetra Oy
+Posted: 21.8.2026
+Deadline: 4.9.2026
+Fit score: 36/100
+Recommendation: Review
+
+Why it may fit:
+- coordination / project: asiakaspalvelu, asiantuntija
+
+Risks:
+- No obvious hard-domain risks found
+
+Link: https://www.kuntarekry.fi/fi/tyopaikat/palveluasiantuntija-lahipalvelut-736382/
 
 Recommendation summary:
-- 🟢 APPLY: 2
-- 🟡 MAYBE: 3
-- 🔵 REVIEW: 3
-- Review reservoir candidates: 3
+- 🟢 APPLY: 0
+- 🟡 MAYBE: 1
+- 🔵 REVIEW: 2
+- Review reservoir candidates: 2
 - ⚪ SKIP: 8
 No new jobs found.
-Checked 16 jobs total.
-Review reservoir saved: 9 item(s).
+Checked 11 jobs total.
+Review reservoir saved: 10 item(s).
 Weekly review email sent.

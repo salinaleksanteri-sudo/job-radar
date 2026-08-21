@@ -1,28 +1,5 @@
 [
   {
-    "date_seen": "2026-07-17",
-    "company": "Finavia",
-    "title": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
-    "location": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
-    "score": 45,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "johtava"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "johtava"
-        ]
-      }
-    ],
-    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1018&key=&o=A_RJ&rspvt=g1c1pqskpy0cs8ow4s0sscgoso44gw8"
-  },
-  {
     "date_seen": "2026-07-24",
     "company": "Finavia",
     "title": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
@@ -219,5 +196,42 @@
       }
     ],
     "url": "https://valtiolle.fi/fi/tyopaikat/kausityontekija-tyoymparisto-24160/"
+  },
+  {
+    "date_seen": "2026-08-21",
+    "company": "Finavia",
+    "title": "Hankintapäällikkö, Vantaa",
+    "location": "Hankintapäällikkö, Vantaa",
+    "score": 63,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "johtava",
+      "päällikkö"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "johtava",
+          "päällikkö"
+        ]
+      }
+    ],
+    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1100&key=&o=A_RJ&rspvt=gok7u5svt5sk4k8w848c0wcokg88w0o"
+  },
+  {
+    "date_seen": "2026-08-21",
+    "company": "Kuntarekry",
+    "title": "Palveluasiantuntija, Lähipalvelut",
+    "location": "Monetra Oy",
+    "score": 36,
+    "recommendation": "Review",
+    "risk_groups": [],
+    "trigger_terms": [],
+    "risks": [],
+    "url": "https://www.kuntarekry.fi/fi/tyopaikat/palveluasiantuntija-lahipalvelut-736382/"
   }
 ]
