@@ -1,28 +1,5 @@
 [
   {
-    "date_seen": "2026-07-24",
-    "company": "Finavia",
-    "title": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
-    "location": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
-    "score": 45,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "johtava"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "johtava"
-        ]
-      }
-    ],
-    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1018&key=&o=A_RJ&rspvt=bcqjj3hlnuo0sos4004sk8ksgckkkok"
-  },
-  {
     "date_seen": "2026-07-31",
     "company": "Finavia",
     "title": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
@@ -233,5 +210,51 @@
     "trigger_terms": [],
     "risks": [],
     "url": "https://www.kuntarekry.fi/fi/tyopaikat/palveluasiantuntija-lahipalvelut-736382/"
+  },
+  {
+    "date_seen": "2026-08-28",
+    "company": "Valtiolle",
+    "title": "Ylipäivystäjä",
+    "location": "Hätäkeskuslaitos",
+    "score": 51,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "päällikkö"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/ylipaivystaja-21612/"
+  },
+  {
+    "date_seen": "2026-08-28",
+    "company": "Valtiolle",
+    "title": "Maanmittausinsinööri",
+    "location": "Maanmittauslaitos",
+    "score": 51,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "päällikkö"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/maanmittausinsinoori-24302/"
   }
 ]
