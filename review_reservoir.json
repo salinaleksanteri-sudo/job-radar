@@ -1,59 +1,5 @@
 [
   {
-    "date_seen": "2026-07-31",
-    "company": "Finavia",
-    "title": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
-    "location": "Kunnossapidon työntekijä, Helsinki-Vantaan lentoasema (talvi 2026-2027)",
-    "score": 45,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "johtava"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "johtava"
-        ]
-      }
-    ],
-    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1018&key=&o=A_RJ&rspvt=1z8oyec07zwg8k4w40gg0kcwk04s4gs"
-  },
-  {
-    "date_seen": "2026-07-31",
-    "company": "Kuntarekry",
-    "title": "Hallintoassisitentti, Yleishallinnon tuki",
-    "location": "Helsingin kaupunki",
-    "score": 37,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk",
-      "domain experience risk"
-    ],
-    "trigger_terms": [
-      "päällikkö",
-      "sote"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "päällikkö"
-        ]
-      },
-      {
-        "group": "domain experience risk",
-        "keywords": [
-          "sote"
-        ]
-      }
-    ],
-    "url": "https://www.kuntarekry.fi/fi/tyopaikat/hallintoassisitentti-yleishallinnon-tuki-sotepe-04-62-26/"
-  },
-  {
     "date_seen": "2026-08-07",
     "company": "Finavia",
     "title": "Hankintapäällikkö, Vantaa",
