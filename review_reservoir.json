@@ -1,55 +1,5 @@
 [
   {
-    "date_seen": "2026-08-07",
-    "company": "Finavia",
-    "title": "Hankintapäällikkö, Vantaa",
-    "location": "Hankintapäällikkö, Vantaa",
-    "score": 63,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "johtava",
-      "päällikkö"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "johtava",
-          "päällikkö"
-        ]
-      }
-    ],
-    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1100&key=&o=A_RJ&rspvt=3vu007a57uckwww8s4wo4480c808oc4"
-  },
-  {
-    "date_seen": "2026-08-07",
-    "company": "Finavia",
-    "title": "Hankintapäällikkö, Vantaa",
-    "location": "Hankintapäällikkö, Vantaa",
-    "score": 63,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "johtava",
-      "päällikkö"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "johtava",
-          "päällikkö"
-        ]
-      }
-    ],
-    "url": "https://finavia.rekrytointi.com/paikat/index.php?jid=1100&key=&o=A_RJ&rspvt=nl7fotznpk0g80k8w8k8owsw8cso4ks"
-  },
-  {
     "date_seen": "2026-08-14",
     "company": "Finavia",
     "title": "Hankintapäällikkö, Vantaa",
@@ -202,5 +152,84 @@
       }
     ],
     "url": "https://valtiolle.fi/fi/tyopaikat/maanmittausinsinoori-24302/"
+  },
+  {
+    "date_seen": "2026-09-11",
+    "company": "Kuntarekry",
+    "title": "Hankinta-asiantuntija",
+    "location": "Vihdin kunta",
+    "score": 54,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "päällikkö"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      }
+    ],
+    "url": "https://www.kuntarekry.fi/fi/tyopaikat/hankinta-asiantuntija-vih-05-9-26/"
+  },
+  {
+    "date_seen": "2026-09-11",
+    "company": "Valtiolle",
+    "title": "Pääkirjanpitäjä",
+    "location": "Valtion talous- ja henkilöstöhallinnon palvelukeskus Palkeet",
+    "score": 100,
+    "recommendation": "Review",
+    "risk_groups": [
+      "data / BI / analytics risk"
+    ],
+    "trigger_terms": [
+      "etl"
+    ],
+    "risks": [
+      {
+        "group": "data / BI / analytics risk",
+        "keywords": [
+          "etl"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/paakirjanpitaja-24867/"
+  },
+  {
+    "date_seen": "2026-09-11",
+    "company": "Valtiolle",
+    "title": "HR-suunnittelija",
+    "location": "Verohallinto",
+    "score": 37,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "domain experience risk"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "verohallinto",
+      "verotus"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "domain experience risk",
+        "keywords": [
+          "verohallinto",
+          "verotus"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/hr-suunnittelija-24779/"
   }
 ]
