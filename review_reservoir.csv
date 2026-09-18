@@ -1,7 +1,4 @@
 ﻿date_seen,company,title,location,score,recommendation,risk_groups,trigger_terms,url
-2026-08-14,Finavia,"Hankintapäällikkö, Vantaa","Hankintapäällikkö, Vantaa",63,Review,seniority risk,"johtava, päällikkö",https://finavia.rekrytointi.com/paikat/index.php?jid=1100&key=&o=A_RJ&rspvt=i6w1my92ao00woso0wgs4ssssgskoc0
-2026-08-14,Valtiolle,Erityisasiantuntija (Kunniaan liittyvä väkivalta &amp; FGM),Terveyden ja hyvinvoinnin laitos,51,Review,seniority risk,päällikkö,https://valtiolle.fi/fi/tyopaikat/erityisasiantuntija-kunniaan-liittyva-vakivalta-fgm-24022/
-2026-08-14,Valtiolle,Kausityöntekijä (Työympäristö),Terveyden ja hyvinvoinnin laitos,51,Review,seniority risk,päällikkö,https://valtiolle.fi/fi/tyopaikat/kausityontekija-tyoymparisto-24160/
 2026-08-21,Finavia,"Hankintapäällikkö, Vantaa","Hankintapäällikkö, Vantaa",63,Review,seniority risk,"johtava, päällikkö",https://finavia.rekrytointi.com/paikat/index.php?jid=1100&key=&o=A_RJ&rspvt=gok7u5svt5sk4k8w848c0wcokg88w0o
 2026-08-21,Kuntarekry,"Palveluasiantuntija, Lähipalvelut",Monetra Oy,36,Review,,,https://www.kuntarekry.fi/fi/tyopaikat/palveluasiantuntija-lahipalvelut-736382/
 2026-08-28,Valtiolle,Ylipäivystäjä,Hätäkeskuslaitos,51,Review,seniority risk,päällikkö,https://valtiolle.fi/fi/tyopaikat/ylipaivystaja-21612/
@@ -9,3 +6,5 @@
 2026-09-11,Kuntarekry,Hankinta-asiantuntija,Vihdin kunta,54,Review,seniority risk,päällikkö,https://www.kuntarekry.fi/fi/tyopaikat/hankinta-asiantuntija-vih-05-9-26/
 2026-09-11,Valtiolle,Pääkirjanpitäjä,Valtion talous- ja henkilöstöhallinnon palvelukeskus Palkeet,100,Review,data / BI / analytics risk,etl,https://valtiolle.fi/fi/tyopaikat/paakirjanpitaja-24867/
 2026-09-11,Valtiolle,HR-suunnittelija,Verohallinto,37,Review,"seniority risk, domain experience risk","päällikkö, verohallinto, verotus",https://valtiolle.fi/fi/tyopaikat/hr-suunnittelija-24779/
+2026-09-18,Valtiolle,Johtava asiantuntija (teollisuuspolitiikka),Työ- ja elinkeinoministeriö,61,Review,seniority risk,"johtava asiantuntija, johtava",https://valtiolle.fi/fi/tyopaikat/johtava-asiantuntija-teollisuuspolitiikka-24761/
+2026-09-18,Valtiolle,"Talousasiantuntija, vt 5",Valtion talous- ja henkilöstöhallinnon palvelukeskus Palkeet,94,Review,"seniority risk, data / BI / analytics risk","päällikkö, etl",https://valtiolle.fi/fi/tyopaikat/talousasiantuntija-vt-5-24762/
