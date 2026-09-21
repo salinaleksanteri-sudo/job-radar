@@ -20,6 +20,17 @@ REVIEW_FILE = Path("review_reservoir.json")
 REVIEW_CSV_FILE = Path("review_reservoir.csv")
 WEEKLY_REVIEW_EMAIL = os.getenv("WEEKLY_REVIEW_EMAIL", "false").lower() == "true"
 DEBUG = False
+SOURCE_MODE = "EXTENDED"  # CORE / ALL / EXTENDED / QUIET / CUSTOM
+ONLY_SOURCES = []
+
+CORE_SOURCES = ["Finavia", "Kuntarekry", "Valtiolle", "Duunitori"]
+
+EXTENDED_SOURCES = [
+    "Finavia", "Kuntarekry", "Valtiolle", "Duunitori", "Company career pages", "Manpower", "Barona", "aTalent",
+    "ICT DIRECT", "Adecco", "StaffPoint", "Adiente", "Eezy",
+]
+
+QUIET_SOURCES = ["Company career pages"]
 SOURCE_STATS = {}
 
 FINAVIA_URL = "https://finavia.rekrytointi.com/paikat/?list=1&navref=paragraph&o=A_LOJ"
@@ -27,11 +38,25 @@ FINAVIA_URL = "https://finavia.rekrytointi.com/paikat/?list=1&navref=paragraph&o
 VALTIOLLE_API_URL = "https://valtiolle.fi/fi/tyopaikat/?format=json"
 
 DUUNITORI_URLS = [
-    "https://duunitori.fi/tyopaikat?haku=sap",
-    "https://duunitori.fi/tyopaikat?haku=koordinaattori",
+    "https://duunitori.fi/tyopaikat?haku=sap", "https://duunitori.fi/tyopaikat?haku=koordinaattori",
     "https://duunitori.fi/tyopaikat?haku=taloushallinto",
     "https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi",
 ]
+
+MANPOWER_URL = "https://www.manpower.fi/tyopaikka/finland"
+
+BARONA_URLS = [
+    "https://www.baronacareers.com/fi/fi/job/helsinki", "https://www.baronacareers.com/fi/fi/job/espoo",
+    "https://www.baronacareers.com/fi/fi/job/vantaa", "https://www.baronacareers.com/fi/fi/job/turku",
+    "https://www.baronacareers.com/fi/fi/job/tampere",
+]
+
+ATALENT_URL = "https://atalent.fi/open-positions"
+ICT_DIRECT_URL = "https://careers.ictdirect.io/jobs"
+ADECCO_URL = "https://recruitment.fi.adecco.com/jobs"
+STAFFPOINT_URL = "https://www.staffpoint.fi/tyopaikat"
+ADIENTE_URL = "https://adiente.fi/"
+EEZY_PERSONNEL_URL = "https://personnel.eezy.fi/avoimet-tyopaikat/"
 
 GENERIC_SOURCES = [
     {
@@ -55,281 +80,258 @@ KUNTAREKRY_URLS = [
     "https://www.kuntarekry.fi/fi/tyopaikat/hallinto-ja-toimistotyo/",
     "https://www.kuntarekry.fi/fi/tyopaikat/henkilostohallinto/",
     "https://www.kuntarekry.fi/fi/tyopaikat/taloushallinto/",
-    "https://www.kuntarekry.fi/fi/tyopaikat/varsinais-suomi/",
-    "https://www.kuntarekry.fi/fi/tyopaikat/turku/",
+    "https://www.kuntarekry.fi/fi/tyopaikat/varsinais-suomi/", "https://www.kuntarekry.fi/fi/tyopaikat/turku/",
 ]
 
 TARGET_LOCATIONS = [
-    "turku", "varsinais-suomi", "kaarina", "raisio", "naantali",
-    "lieto", "parainen", "salo", "uusikaupunki",
-    "helsinki", "vantaa", "espoo", "uusimaa",
-    "hybridi", "hybrid", "etätyö", "remote", "monipaikkainen"
+    "turku", "varsinais-suomi", "kaarina", "raisio", "naantali", "lieto", "parainen", "salo", "uusikaupunki",
+    "helsinki", "vantaa", "espoo", "uusimaa", "hybridi", "hybrid", "etätyö", "remote", "monipaikkainen",
 ]
 
 NON_TARGET_LOCATIONS = [
-    "oulu", "rovaniemi", "kuopio", "joensuu", "jyväskylä",
-    "lahti", "tampere", "vaasa", "seinäjoki", "kokkola",
-    "pietarsaari", "sodankylä", "tohmajärvi", "kuusamo",
-    "mariehamn", "ahvenanmaa", "rovaniemi", "kittilä", "kittila", "kouvola", "pori"
+    "oulu", "rovaniemi", "kuopio", "joensuu", "jyväskylä", "lahti", "tampere", "vaasa", "seinäjoki", "kokkola",
+    "pietarsaari", "sodankylä", "tohmajärvi", "kuusamo", "mariehamn", "ahvenanmaa", "rovaniemi", "kittilä", "kittila",
+    "kouvola", "pori",
 ]
 
 ALLOWED_LOCATION_TERMS = [
-    "turku", "varsinais-suomi", "kaarina", "raisio", "naantali",
-    "lieto", "parainen", "salo", "uusikaupunki",
-    "helsinki", "vantaa", "espoo", "uusimaa", "kerava"
+    "turku", "turun", "varsinais-suomi", "kaarina", "kaarinan", "raisio", "raision", "naantali", "naantalin",
+    "lieto", "liedon", "parainen", "paraisten", "salo", "salon", "uusikaupunki", "uudenkaupungin",
+    "helsinki", "helsingin", "vantaa", "vantaan", "espoo", "espoon", "uusimaa", "uudenmaan", "kerava", "keravan",
 ]
 
 EXPLICIT_FULL_REMOTE_TERMS = [
-    "fully remote", "100 % etätyö", "100% etätyö", "kokonaan etätyö",
-    "paikkariippumaton", "paikkariippumaton työ",
-    "työ onnistuu kaikkialta suomesta",
-    "työskentely mahdollista mistä tahansa suomesta",
-    "virkapaikka voidaan sopia",
-    "valtakunnallinen etätyö"
+    "fully remote", "100 % etätyö", "100% etätyö", "kokonaan etätyö", "paikkariippumaton", "paikkariippumaton työ",
+    "työ onnistuu kaikkialta suomesta", "työskentely mahdollista mistä tahansa suomesta", "virkapaikka voidaan sopia",
+    "valtakunnallinen etätyö",
+]
+
+TAMPERE_HYBRID_TERMS = [
+    "hybrid", "hybridi", "hybridityö", "hybridityöskentely", "osittainen etätyö", "etätyömahdollisuus",
+    "remote work possibility",
 ]
 
 ONSITE_TERMS = [
-    "palvelupiste", "käyntiasiakaspalvelu",
-    "kasvokkain tapahtuva asiakaspalvelu",
-    "jalkautuminen", "yrityskäynnit", "asiakaskäynnit",
-    "paikallinen työmarkkina", "paikallistuntemus",
-    "toimipisteessä", "virkapaikka",
-    "koulu", "laitos", "vastaanottokeskus", "säilöönottoyksikkö",
-    "keittiö", "tuotanto", "työmaa", "maatila", "navetta",
-    "tapahtumatuotanto", "kenttätyö", "liikkuva työ",
-    "oma auto", "henkilökuljetus"
+    "palvelupiste", "käyntiasiakaspalvelu", "kasvokkain tapahtuva asiakaspalvelu", "jalkautuminen", "yrityskäynnit",
+    "asiakaskäynnit", "paikallinen työmarkkina", "paikallistuntemus", "toimipisteessä", "virkapaikka", "koulu",
+    "laitos", "vastaanottokeskus", "säilöönottoyksikkö", "keittiö", "tuotanto", "työmaa", "maatila", "navetta",
+    "tapahtumatuotanto", "kenttätyö", "liikkuva työ", "oma auto", "henkilökuljetus",
 ]
 
 MANDATORY_LANGUAGE_TERMS = [
-    "edellytämme hyvää ruotsin kielen",
-    "edellytämme tyydyttävää ruotsin kielen",
-    "vaaditaan hyvää ruotsin kielen",
-    "vaaditaan tyydyttävää ruotsin kielen",
-    "hyvä ruotsin kielen suullinen ja kirjallinen taito",
-    "tyydyttävä ruotsin kielen suullinen ja kirjallinen taito",
-    "säädetty kielitaitovaatimus",
-    "kelpoisuusvaatimus",
-    "kielitaitovaatimus"
+    "edellytämme hyvää ruotsin kielen", "edellytämme tyydyttävää ruotsin kielen", "vaaditaan hyvää ruotsin kielen",
+    "vaaditaan tyydyttävää ruotsin kielen", "hyvä ruotsin kielen suullinen ja kirjallinen taito",
+    "tyydyttävä ruotsin kielen suullinen ja kirjallinen taito", "säädetty kielitaitovaatimus", "kelpoisuusvaatimus",
+    "kielitaitovaatimus",
 ]
 
 LANGUAGE_ADVANTAGE_TERMS = [
-    "ruotsin kielen taito katsotaan eduksi",
-    "ruotsi katsotaan eduksi",
-    "ruotsin osaaminen katsotaan eduksi",
-    "ruotsin osaaminen on hyödyksi"
+    "ruotsin kielen taito katsotaan eduksi", "ruotsi katsotaan eduksi", "ruotsin osaaminen katsotaan eduksi",
+    "ruotsin osaaminen on hyödyksi",
+]
+
+ENGLISH_WORKING_LANGUAGE_TERMS = [
+    "fluent english", "excellent english", "excellent command of english", "excellent written and spoken english",
+    "fluent written and spoken english", "professional fluency in english", "working language is english",
+    "english is the working language", "daily working language is english",
 ]
 
 HARD_SKIP_CATEGORIES = {
     "kitchen_cleaning_production": [
-        "kokki", "suurtalouskokki", "keittiö", "ruoanvalmistus",
-        "astiahuolto", "omavalvonta", "laitoshuoltaja", "siivous",
-        "puhdistuspalvelu", "ruoka- ja vaatehuolto",
-        "tuotantovastaava", "elintarviketuotanto", "teurastamo",
-        "hygieniapassi"
+        "kokki", "suurtalouskokki", "keittiö", "ruoanvalmistus", "astiahuolto", "omavalvonta", "laitoshuoltaja",
+        "siivous", "puhdistuspalvelu", "ruoka- ja vaatehuolto", "tuotantovastaava", "elintarviketuotanto",
+        "teurastamo", "hygieniapassi",
     ],
     "agriculture_animals": [
-        "maatalouslomittaja", "agrologi", "porotalous", "navetta",
-        "robottinavetta", "parsinavetta", "pihatto", "karja",
-        "tuotantoeläimet", "lypsy", "hevosten hoito",
-        "lampaiden hoito", "maatalousalan tutkinto", "maatila"
+        "maatalouslomittaja", "agrologi", "porotalous", "navetta", "robottinavetta", "parsinavetta", "pihatto",
+        "karja", "tuotantoeläimet", "lypsy", "hevosten hoito", "lampaiden hoito", "maatalousalan tutkinto", "maatila",
     ],
     "av_media_technician": [
-        "av-palvelut", "striimaus", "monikamerastriimaus", "vmix",
-        "ääni- ja valaistustekniikka", "videotuotanto"
+        "av-palvelut", "striimaus", "monikamerastriimaus", "vmix", "ääni- ja valaistustekniikka", "videotuotanto",
     ],
     "legal_court": [
-        "holhoustoimi", "edunvalvonta", "tuomioistuin",
-        "perhe- ja perintöoikeus", "oikeustieteen maisteri",
-        "juridinen neuvonta", "säädösvalmistelu",
-        "lainsäädäntövalmistelu"
+        "holhoustoimi", "edunvalvonta", "tuomioistuin", "perhe- ja perintöoikeus", "oikeustieteen maisteri",
+        "juridinen neuvonta", "säädösvalmistelu", "lainsäädäntövalmistelu",
     ],
     "public_procurement": [
-        "julkiset hankinnat", "cloudia", "dynasty",
-        "hankintapäätökset", "hankintasopimukset", "hankintalaki"
+        "julkiset hankinnat", "cloudia", "dynasty", "hankintapäätökset", "hankintasopimukset", "hankintalaki",
     ],
     "rescue_security_nuclear": [
-        "pelastustoimi", "eu:n pelastuspalvelumekanismi", "ercc",
-        "kansainvälinen avunanto", "ydinturvallisuus",
-        "säteilyturvallisuus", "ydinalan sopimukset",
-        "voimankäyttö", "vartiointi"
+        "pelastustoimi", "eu:n pelastuspalvelumekanismi", "ercc", "kansainvälinen avunanto", "ydinturvallisuus",
+        "säteilyturvallisuus", "ydinalan sopimukset", "voimankäyttö", "vartiointi",
     ],
     "technical_infrastructure": [
-        "lan", "wlan", "wan", "palomuuri", "firewall", "dns",
-        "dhcp", "radius", "verkkoturvallisuus",
-        "tietoliikenneympäristö", "palvelinympäristö",
-        "network monitoring", "verkon valvonta",
-        "sähkönjakelu", "sähköverkko", "sähkötekniikka",
-        "lvias", "bim", "autocad", "rakennusautomaatio"
+        "lan", "wlan", "wan", "palomuuri", "firewall", "dns", "dhcp", "radius", "verkkoturvallisuus",
+        "tietoliikenneympäristö", "palvelinympäristö", "network monitoring", "verkon valvonta", "sähkönjakelu",
+        "sähköverkko", "sähkötekniikka", "lvia", "lvias", "talotekniikka", "talotekniikan suunnittelu",
+        "rakennustekniikka", "bim", "autocad", "rakennusautomaatio",
     ],
     "social_health_education_sport": [
-        "sosionomi", "sairaanhoitaja", "lähihoitaja",
-        "yhteisöpedagogi", "psykososiaalinen tuki",
-        "sosiaaliohjaus", "hoitotyö", "kasvatusala",
-        "lastensuojelu", "opiskeluhuolto", "oppilashuolto",
-        "lasten ja nuorten", "nuorisotyö", "liikkuva koulu",
-        "move!", "liikuntaneuvonta", "harrastamisen suomen malli",
-        "rikosrekisteriote lasten kanssa työskentelyyn"
+        "sosionomi", "sairaanhoitaja", "lähihoitaja", "yhteisöpedagogi", "psykososiaalinen tuki", "sosiaaliohjaus",
+        "hoitotyö", "kasvatusala", "lastensuojelu", "opiskeluhuolto", "oppilashuolto", "lasten ja nuorten",
+        "nuorisotyö", "liikkuva koulu", "move!", "liikuntaneuvonta", "harrastamisen suomen malli",
+        "rikosrekisteriote lasten kanssa työskentelyyn",
     ],
     "corporate_finance": [
-        "omistajaohjaus", "omistajapolitiikka", "omistajastrategia",
-        "arvonmääritys", "yritysjärjestely", "m&a",
-        "corporate finance", "due diligence", "pääomajärjestely",
-        "yritysjuridiikka"
+        "omistajaohjaus", "omistajapolitiikka", "omistajastrategia", "arvonmääritys", "yritysjärjestely", "m&a",
+        "corporate finance", "due diligence", "pääomajärjestely", "yritysjuridiikka",
     ],
     "professional_transport": [
-        "henkilökuljetustehtävät", "virkahenkilöiden kuljetus",
-        "pääjohtajan kuljettaminen", "edustuskuljetukset",
-        "vahva näyttö henkilökuljetuksesta", "executive driver",
-        "chauffeur"
+        "henkilökuljetustehtävät", "virkahenkilöiden kuljetus", "pääjohtajan kuljettaminen", "edustuskuljetukset",
+        "vahva näyttö henkilökuljetuksesta", "executive driver", "chauffeur",
     ],
-        "maintenance_manual_work": [
-        "kunnossapidon työntekijä",
-        "kunnossapidon moniosaaja",
-        "kunnossapidon ammattihenkilö",
-        "kunnossapito",
-        "huoltotyö",
-        "kiinteistönhoito",
-        "lumityöt",
-        "ulkotyö",
-        "fyysinen työ",
-        "koneiden käyttö",
-        "ajoneuvon käyttö",
+    "maintenance_manual_work": [
+        "kunnossapidon työntekijä", "kunnossapidon moniosaaja", "kunnossapidon ammattihenkilö", "kunnossapito",
+        "huoltotyö", "kiinteistönhoito", "lumityöt", "ulkotyö", "fyysinen työ", "koneiden käyttö", "ajoneuvon käyttö",
+        "rakennusaputyöntekijä", "rakennusapulainen", "rakennuslogistiikkatyöntekijä", "logistiikkatyöntekijä",
+        "kurottajakuski", "construction worker", "site logistics worker",
     ],
     "education_eu_programmes": [
-        "erasmus",
-        "opiskelijaliikkuvuus",
-        "eu-ohjelmien koordinaatio",
-        "opetushallitus",
-        "valtionavustus",
-        "valtionavustukset",
-        "koulutuksen kehittäminen",
+        "erasmus", "opiskelijaliikkuvuus", "eu-ohjelmien koordinaatio", "opetushallitus", "valtionavustus",
+        "valtionavustukset", "koulutuksen kehittäminen",
     ],
+    "software_development": [
+        "software developer", "software engineer", "full stack developer", "full-stack developer",
+        "backend developer", "backend engineer", "frontend developer", "frontend engineer", "ohjelmistokehittäjä",
+        "ohjelmistosuunnittelija", "ohjelmistokehitys", "software development", "java developer", "python developer",
+        "react developer", "devops engineer",
+        "cloud developer",
+    ],
+    "embedded_low_level": [
+        "embedded software", "embedded developer", "embedded engineer", "firmware developer", "firmware engineer",
+        "c++ developer", "c developer", "rtos", "microcontroller", "mikrokontrolleri",
+    ],
+    "cyber_infrastructure": [
+        "cybersecurity", "cybersecurity engineer", "information security", "tietoturva", "tietoturva-asiantuntija",
+        "security engineer", "soc analyst", "siem", "penetration testing", "network engineer", "network specialist",
+        "infrastructure specialist", "infrastructure engineer", "cloud infrastructure", "azure infrastructure",
+        "linux administrator", "windows server", "active directory", "kubernetes administrator",
+    ],
+    "engineering_wrong_domain": [
+        "electrical engineer", "sähköinsinööri", "automation engineer", "automaatioinsinööri", "mechanical engineer",
+        "mekaniikkasuunnittelija", "koneinsinööri", "process engineer", "prosessi-insinööri", "chemical engineer",
+        "kemiantekniikka", "energy engineer", "energiatekniikka",
+    ],
+    "sales_leadership": [
+        "myyntipäällikkö", "myyntipaallikko", "sales manager", "key account manager", "asiakkuuspäällikkö",
+        "asiakkuuspaallikko", "account director", "sales director",
+    ],
+    "heavy_data_roles": [
+        "data scientist", "senior data engineer", "lead data engineer", "machine learning engineer",
+        "analytics engineer", "data architect", "data platform engineer",
+    ]
 }
 
 PROFILE_KEYWORDS = {
     "ERP / talous / process support": [
-        "ostolaskut", "ostolasku", "ostolaskuautomaatio",
-        "tositteet", "myyntilaskut", "p2p", "procure-to-pay",
-        "sap", "sap s/4hana", "sap vim", "erp", "taloushallinto",
-        "laskujen käsittely", "käyttäjätuki", "pääkäyttäjä",
-        "käyttövaltuushallinta", "prosessin seuranta",
-        "työjonot", "poikkeamien selvitys", "asiakkaiden neuvonta"
+        "sap", "sap s/4hana", "s/4hana", "sap vim", "erp", "p2p", "procure-to-pay", "purchase-to-pay", "ostolaskut",
+        "ostolasku", "ostolaskuautomaatio", "tositteet", "myyntilaskut", "laskujen käsittely", "taloushallinto",
+        "financial administration", "finance support", "invoice processing", "purchase order", "ostotilaus",
+        "supplier data", "toimittajatiedot", "customer data", "asiakastiedot", "master data",
     ],
-    "HRD / recruitment / admin": [
-        "rekrytointiprosessi", "hakijaviestintä",
-        "hakemusten käsittely", "esikarsinta", "nimitysmuistio",
-        "hallinnolliset asiakirjat", "valtiolle",
-        "turvallisuusselvitys", "hr-tuki"
+
+    "Application / system / back office support": [
+        "application specialist", "application support", "system specialist", "system support",
+        "järjestelmäasiantuntija", "sovellusasiantuntija", "järjestelmätuki", "sovellustuki", "käyttäjätuki",
+        "user support", "key user", "pääkäyttäjä", "käyttövaltuushallinta", "access management",
+        "user administration", "back office", "backoffice", "service specialist", "palveluasiantuntija",
+        "process support", "prosessituki", "ticket handling", "service request", "incident handling",
     ],
+
+    "Administration / coordination": [
+        "project coordinator", "projektikoordinaattori", "project support", "projektituki", "pmo", "pmo support",
+        "process coordinator", "prosessikoordinaattori", "administration", "hallinnollinen", "hallinto",
+        "document management", "dokumentinhallinta", "document control", "rekrytointiprosessi", "hakijaviestintä",
+        "hakemusten käsittely", "esikarsinta", "nimitysmuistio", "hallinnolliset asiakirjat", "hr-tuki",
+    ],
+
     "Työllisyys / employer services / integration": [
-        "työllisyyspalvelut", "työnantajapalvelut",
-        "työnhakijat", "työnvälitys", "työkokeilu",
-        "palkkatuki", "starttiraha", "työpaikkailmoitukset",
-        "kohtaanto", "international house", "maahan muuttaneet",
-        "työnantajayhteistyö"
+        "työllisyyspalvelut", "työnantajapalvelut", "työnhakijat", "työnvälitys", "työkokeilu", "palkkatuki",
+        "starttiraha", "työpaikkailmoitukset", "kohtaanto", "international house", "maahan muuttaneet",
+        "työnantajayhteistyö",
+    ],
+
+    "KYC / compliance support": [
+        "kyc", "know your customer", "customer due diligence", "asiakkaan tunteminen", "compliance support",
+        "aml support", "sanctions screening", "customer onboarding", "client onboarding",
     ],
 }
 
 POSITIVE_KEYWORDS = {
     "SAP / P2P / invoices": [
-        "sap", "ratkaisu", "sap mm", "sap ariba",
-        "p2p", "purchase to pay", "procure to pay", "tarpeesta maksuun",
-        "ostolasku", "ostolaskut", "lasku", "laskutus",
-        "ostotilaus", "ostotilaukset", "purchase order",
-        "hankinta", "hankinnat", "procurement",
-        "toimittaja", "toimittajat", "supplier", "vendor"
+        "sap", "sap mm", "sap ariba", "p2p", "purchase to pay", "procure to pay", "tarpeesta maksuun", "ostolasku",
+        "ostolaskut", "lasku", "laskutus", "ostotilaus", "ostotilaukset", "purchase order", "toimittaja",
+        "toimittajat", "supplier", "vendor",
     ],
     "process development": [
-        "prosessien kehittäminen", "dokumentointi", "ohjeistus",
-        "koulutus", "perehdytys", "kehittämishanke", "prosessi"
+        "prosessien kehittäminen", "dokumentointi", "ohjeistus", "koulutus", "perehdytys", "kehittämishanke",
+        "prosessi",
     ],
     "coordination / project": [
-        "koordinaattori", "projektikoordinaattori", "projektinhallinta",
-        "pmo", "muutos", "fasilitointi", "sidosryhmä",
-        "asiakaspalvelu", "neuvonta", "asiantuntija"
+        "koordinaattori", "projektikoordinaattori", "projektinhallinta", "pmo", "muutos", "fasilitointi",
+        "sidosryhmä", "asiakaspalvelu", "neuvonta",
     ],
-    "resource planning": [
-        "resurssisuunnittelu", "vuorosuunnittelu", "ennakointi",
-        "tilannekuva", "vuoroergonomia"
-    ],
-    "supply chain": [
-        "supply chain", "toimitusketju", "toimittajahallinta",
-        "logistiikka", "varaosat"
-    ],
-    "location": [
-        "turku", "vantaa", "helsinki", "hybridi", "hybrid", "etätyö"
-    ],
+    "resource planning": ["resurssisuunnittelu", "vuorosuunnittelu", "ennakointi", "tilannekuva", "vuoroergonomia"],
+    "supply chain": ["supply chain", "toimitusketju", "toimittajahallinta", "logistiikka", "varaosat"],
+    "location": ["turku", "vantaa", "helsinki", "hybridi", "hybrid", "etätyö"],
 }
 
 
 NEGATIVE_KEYWORDS = {
     "seniority risk": [
-        "johtava asiantuntija", "johtava",
-        "päällikkö", "paallikko",
-        "manager", "director",
-        "head of", "team lead",
-        "senior architect", "enterprise architect",
-        "principal consultant"
+        "johtava asiantuntija", "johtava", "päällikkö", "paallikko", "manager", "director", "head of", "team lead",
+        "senior architect", "enterprise architect", "principal consultant",
     ],
     "domain experience risk": [
-        "laiteturvallisuus", "lääketurvallisuus", "fimea",
-        "medical device", "terveydenhuolto", "sote",
-        "verohallinto", "verotus", "verolainsäädäntö",
-        "energiaverkot", "sähkömarkkina", "energia-ala",
-        "data vault", "data engineer", "architect",
-        "deep sap", "sap consultant", "sap fico", "sap sd", "sap mm consultant"
+        "laiteturvallisuus", "lääketurvallisuus", "fimea", "medical device", "terveydenhuolto", "sote",
+        "verohallinto", "verotus", "verolainsäädäntö", "energiaverkot", "sähkömarkkina", "energia-ala", "data vault",
+        "data engineer", "architect", "deep sap", "sap consultant", "sap fico", "sap sd", "sap mm consultant",
     ],
-    "tax domain": [
-        "verolainsäädäntö", "oikaisuvaatimus", "verovalvonta",
-        "oikeuskäytäntö", "lautakuntaesittely"
-    ],
-    "public procurement": [
-        "julkiset hankinnat", "eu-kynnysarvo", "cloudia",
-        "kategoriajohtaminen"
-    ],
-    "data engineering": [
-        "data engineer", "snowflake", "data vault", "syvällinen sql"
-    ],
-    "payroll / TE domain": [
-        "palkanlaskenta", "te-maksatus", "työvoimapalvelut",
-        "lainsäädäntö"
-    ],
+    "tax domain": ["verolainsäädäntö", "oikaisuvaatimus", "verovalvonta", "oikeuskäytäntö", "lautakuntaesittely"],
+    "public procurement": ["julkiset hankinnat", "eu-kynnysarvo", "cloudia", "kategoriajohtaminen"],
+    "data engineering": ["data engineer", "snowflake", "data vault", "syvällinen sql"],
+    "payroll / TE domain": ["palkanlaskenta", "te-maksatus", "työvoimapalvelut", "lainsäädäntö"],
     "sales / commercial": [
-        "myynti", "myynnillinen", "sales", "b2b-myynti",
-        "asiakashankinta", "uusasiakashankinta", "cold calling",
-        "tulostavoite", "provisio"
+        "myynti", "myynnillinen", "sales", "b2b-myynti", "asiakashankinta", "uusasiakashankinta", "cold calling",
+        "tulostavoite", "provisio",
     ],
     "data / BI / analytics risk": [
-        "power bi", "dax", "sql", "databricks", "purview",
-        "data governance", "metadata", "master data", "data quality",
-        "data model", "data vault", "snowflake", "azure synapse",
-        "etl", "etl/elt", "pipeline", "semantic layer",
-        "business intelligence", " bi ", "analytics engineer",
-        "tietoasiantuntija", "analytiikka", "raportointi ja analytiikka",
-        "kpi management system", "dashboard", "visualisointi",
-        "asiakasdata", "asiointidata", "asiakaskokemusdata"
+        "power bi", "dax", "sql", "databricks", "purview", "data governance", "metadata", "data quality",
+        "data model", "data vault", "snowflake", "azure synapse", "etl", "etl/elt", "pipeline", "semantic layer",
+        "business intelligence", " bi ", "analytics engineer", "tietoasiantuntija", "analytiikka",
+        "raportointi ja analytiikka", "kpi management system", "dashboard", "visualisointi", "asiakasdata",
+        "asiointidata", "asiakaskokemusdata",
     ],
     "hard reject domain": [
-        "machine learning", "deep learning", "neural networks",
-        "model training", "hpc", "satellite modeling", "crop modeling",
-        "optimointimalli", "simulointimalli",
-        "postdoc", "väitöskirja", "väitöskirjatutkija",
-        "tutkija", "lehtori", "opettaja", "s2",
-        "laiteturvallisuus", "lääkinnälliset laitteet", "fimea",
-        "tekninen arkkitehti", "toiminnallinen arkkitehti",
-        "lastensuojelu", "sijaishuolto", "vastaava ohjaaja",
-        "pohjavesi", "vesikemia", "povet", "pisara"
+        "machine learning", "deep learning", "neural networks", "model training", "hpc", "satellite modeling",
+        "crop modeling", "optimointimalli", "simulointimalli", "postdoc", "väitöskirja", "väitöskirjatutkija",
+        "tutkija", "lehtori", "opettaja", "s2", "laiteturvallisuus", "lääkinnälliset laitteet", "fimea",
+        "tekninen arkkitehti", "toiminnallinen arkkitehti", "lastensuojelu", "sijaishuolto", "vastaava ohjaaja",
+        "pohjavesi", "vesikemia", "povet", "pisara",
     ],
 }
 
 
 HARD_REQUIREMENT_MARKERS = [
-    "vahvaa kokemusta",
-    "syvällistä osaamista",
-    "edellytetään kokemusta",
-    "edellytämme kokemusta",
-    "usean vuoden kokemus",
+    "vahvaa kokemusta", "syvällistä osaamista", "edellytetään kokemusta", "edellytämme kokemusta",
+    "usean vuoden kokemus", "usean vuoden kokemus tehtävästä", "vähintään 3 vuoden kokemus",
+    "vähintään 4 vuoden kokemus", "vähintään 5 vuoden kokemus", "at least 3 years of experience",
+    "at least 4 years of experience", "at least 5 years of experience", "minimum 3 years of experience",
+    "minimum 5 years of experience", "proven experience in", "strong hands-on experience", "extensive experience in",
 ]
+
+TECHNICAL_DEGREE_REQUIREMENT_TERMS = [
+    "degree in computer science", "degree in software engineering", "degree in electrical engineering",
+    "degree in automation engineering", "degree in mechanical engineering", "degree in chemical engineering",
+    "degree in process engineering", "tietotekniikan tutkinto", "sähkötekniikan tutkinto",
+    "automaatiotekniikan tutkinto", "konetekniikan tutkinto", "kemiantekniikan tutkinto",
+]
+
+SOURCE_PRIORITY = {
+    "employer": 1,
+    "recruiter": 2,
+    "aggregator": 3,
+}
 
 
 class TeeLogger:
@@ -379,15 +381,21 @@ def save_review_jobs(review_jobs):
         )
     ]
 
-    existing_urls = {item.get("url", "") for item in existing_items}
+    existing_keys = {
+        item.get("dedupe_key", "")
+        for item in existing_items
+        if item.get("dedupe_key")
+    }
 
     for job, analysis in review_jobs:
         url = job.get("url", "")
+        dedupe_key = get_dedupe_key(job) or normalize_url_for_dedupe(url)
 
-        if url in existing_urls:
+        if dedupe_key in existing_keys:
             continue
 
         existing_items.append({
+            "dedupe_key": dedupe_key,
             "date_seen": datetime.now().strftime("%Y-%m-%d"),
             "company": job.get("company", ""),
             "title": job.get("title", ""),
@@ -406,6 +414,7 @@ def save_review_jobs(review_jobs):
             "risks": analysis.get("negative_matches", []),
             "url": url,
         })
+        existing_keys.add(dedupe_key)
 
     with open(REVIEW_FILE, "w", encoding="utf-8") as file:
         json.dump(existing_items, file, indent=2, ensure_ascii=False)
@@ -414,15 +423,15 @@ def save_review_jobs(review_jobs):
         writer = csv.DictWriter(
             file,
             fieldnames=[
-                "date_seen", "company", "title", "location",
-                "score", "recommendation", "risk_groups",
-                "trigger_terms", "url"
+                "dedupe_key", "date_seen", "company", "title", "location", "score", "recommendation", "risk_groups",
+                "trigger_terms", "url",
             ]
         )
         writer.writeheader()
 
         for item in existing_items:
             writer.writerow({
+                "dedupe_key": item.get("dedupe_key", ""),
                 "date_seen": item.get("date_seen", ""),
                 "company": item.get("company", ""),
                 "title": item.get("title", ""),
@@ -444,17 +453,19 @@ def normalize(text):
 def normalize_job_title_for_dedupe(title):
     title = normalize(title)
 
+    replacements = ["(m/f/d)", "(m/f/x)", "(f/m/d)", "m/f/d", "m/f/x", "f/m/d"]
+
+    for term in replacements:
+        title = title.replace(term, " ")
+
     for char in ["(", ")", "[", "]", "{", "}", "\"", "'", "–", "—", "-", "/", "\\", ":", ";", ",", "."]:
         title = title.replace(char, " ")
 
     title = " ".join(title.split())
 
     generic_titles = [
-        "asiantuntija",
-        "erityisasiantuntija",
-        "suunnittelija",
-        "koordinaattori",
-        "palveluneuvoja",
+        "asiantuntija", "erityisasiantuntija", "suunnittelija", "koordinaattori", "palveluneuvoja", "specialist",
+        "coordinator",
     ]
 
     if title in generic_titles:
@@ -463,9 +474,169 @@ def normalize_job_title_for_dedupe(title):
     return title
 
 
+def normalize_company_for_dedupe(company):
+    company = normalize(company)
+
+    if not company:
+        return ""
+
+    company = company.replace("&", " and ")
+
+    remove_terms = ["oyj", "oy", "ab", "abp", "ltd", "limited", "plc", "inc", "rekrytointi", "recruitment"]
+
+    for term in remove_terms:
+        company = re.sub(
+            r"(?<![a-zåäö0-9])"
+            + re.escape(term)
+            + r"(?![a-zåäö0-9])",
+            " ",
+            company
+        )
+
+    company = re.sub(r"\s+", " ", company).strip()
+
+    aliases = {
+        "barona henkilöstöpalvelut": "barona",
+        "barona henkilostopalvelut": "barona",
+        "manpowergroup": "manpower",
+        "manpower group": "manpower",
+    }
+
+    return aliases.get(company, company)
+
+
+def normalize_location_for_dedupe(location):
+    location = normalize(location)
+
+    if not location:
+        return ""
+
+    location = location.replace("helsinki-vantaa", "vantaa")
+    location = location.replace("helsinki vantaa", "vantaa")
+
+    city_aliases = [
+        "turku", "kaarina", "raisio", "naantali", "lieto", "parainen", "salo", "uusikaupunki", "helsinki", "vantaa",
+        "espoo", "kerava", "tampere",
+    ]
+
+    for city in city_aliases:
+        if re.search(
+            r"(?<![a-zåäö])"
+            + re.escape(city)
+            + r"(?![a-zåäö])",
+            location
+        ):
+            return city
+
+    if (
+        "pääkaupunkiseutu" in location
+        or "paakaupunkiseutu" in location
+        or "capital region" in location
+    ):
+        return "uusimaa"
+
+    if "varsinais-suomi" in location:
+        return "varsinais-suomi"
+
+    if "uusimaa" in location:
+        return "uusimaa"
+
+    location = re.sub(r"\s+", " ", location).strip()
+
+    return location
+
+
+def normalize_url_for_dedupe(url):
+    if not url:
+        return ""
+
+    parsed = urlparse(url)
+
+    clean_path = parsed.path.rstrip("/")
+
+    return f"{parsed.netloc.lower()}{clean_path.lower()}"
+
+
+def get_job_employer(job):
+    employer = (
+        job.get("employer")
+        or job.get("client_company")
+        or ""
+    )
+
+    if employer:
+        return employer
+
+    if job.get("source_type") == "employer":
+        return job.get("company", "")
+
+    return ""
+
+
+def get_source_priority(job):
+    source_type = job.get("source_type", "employer")
+
+    return SOURCE_PRIORITY.get(source_type, 99)
+
+
+def get_dedupe_key(job):
+    title = normalize_job_title_for_dedupe(
+        job.get("title", "")
+    )
+
+    employer = normalize_company_for_dedupe(
+        get_job_employer(job)
+    )
+
+    location = normalize_location_for_dedupe(
+        job.get("location", "")
+    )
+
+    if not title:
+        return None
+
+    if employer:
+        return f"{employer}|{title}|{location}"
+
+    return f"?|{title}|{location}"
+
+
+def get_relaxed_dedupe_key(job):
+    title = normalize_job_title_for_dedupe(
+        job.get("title", "")
+    )
+
+    location = normalize_location_for_dedupe(
+        job.get("location", "")
+    )
+
+    if not title or not location:
+        return None
+
+    return f"{title}|{location}"
+
+
 def debug_print(message):
     if DEBUG:
         print(message)
+
+def source_enabled(source_name):
+    if SOURCE_MODE == "ALL":
+        return True
+
+    if SOURCE_MODE == "CUSTOM":
+        return source_name in ONLY_SOURCES
+
+    if SOURCE_MODE == "CORE":
+        return source_name in CORE_SOURCES
+
+    if SOURCE_MODE == "EXTENDED":
+        return source_name in EXTENDED_SOURCES
+
+    if SOURCE_MODE == "QUIET":
+        return source_name in QUIET_SOURCES
+
+    return True
 
 
 def update_source_stats(source, read_count=0, matched_count=0, status="OK", note=""):
@@ -539,13 +710,42 @@ def detect_hard_gates(job):
     )
 
     explicit_remote = any(term in text for term in EXPLICIT_FULL_REMOTE_TERMS)
-    allowed_location_found = any(term in title_location_text for term in ALLOWED_LOCATION_TERMS)
-    non_target_location_found = any(term in title_location_text for term in NON_TARGET_LOCATIONS)
+    tampere_found = "tampere" in text
+    tampere_hybrid = (
+        tampere_found
+        and any(term in text for term in TAMPERE_HYBRID_TERMS)
+    )
+    location_text = normalize(job.get("location", ""))
+
+    allowed_location_found = any(
+        term in location_text
+        for term in ALLOWED_LOCATION_TERMS
+    )
+
+    location_known = bool(
+        location_text
+        and location_text not in ["unknown", "ei tietoa", "n/a", "-"]
+    )
+
+    non_target_location_found = (
+        location_known
+        and not allowed_location_found
+        and not tampere_hybrid
+    )
+
     onsite_found = any(term in text for term in ONSITE_TERMS)
 
     mandatory_language_found = (
         any(term in text for term in MANDATORY_LANGUAGE_TERMS)
         and not any(term in text for term in LANGUAGE_ADVANTAGE_TERMS)
+    )
+
+    english_working_language_found = any(
+        term in text for term in ENGLISH_WORKING_LANGUAGE_TERMS
+    )
+
+    technical_degree_required = any(
+        term in text for term in TECHNICAL_DEGREE_REQUIREMENT_TERMS
     )
 
     hard_skip_matches = find_matches(text, HARD_SKIP_CATEGORIES)
@@ -557,10 +757,21 @@ def detect_hard_gates(job):
         gate_limit = min(gate_limit, 20)
         gate_reasons.append("hard skip professional domain")
 
-    if non_target_location_found and onsite_found and not allowed_location_found and not explicit_remote:
+    if (
+        non_target_location_found
+        and onsite_found
+        and not allowed_location_found
+        and not explicit_remote
+        and not tampere_hybrid
+    ):
         gate_limit = min(gate_limit, 35)
         gate_reasons.append("wrong geography + on-site/location-bound work")
-    elif non_target_location_found and not allowed_location_found and not explicit_remote:
+    elif (
+        non_target_location_found
+        and not allowed_location_found
+        and not explicit_remote
+        and not tampere_hybrid
+    ):
         gate_limit = min(gate_limit, 40)
         gate_reasons.append("wrong geography")
 
@@ -568,15 +779,26 @@ def detect_hard_gates(job):
         gate_limit = min(gate_limit, 55)
         gate_reasons.append("formal language requirement risk")
 
+    if english_working_language_found:
+        gate_limit = min(gate_limit, 85)
+        gate_reasons.append("English is a strong working-language requirement")
+
+    if technical_degree_required:
+        gate_limit = min(gate_limit, 35)
+        gate_reasons.append("specific technical degree required")
+
     return {
         "gate_limit": gate_limit,
         "gate_reasons": gate_reasons,
         "hard_skip_matches": hard_skip_matches,
         "explicit_remote": explicit_remote,
+        "tampere_hybrid": tampere_hybrid,
         "allowed_location_found": allowed_location_found,
         "non_target_location_found": non_target_location_found,
         "onsite_found": onsite_found,
         "mandatory_language_found": mandatory_language_found,
+        "english_working_language_found": english_working_language_found,
+        "technical_degree_required": technical_degree_required,
     }
 
 
@@ -601,10 +823,14 @@ def calculate_fit_score(job):
 
         if group == "ERP / talous / process support":
             score += 30
-        elif group == "HRD / recruitment / admin":
-            score += 25
+        elif group == "Application / system / back office support":
+            score += 28
+        elif group == "Administration / coordination":
+            score += 22
         elif group == "Työllisyys / employer services / integration":
             score += 25
+        elif group == "KYC / compliance support":
+            score += 18
 
     # Existing softer positive signals
     for match in positive_matches:
@@ -627,16 +853,9 @@ def calculate_fit_score(job):
         group = match["group"]
 
         if group in [
-            "kitchen_cleaning_production",
-            "agriculture_animals",
-            "av_media_technician",
-            "legal_court",
-            "public_procurement",
-            "rescue_security_nuclear",
-            "technical_infrastructure",
-            "social_health_education_sport",
-            "corporate_finance",
-            "professional_transport",
+            "kitchen_cleaning_production", "agriculture_animals", "av_media_technician", "legal_court",
+            "public_procurement", "rescue_security_nuclear", "technical_infrastructure",
+            "social_health_education_sport", "corporate_finance", "professional_transport",
         ]:
             score -= 60
         elif group == "data / BI / analytics risk":
@@ -677,6 +896,8 @@ def calculate_fit_score(job):
     score = max(0, min(100, score))
     score = min(score, gates["gate_limit"])
 
+    if gates["english_working_language_found"]:
+        score = max(0, score - 8)
     if hard_reject_domain_detected:
         recommendation = "Skip"
     elif "wrong geography + on-site/location-bound work" in gates["gate_reasons"]:
@@ -714,6 +935,8 @@ def calculate_fit_score(job):
         "gate_limit": gates["gate_limit"],
         "gate_reasons": gates["gate_reasons"],
         "mandatory_language_found": gates["mandatory_language_found"],
+        "english_working_language_found": gates["english_working_language_found"],
+        "technical_degree_required": gates["technical_degree_required"],
     }
 
 
@@ -782,7 +1005,8 @@ def fetch_page_html_browser(url):
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True)
             page = browser.new_page()
-            page.goto(url, wait_until="networkidle", timeout=30000)
+            page.goto(url, wait_until="domcontentloaded", timeout=45000)
+            page.wait_for_timeout(3000)
             html = page.content()
             browser.close()
             return html
@@ -844,6 +1068,9 @@ def fetch_finavia_jobs():
             jobs.append({
                 "id": f"finavia:{title}",
                 "company": "Finavia",
+                "employer": "Finavia",
+                "source": "Finavia",
+                "source_type": "employer",
                 "title": title,
                 "location": title,
                 "deadline": "",
@@ -897,32 +1124,21 @@ def fetch_kuntarekry_jobs():
             searchable_text = f"{title} {employer}"
 
             relevant_words = [
-                "koordinaattori", "asiantuntija", "talous",
-                "projektikoordinaattori", "projektipäällikkö",
-                "resurssisuunnittelu", "vuorosuunnittelu",
-                "työvuorosuunnittelu", "hallinto", "toimisto",
-                "ostolasku", "laskutus", "p2p", "sap",
-                "koulutuspäällikkö", "kehittämis",
-                "pääkäyttäjä", "järjestelmäasiantuntija", "palveluasiantuntija"
+                "koordinaattori", "asiantuntija", "talous", "projektikoordinaattori", "projektipäällikkö",
+                "resurssisuunnittelu", "vuorosuunnittelu", "työvuorosuunnittelu", "hallinto", "toimisto", "ostolasku",
+                "laskutus", "p2p", "sap", "koulutuspäällikkö", "kehittämis", "pääkäyttäjä", "järjestelmäasiantuntija",
+                "palveluasiantuntija",
             ]
 
             excluded_words = [
-                "poliisi", "poliisilaitos", "suojelupoliisi",
-                "puolustusvoimat", "puolustusministeriö", "armeija",
-                "sotilas", "aliupseeri", "upseeri",
-                "rajavartiolaitos", "tulli",
-                "rikosseuraamuslaitos", "vankila", "vartija",
-                "lääkäri", "tuomari", "oikeusavustaja",
-                "lainsäädäntöneuvos", "harjoittelija", "opettaja",
-                "eduskunta", "eduskunnan kanslia",
-                "ulkoministeriö", "kehityspolitiikka",
-                "käräjäoikeus", "oikeus", "tuomioistuin",
-                "lahti", "vaala", "tampere", "terveydenhuolto", "terveys", 
-                "sairaanhoito", "hoitaja", "lääkäri", "laakari", 
-                "sote", "hyvinvointialue", "terveydenhuolto", "terveys", "sairaanhoito", "hoitaja",
-                "lääkäri", "laakari", "sote", "hyvinvointialue",
-                "sosiaalityöntekijä", "sosiaalityo", "sosiaalityö",
-                "psykiatrinen", "vankisairaala"
+                "poliisi", "poliisilaitos", "suojelupoliisi", "puolustusvoimat", "puolustusministeriö", "armeija",
+                "sotilas", "aliupseeri", "upseeri", "rajavartiolaitos", "tulli", "rikosseuraamuslaitos", "vankila",
+                "vartija", "lääkäri", "tuomari", "oikeusavustaja", "lainsäädäntöneuvos", "harjoittelija", "opettaja",
+                "eduskunta", "eduskunnan kanslia", "ulkoministeriö", "kehityspolitiikka", "käräjäoikeus", "oikeus",
+                "tuomioistuin", "lahti", "vaala", "tampere", "terveydenhuolto", "terveys", "sairaanhoito", "hoitaja",
+                "lääkäri", "laakari", "sote", "hyvinvointialue", "terveydenhuolto", "terveys", "sairaanhoito",
+                "hoitaja", "lääkäri", "laakari", "sote", "hyvinvointialue", "sosiaalityöntekijä", "sosiaalityo",
+                "sosiaalityö", "psykiatrinen", "vankisairaala",
             ]
 
             searchable_text_normalized = normalize(searchable_text)
@@ -938,6 +1154,9 @@ def fetch_kuntarekry_jobs():
             jobs.append({
                 "id": f"kuntarekry:{full_url}",
                 "company": "Kuntarekry",
+                "employer": employer,
+                "source": "Kuntarekry",
+                "source_type": "aggregator",
                 "title": title,
                 "location": employer,
                 "deadline": deadline,
@@ -994,26 +1213,16 @@ def fetch_valtiolle_jobs():
             basic_text_normalized = normalize(basic_text)
 
             excluded_words = [
-                "poliisi", "poliisilaitos", "suojelupoliisi",
-                "puolustusvoimat", "puolustusministeriö", "armeija",
-                "sotilas", "aliupseeri", "upseeri",
-                "rajavartiolaitos", "tulli",
-                "rikosseuraamuslaitos", "vankila", "vartija",
-                "lääkäri", "tuomari", "oikeusavustaja",
-                "lainsäädäntöneuvos", "harjoittelija", "opettaja",
-                "eduskunta", "eduskunnan kanslia",
-                "ulkoministeriö", "kehityspolitiikka",
-                "käräjäoikeus", "oikeus", "tuomioistuin",
-                "perunanäyte", "perunanäytteiden", "näytteiden",
-                "esikäsittelijä", "laboratorio", "elintarvike",
-                "ruokavirasto", "päällikkö", "paallikko",
-                "projektipäällikkö", "projektipaallikko",
-                "kehittämispäällikkö", "kehittamispaallikko",
-                "johtaja", "esimies", "ylitarkastaja", "ympäristönsuojelu", 
-                "terveydenhuolto", "terveys", "sairaanhoito", "hoitaja",
-                "lääkäri", "laakari", "sote", "hyvinvointialue",
-                "sosiaalityöntekijä", "sosiaalityo", "sosiaalityö",
-                "psykiatrinen", "vankisairaala"
+                "poliisi", "poliisilaitos", "suojelupoliisi", "puolustusvoimat", "puolustusministeriö", "armeija",
+                "sotilas", "aliupseeri", "upseeri", "rajavartiolaitos", "tulli", "rikosseuraamuslaitos", "vankila",
+                "vartija", "lääkäri", "tuomari", "oikeusavustaja", "lainsäädäntöneuvos", "harjoittelija", "opettaja",
+                "eduskunta", "eduskunnan kanslia", "ulkoministeriö", "kehityspolitiikka", "käräjäoikeus", "oikeus",
+                "tuomioistuin", "perunanäyte", "perunanäytteiden", "näytteiden", "esikäsittelijä", "laboratorio",
+                "elintarvike", "ruokavirasto", "päällikkö", "paallikko", "projektipäällikkö", "projektipaallikko",
+                "kehittämispäällikkö", "kehittamispaallikko", "johtaja", "esimies", "ylitarkastaja",
+                "ympäristönsuojelu", "terveydenhuolto", "terveys", "sairaanhoito", "hoitaja", "lääkäri", "laakari",
+                "sote", "hyvinvointialue", "sosiaalityöntekijä", "sosiaalityo", "sosiaalityö", "psykiatrinen",
+                "vankisairaala",
             ]
 
             if any(word in basic_text_normalized for word in excluded_words):
@@ -1025,27 +1234,16 @@ def fetch_valtiolle_jobs():
             full_text_normalized = normalize(full_text)
 
             relevant_words = [
-                "sap", "ratkaisu", "sap mm", "sap ariba",
-                "p2p", "purchase to pay", "procure to pay", "tarpeesta maksuun",
-                "ostolasku", "ostolaskut", "lasku", "laskutus",
-                "ostotilaus", "ostotilaukset", "purchase order",
-                "hankinta", "hankinnat", "procurement",
-                "toimittaja", "toimittajat", "supplier", "vendor",
-                "koordinaattori", "koordinaatio", "koordinoida",
-                "asiantuntija", "erityisasiantuntija",
-                "talous", "taloushallinto", "ostolasku", "laskutus",
-                "sap", "p2p", "tarpeesta maksuun",
-                "projekti", "projektinhallinta",
-                "kehittämisasiantuntija",
-                "kehittäminen", "kehittämistehtävä", "prosessien kehittäminen",
-                "prosessi", "prosessit", "jatkuva parantaminen",
-                "sovellusasiantuntija", "järjestelmäasiantuntija",
-                "pääkäyttäjä", "järjestelmä", "tiedonhallinta",
-                "palveluneuvoja", "palveluasiantuntija",
-                "assistentti", "hallintosihteeri", "kirjaaja",
-                "data", "tieto", "raportointi",
-                "tekoäly", "ai", "automaatio", "digikehittäminen",
-                "suunnittelija", "suunnittelu"
+                "sap", "ratkaisu", "sap mm", "sap ariba", "p2p", "purchase to pay", "procure to pay",
+                "tarpeesta maksuun", "ostolasku", "ostolaskut", "lasku", "laskutus", "ostotilaus", "ostotilaukset",
+                "purchase order", "hankinta", "hankinnat", "procurement", "toimittaja", "toimittajat", "supplier",
+                "vendor", "koordinaattori", "koordinaatio", "koordinoida", "asiantuntija", "erityisasiantuntija",
+                "talous", "taloushallinto", "ostolasku", "laskutus", "sap", "p2p", "tarpeesta maksuun", "projekti",
+                "projektinhallinta", "kehittämisasiantuntija", "kehittäminen", "kehittämistehtävä",
+                "prosessien kehittäminen", "prosessi", "prosessit", "jatkuva parantaminen", "sovellusasiantuntija",
+                "järjestelmäasiantuntija", "pääkäyttäjä", "järjestelmä", "tiedonhallinta", "palveluneuvoja",
+                "palveluasiantuntija", "assistentti", "hallintosihteeri", "kirjaaja", "data", "tieto", "raportointi",
+                "tekoäly", "ai", "automaatio", "digikehittäminen", "suunnittelija", "suunnittelu",
             ]
 
             if not any(word in full_text_normalized for word in relevant_words):
@@ -1055,6 +1253,9 @@ def fetch_valtiolle_jobs():
             jobs.append({
                 "id": f"valtiolle:{full_url}",
                 "company": "Valtiolle",
+                "employer": employer,
+                "source": "Valtiolle",
+                "source_type": "aggregator",
                 "title": title,
                 "location": employer,
                 "deadline": "",
@@ -1081,25 +1282,17 @@ def fetch_generic_jobs():
     seen_links = set()
 
     relevant_words = [
-        "koordinaattori", "koordinaatio", "koordinoida",
-        "asiantuntija", "erityisasiantuntija",
-        "talous", "taloushallinto", "ostolasku", "laskutus",
-        "sap", "sap mm", "sap ariba", "p2p", "tarpeesta maksuun",
-        "ostotilaus", "purchase order", "hankinta",
-        "ratkaisu", "ratkaisut", "ratkaisukeskeinen", "ratkaisujen kehittäminen",
-        "prosessi", "prosessit", "kehittäminen", "kehitys",
-        "järjestelmä", "järjestelmäasiantuntija", "sovellusasiantuntija",
-        "pääkäyttäjä", "data", "raportointi",
-        "automaatio", "tekoäly", "ai",
-        "supply chain", "logistics", "operations", "planning"
+        "koordinaattori", "koordinaatio", "koordinoida", "asiantuntija", "erityisasiantuntija", "talous",
+        "taloushallinto", "ostolasku", "laskutus", "sap", "sap mm", "sap ariba", "p2p", "tarpeesta maksuun",
+        "ostotilaus", "purchase order", "hankinta", "ratkaisu", "ratkaisut", "ratkaisukeskeinen",
+        "ratkaisujen kehittäminen", "prosessi", "prosessit", "kehittäminen", "kehitys", "järjestelmä",
+        "järjestelmäasiantuntija", "sovellusasiantuntija", "pääkäyttäjä", "data", "raportointi", "automaatio",
+        "tekoäly", "ai", "supply chain", "logistics", "operations", "planning",
     ]
 
     excluded_words = [
-        "päällikkö", "paallikko", "manager", "director", "johtaja",
-        "harjoittelija", "intern", "trainee",
-        "kesätyö", "summer job",
-        "asentaja", "sähköasentaja", "putkiasentaja",
-        "lääkäri", "opettaja", "vartija", "kuljettaja"
+        "päällikkö", "paallikko", "manager", "director", "johtaja", "harjoittelija", "intern", "trainee", "kesätyö",
+        "summer job", "asentaja", "sähköasentaja", "putkiasentaja", "lääkäri", "opettaja", "vartija", "kuljettaja",
     ]
 
     for source in GENERIC_SOURCES:
@@ -1134,8 +1327,7 @@ def fetch_generic_jobs():
                 ]
 
                 job_link_words = [
-                    "tyopaikat", "rekry", "career", "careers",
-                    "open-positions", "jobs", "vacancies", "workday"
+                    "tyopaikat", "rekry", "career", "careers", "open-positions", "jobs", "vacancies", "workday",
                 ]
 
                 if not any(word in normalize(href) for word in job_link_words):
@@ -1171,6 +1363,9 @@ def fetch_generic_jobs():
                 jobs.append({
                     "id": f"{company.lower().replace(' ', '-')}: {href}",
                     "company": company,
+                    "employer": company,
+                    "source": company,
+                    "source_type": "employer",
                     "title": title,
                     "location": company,
                     "deadline": "",
@@ -1193,109 +1388,1336 @@ def fetch_generic_jobs():
     print(f"Company career pages found: {len(jobs)}")
     return jobs
 
+def extract_jobposting_jsonld(soup):
+    def walk(value):
+        if isinstance(value, dict):
+            item_type = value.get("@type")
 
-def fetch_duunitori_jobs():
+            if item_type == "JobPosting":
+                return value
+
+            if isinstance(item_type, list) and "JobPosting" in item_type:
+                return value
+
+            for child in value.values():
+                result = walk(child)
+                if result:
+                    return result
+
+        elif isinstance(value, list):
+            for child in value:
+                result = walk(child)
+                if result:
+                    return result
+
+        return None
+
+    for script in soup.find_all("script", type="application/ld+json"):
+        raw = script.string or script.get_text()
+
+        if not raw:
+            continue
+
+        try:
+            data = json.loads(raw)
+        except (json.JSONDecodeError, TypeError):
+            continue
+
+        result = walk(data)
+
+        if result:
+            return result
+
+    return {}
+
+
+def clean_html_text(value):
+    if not value:
+        return ""
+
+    return BeautifulSoup(str(value), "html.parser").get_text(" ", strip=True)
+
+
+def extract_jsonld_employer(data):
+    organization = data.get("hiringOrganization")
+
+    if isinstance(organization, dict):
+        return clean_html_text(organization.get("name", ""))
+
+    if isinstance(organization, str):
+        return clean_html_text(organization)
+
+    return ""
+
+
+def extract_jsonld_location(data):
+    locations = data.get("jobLocation")
+
+    if not locations:
+        if normalize(str(data.get("jobLocationType", ""))) == "telecommute":
+            return "Remote"
+        return ""
+
+    if not isinstance(locations, list):
+        locations = [locations]
+
+    location_names = []
+
+    for item in locations:
+        if not isinstance(item, dict):
+            continue
+
+        address = item.get("address", {})
+
+        if not isinstance(address, dict):
+            continue
+
+        parts = [
+            address.get("addressLocality", ""),
+            address.get("addressRegion", ""),
+        ]
+
+        location = ", ".join(
+            str(part).strip()
+            for part in parts
+            if part is not None and str(part).strip()
+        )
+
+        if location and location not in location_names:
+            location_names.append(location)
+
+    return ", ".join(location_names)
+
+
+def extract_jsonld_identifier(data):
+    identifier = data.get("identifier")
+
+    if isinstance(identifier, dict):
+        return str(
+            identifier.get("value")
+            or identifier.get("name")
+            or ""
+        ).strip()
+
+    if identifier:
+        return str(identifier).strip()
+
+    return ""
+
+
+def detect_work_mode_from_text(text):
+    text = normalize(text)
+
+    if any(term in text for term in EXPLICIT_FULL_REMOTE_TERMS):
+        return "remote"
+
+    if any(term in text for term in TAMPERE_HYBRID_TERMS):
+        return "hybrid"
+
+    if any(term in text for term in [
+        "hybrid work", "hybrid working", "hybrid model", "hybridimalli", "hybridimallilla", "hybridityö",
+        "hybridityöskentely",
+    ]):
+        return "hybrid"
+
+    if any(term in text for term in ["on-site", "onsite", "paikan päällä", "toimistolla", "toimipisteessä"]):
+        return "on-site"
+
+    return ""
+
+
+def extract_deadline_from_text(text):
+    patterns = [
+        "haku päättyy\\s+(\\d{1,2}\\.\\d{1,2}\\.\\d{4})", "hakuaika päättyy\\s+(\\d{1,2}\\.\\d{1,2}\\.\\d{4})",
+        "viimeistään\\s+(\\d{1,2}\\.\\d{1,2}\\.\\d{4})", "apply by\\s+([A-Za-z]+\\s+\\d{1,2},?\\s+\\d{4})",
+        "applications? (?:close|closes)\\s+([A-Za-z]+\\s+\\d{1,2},?\\s+\\d{4})",
+        "no later than\\s+(\\d{1,2}\\s+[A-Za-z]+\\s+\\d{4})",
+    ]
+
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+
+        if match:
+            return match.group(1).strip()
+
+    return ""
+
+
+
+RECRUITER_PREFILTER_TERMS = [
+    "sap", "s/4hana", "erp", "p2p", "finance", "financial", "talous", "controller", "accountant", "kirjanpitäjä",
+    "accounting", "lasku", "invoice", "coordinator", "koordinaattori", "specialist", "asiantuntija", "assistant",
+    "assistentti", "administration", "hallinto", "office", "back office", "support", "tuki", "service specialist",
+    "palveluasiantuntija", "customer service", "asiakaspalvelu", "system", "järjestelmä", "application", "sovellus",
+    "process", "prosessi", "project", "projekti", "pmo", "hr", "rekry", "payroll", "palkka", "compliance", "kyc",
+    "master data", "document", "hankinta", "procurement", "purchasing", "supply chain", "logistics", "logistiikka", "analyst",
+]
+
+RECRUITER_PREFILTER_EXCLUDES = [
+    "kokki", "chef", "tarjoilija", "siivooja", "cleaner", "hitsaaja", "welder", "koneistaja", "machinist", "cnc",
+    "kokoonpanija", "assembler", "sähköasentaja", "electrician", "putkiasentaja", "kuljettaja", "driver", "varastotyöntekijä",
+    "warehouse worker", "tuotantotyöntekijä", "production worker", "rakennustyöntekijä", "timpuri", "kirvesmies", "sairaanhoitaja",
+    "lähihoitaja", "lääkäri", "doctor", "opettaja", "teacher", "keikkailijaksi", "welding", "avoin haku teoll",
+    "account manager", "key account manager", "myyntipäällikkö", "asiakkuuspäällikkö", "myyjä",
+    "rakennusaputyöntekij", "rakennusapulainen", "rakennuslogistiikkatyöntekij", "logistiikkatyöntekij",
+    "kurottajakuski", "site logistics worker", "electrical professional", "rakennusvalvoja",
+]
+
+
+def title_may_be_relevant(title):
+    title = normalize(title)
+    if not title:
+        return False
+    if any(term in title for term in RECRUITER_PREFILTER_EXCLUDES):
+        return False
+    return any(term in title for term in RECRUITER_PREFILTER_TERMS)
+
+
+def source_health_status(read_count, error_count):
+    if error_count:
+        return "WARNING", f"{error_count} request(s) failed"
+    if read_count == 0:
+        return "WARNING", "no vacancy links found; source/parser needs checking"
+    return "OK", "read OK"
+
+def fetch_manpower_jobs():
     jobs = []
     seen_links = set()
-    total_links_read = 0
+    listing_count = 0
+    candidate_count = 0
+    error_count = 0
+    headers = {"User-Agent": "Mozilla/5.0"}
+
+    try:
+        response = requests.get(MANPOWER_URL, headers=headers, timeout=20)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+        job_links = []
+
+        for link in soup.find_all("a", href=True):
+            href = urljoin(MANPOWER_URL, link["href"])
+            parsed = urlparse(href)
+            if "manpower.fi" not in parsed.netloc.lower() or not parsed.path.lower().startswith("/tyo/"):
+                continue
+            if href in seen_links:
+                continue
+
+            listing_count += 1
+            listing_title = link.get_text(" ", strip=True)
+            if not title_may_be_relevant(listing_title):
+                continue
+
+            seen_links.add(href)
+            job_links.append(href)
+
+        candidate_count = len(job_links)
+
+        for href in job_links:
+            try:
+                response = requests.get(href, headers=headers, timeout=20)
+                response.raise_for_status()
+                soup = BeautifulSoup(response.text, "html.parser")
+                structured = extract_jobposting_jsonld(soup)
+                h1 = soup.find("h1")
+                title = clean_html_text(structured.get("title") or (h1.get_text(" ", strip=True) if h1 else ""))
+                if not title:
+                    continue
+
+                page_text = soup.get_text(" ", strip=True)
+                description = clean_html_text(structured.get("description", "")) or page_text
+                location = extract_jsonld_location(structured)
+                if not location:
+                    match = re.search(r"Sijainti:\s*(.*?)\s+Tehtävän tiedot:", page_text, flags=re.IGNORECASE)
+                    if match:
+                        location = match.group(1).strip()
+
+                employer = extract_jsonld_employer(structured)
+                if normalize_company_for_dedupe(employer) == "manpower":
+                    employer = ""
+
+                reference_id = extract_jsonld_identifier(structured)
+                if not reference_id:
+                    match = re.search(r"Työpaikan referenssi:\s*([A-Za-z0-9_-]+)", page_text, flags=re.IGNORECASE)
+                    if match:
+                        reference_id = match.group(1).strip()
+
+                posted_on = str(structured.get("datePosted", "")).strip()
+                deadline = str(structured.get("validThrough", "")).strip() or extract_deadline_from_text(page_text)
+                work_mode = detect_work_mode_from_text(f"{title} {location} {description}")
+                job_id = f"manpower:{reference_id}" if reference_id else f"manpower:{normalize_url_for_dedupe(href)}"
+
+                jobs.append({
+                    "id": job_id, "company": "Manpower", "employer": employer, "source": "Manpower", "source_type": "recruiter",
+                    "title": title, "location": location, "work_mode": work_mode, "deadline": deadline, "posted_on": posted_on,
+                    "description": description, "url": href,
+                })
+            except Exception as error:
+                error_count += 1
+                debug_print(f"Manpower detail failed: {href} — {error}")
+    except Exception as error:
+        error_count += 1
+        print(f"Could not fetch Manpower jobs: {error}")
+
+    status, base_note = source_health_status(listing_count, error_count)
+    note = f"{base_note}; {candidate_count} title-prefilter candidate(s)"
+    update_source_stats("Manpower", listing_count, len(jobs), status=status, note=note)
+    print(f"Manpower found: {len(jobs)} (from {listing_count} listed, {candidate_count} candidates)")
+    return jobs
+
+def fetch_barona_jobs():
+    jobs = []
+    listing_count = 0
+    candidate_count = 0
+    error_count = 0
+    pages_read = 0
+    candidate_links = {}
+
+    generic_slugs = {
+        "barona-hr-oy", "barona-finance-oy", "barona-logistiikka-oy", "suomen-rakennuslogistiikka-oy",
+        "finance-accounting", "food-production-processing", "project-program-management",
+        "transportation-logistics", "administration-office", "logistics-supply-chain-transportation",
+        "customer-services-support",
+    }
+
+    def normalize_barona_job_url(raw_url, page_url):
+        if not raw_url:
+            return ""
+        raw_url = str(raw_url).replace("\\/", "/")
+        href = urljoin(page_url, raw_url)
+        parsed = urlparse(href)
+        if "baronacareers.com" not in parsed.netloc.lower():
+            return ""
+        path = parsed.path.rstrip("/")
+        if not re.match(r"^/fi/(?:fi|en)/jobs/[^/]+$", path, flags=re.IGNORECASE):
+            return ""
+        return f"https://www.baronacareers.com{path}"
+
+    def is_generic_barona_page(title, href):
+        slug = urlparse(href).path.rstrip("/").split("/")[-1].lower()
+        title_norm = normalize(title or slug.replace("-", " "))
+        if slug in generic_slugs:
+            return True
+        return title_norm in {
+            "finance accounting", "food production processing", "project program management",
+            "transportation logistics", "administration office", "logistics supply chain transportation",
+            "customer services support", "barona hr oy", "barona finance oy", "barona logistiikka oy",
+            "suomen rakennuslogistiikka oy",
+        }
+
+    def collect_listing_links(page_url):
+        found = {}
+
+        try:
+            with sync_playwright() as p:
+                browser = p.chromium.launch(headless=True)
+                page = browser.new_page(
+                    user_agent=(
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                        "AppleWebKit/537.36 (KHTML, like Gecko) "
+                        "Chrome/153.0.0.0 Safari/537.36"
+                    )
+                )
+                page.goto(page_url, wait_until="domcontentloaded", timeout=30000)
+                page.wait_for_timeout(5000)
+
+                try:
+                    anchors = page.locator("a").evaluate_all(
+                        """els => els.map(a => ({
+                            href: a.getAttribute('href') || a.href || '',
+                            text: (a.innerText || a.textContent || '').trim()
+                        }))"""
+                    )
+                except Exception:
+                    anchors = []
+
+                for item in anchors:
+                    clean_url = normalize_barona_job_url(item.get("href", ""), page_url)
+                    if not clean_url:
+                        continue
+                    title = " ".join(str(item.get("text", "")).split())
+                    if clean_url not in found or (title and not found[clean_url]):
+                        found[clean_url] = title
+
+                try:
+                    html = page.content()
+                except Exception:
+                    html = ""
+
+                if html:
+                    html_variants = [html, html.replace("\\/", "/")]
+                    url_patterns = [
+                        r'https?://(?:www\.)?baronacareers\.com/fi/(?:fi|en)/jobs/[A-Za-z0-9_%.-]+',
+                        r'/fi/(?:fi|en)/jobs/[A-Za-z0-9_%.-]+',
+                    ]
+
+                    for html_text in html_variants:
+                        for pattern in url_patterns:
+                            for match in re.findall(pattern, html_text, flags=re.IGNORECASE):
+                                clean_url = normalize_barona_job_url(match, page_url)
+                                if clean_url:
+                                    found.setdefault(clean_url, "")
+
+                    slug_patterns = [
+                        r'"(?:job_)?slug"\s*:\s*"([A-Za-z0-9][A-Za-z0-9-]{8,})"',
+                        r'"slug"\s*:\s*"([A-Za-z0-9][A-Za-z0-9-]{8,}-[A-Za-z0-9]{5,})"',
+                    ]
+                    for pattern in slug_patterns:
+                        for slug in re.findall(pattern, html, flags=re.IGNORECASE):
+                            if slug.startswith(("helsinki", "espoo", "vantaa", "turku", "tampere")):
+                                continue
+                            clean_url = f"https://www.baronacareers.com/fi/fi/jobs/{slug}"
+                            found.setdefault(clean_url, slug.replace("-", " "))
+
+                browser.close()
+
+        except Exception as error:
+            debug_print(f"Barona browser listing failed: {page_url} — {error}")
+
+        return found
+
+
+    seen_listing_links = set()
+    for start_url in BARONA_URLS:
+        empty_pages = 0
+        for page_number in range(1, 4):
+            separator = "&" if "?" in start_url else "?"
+            page_url = start_url if page_number == 1 else f"{start_url}{separator}page={page_number}"
+            links = collect_listing_links(page_url)
+            pages_read += 1
+            new_on_page = 0
+
+            for href, listing_title in links.items():
+                if href in seen_listing_links:
+                    continue
+                seen_listing_links.add(href)
+                listing_count += 1
+                new_on_page += 1
+
+                fallback_title = listing_title or urlparse(href).path.rstrip("/").split("/")[-1].replace("-", " ")
+                if is_generic_barona_page(fallback_title, href):
+                    continue
+                if not title_may_be_relevant(fallback_title):
+                    continue
+                candidate_links[href] = fallback_title
+
+            empty_pages = empty_pages + 1 if new_on_page == 0 else 0
+            if empty_pages >= 2:
+                break
+
+    candidate_count = len(candidate_links)
+
+    if candidate_links:
+        try:
+            with sync_playwright() as p:
+                browser = p.chromium.launch(headless=True)
+                context = browser.new_context(user_agent="Mozilla/5.0")
+                page = context.new_page()
+
+                for href, listing_title in candidate_links.items():
+                    try:
+                        page.goto(href, wait_until="domcontentloaded", timeout=30000)
+                        try:
+                            page.locator("h1").first.wait_for(timeout=10000)
+                        except Exception:
+                            pass
+                        page.wait_for_timeout(1200)
+
+                        html = page.content()
+                        detail_soup = BeautifulSoup(html, "html.parser")
+                        structured = extract_jobposting_jsonld(detail_soup)
+                        body_text = page.locator("body").inner_text(timeout=10000)
+                        page_text = " ".join(body_text.split())
+
+                        h1 = detail_soup.find("h1")
+                        detail_title = clean_html_text(
+                            structured.get("title") or (h1.get_text(" ", strip=True) if h1 else "")
+                        )
+                        title = detail_title or listing_title
+                        if not title:
+                            continue
+
+                        # Guard only against category/company pseudo-pages here. The listing title
+                        # already passed the relevance prefilter.
+                        if is_generic_barona_page(title, href):
+                            continue
+
+                        description = clean_html_text(structured.get("description", ""))
+                        if not description:
+                            about_match = re.search(
+                                r"(?:Tietoja työstä|Yhteenveto)\s+(.*?)(?:Rekrytoinnin hoitaa|Kategoriat|Kirjaudu sisään ja hae)",
+                                page_text,
+                                flags=re.IGNORECASE,
+                            )
+                            description = about_match.group(1).strip() if about_match else page_text
+
+                        location = extract_jsonld_location(structured)
+                        if not location:
+                            location_match = re.search(
+                                r"Sijainti\s+(.+?)(?:\s+Palkka\s+|\s+Sopimustyyppi\s+|\s+Koulutus\s+|\s+Työkokemus\s+|\s+Kielitaito\s+|\s+Tietoja työstä\s+)",
+                                page_text,
+                                flags=re.IGNORECASE,
+                            )
+                            if location_match:
+                                location = location_match.group(1).strip()
+                                location = re.sub(r"\s*[•·]\s*Suomi\b.*$", "", location, flags=re.IGNORECASE).strip()
+
+                        employer = extract_jsonld_employer(structured)
+                        if not employer or normalize_company_for_dedupe(employer) == "barona":
+                            employer = ""
+                            employer_match = re.search(
+                                r"employment contract will be concluded directly with\s+(.+?)(?:\.|,|\s+Rekrytoinnin)",
+                                page_text,
+                                flags=re.IGNORECASE,
+                            )
+                            if employer_match:
+                                employer = employer_match.group(1).strip()
+
+                        reference_id = extract_jsonld_identifier(structured)
+                        if not reference_id:
+                            reference_id = urlparse(href).path.rstrip("/").split("/")[-1]
+
+                        posted_on = str(structured.get("datePosted", "")).strip()
+                        deadline = str(structured.get("validThrough", "")).strip() or extract_deadline_from_text(page_text)
+                        if not deadline:
+                            deadline_match = re.search(
+                                r"(?:by|viimeistään|mennessä)\s+(?:[A-Za-zÅÄÖåäö]+\s+)?(\d{1,2}\.\d{1,2}\.\d{4})",
+                                page_text,
+                                flags=re.IGNORECASE,
+                            )
+                            if deadline_match:
+                                deadline = deadline_match.group(1)
+
+                        work_mode = detect_work_mode_from_text(f"{title} {location} {description}")
+
+                        jobs.append({
+                            "id": f"barona:{reference_id}", "company": "Barona", "employer": employer,
+                            "source": "Barona", "source_type": "recruiter", "title": title, "location": location,
+                            "work_mode": work_mode, "deadline": deadline, "posted_on": posted_on,
+                            "description": description, "url": href,
+                        })
+
+                    except Exception as error:
+                        error_count += 1
+                        debug_print(f"Barona detail failed: {href} — {error}")
+
+                browser.close()
+        except Exception as error:
+            error_count += 1
+            print(f"Could not initialize Barona browser: {error}")
+
+    status, base_note = source_health_status(listing_count, error_count)
+    if candidate_count > 0 and not jobs:
+        status = "WARNING"
+        base_note = "candidates found but no real detail jobs parsed; parser needs checking"
+
+    note = f"{base_note}; {pages_read} listing page(s), {candidate_count} title-prefilter candidate(s)"
+    update_source_stats("Barona", listing_count, len(jobs), status=status, note=note)
+    print(f"Barona found: {len(jobs)} (from {listing_count} listed, {candidate_count} candidates)")
+    return jobs
+
+
+def fetch_atalent_jobs():
+    jobs = []
+    seen_links = set()
+    listing_count = 0
+    candidate_count = 0
+    error_count = 0
+    headers = {"User-Agent": "Mozilla/5.0"}
+
+    try:
+        html = ""
+        try:
+            response = requests.get(ATALENT_URL, headers=headers, timeout=20)
+            response.raise_for_status()
+            html = response.text
+        except Exception as request_error:
+            debug_print(f"aTalent requests listing failed, trying browser: {request_error}")
+
+        soup = BeautifulSoup(html, "html.parser") if html else BeautifulSoup("", "html.parser")
+        job_links = []
+
+        def collect_links(source_soup):
+            nonlocal listing_count, candidate_count
+            for link in source_soup.find_all("a", href=True):
+                href = urljoin(ATALENT_URL, link["href"])
+                parsed = urlparse(href)
+                if "atalent.fi" not in parsed.netloc.lower() or "/open-position/" not in parsed.path.lower():
+                    continue
+                clean_url = f"https://atalent.fi{parsed.path.rstrip('/')}"
+                if clean_url in seen_links:
+                    continue
+                listing_count += 1
+                listing_title = link.get_text(" ", strip=True)
+                if listing_title and not title_may_be_relevant(listing_title):
+                    continue
+                seen_links.add(clean_url)
+                candidate_count += 1
+                job_links.append(clean_url)
+
+        collect_links(soup)
+
+        if not job_links:
+            browser_html = fetch_page_html_browser(ATALENT_URL)
+            if browser_html:
+                collect_links(BeautifulSoup(browser_html, "html.parser"))
+
+        for href in job_links:
+            try:
+                response = requests.get(href, headers=headers, timeout=20)
+                response.raise_for_status()
+                soup = BeautifulSoup(response.text, "html.parser")
+                structured = extract_jobposting_jsonld(soup)
+                page_text = soup.get_text(" ", strip=True)
+                h1 = soup.find("h1")
+                title = clean_html_text(structured.get("title") or (h1.get_text(" ", strip=True) if h1 else ""))
+                if not title or not title_may_be_relevant(title):
+                    continue
+
+                description = clean_html_text(structured.get("description", "")) or page_text
+                employer = extract_jsonld_employer(structured)
+                if normalize_company_for_dedupe(employer) == "atalent":
+                    employer = ""
+                location = extract_jsonld_location(structured)
+                if not location:
+                    match = re.search(r"Sijainnit?\s+(.+?)(?:\s+Sopimuksen tyyppi|\s+Haku päättyy|\s+Hae nyt)", page_text, flags=re.IGNORECASE)
+                    if match:
+                        location = match.group(1).strip()
+
+                posted_on = str(structured.get("datePosted", "")).strip()
+                deadline = str(structured.get("validThrough", "")).strip() or extract_deadline_from_text(page_text)
+                work_mode = detect_work_mode_from_text(f"{title} {location} {description}")
+                job_id_match = re.search(r"-(\d+)$", urlparse(href).path.rstrip("/"))
+                job_id = job_id_match.group(1) if job_id_match else normalize_url_for_dedupe(href)
+
+                jobs.append({
+                    "id": f"atalent:{job_id}", "company": "aTalent", "employer": employer, "source": "aTalent",
+                    "source_type": "recruiter", "title": title, "location": location, "work_mode": work_mode,
+                    "deadline": deadline, "posted_on": posted_on, "description": description, "url": href,
+                })
+            except Exception as error:
+                error_count += 1
+                debug_print(f"aTalent detail failed: {href} — {error}")
+    except Exception as error:
+        error_count += 1
+        print(f"Could not fetch aTalent jobs: {error}")
+
+    status, base_note = source_health_status(listing_count, error_count)
+    note = f"{base_note}; {candidate_count} title-prefilter candidate(s)"
+    update_source_stats("aTalent", listing_count, len(jobs), status=status, note=note)
+    print(f"aTalent found: {len(jobs)} (from {listing_count} listed, {candidate_count} candidates)")
+    return jobs
+
+def fetch_ict_direct_jobs():
+    jobs = []
+    seen_links = set()
+    read_count = 0
+    candidate_count = 0
     error_count = 0
 
-    relevant_words = [
-        "sap", "p2p", "ostolasku", "laskutus", "hankinta",
-        "koordinaattori", "asiantuntija", "taloushallinto",
-        "prosessi", "kehittäminen", "järjestelmä",
-        "ratkaisu", "ratkaisut", "automaatio"
-    ]
+    headers = {"User-Agent": "Mozilla/5.0"}
 
-    excluded_words = [
-        "päällikkö", "paallikko", "manager", "director", "johtaja",
-        "harjoittelija", "intern", "trainee", "kesätyö", "summer job",
-        "asentaja", "myyjä", "sales", "kuljettaja",
-        "lääkäri", "hoitaja", "opettaja", "sosiaalityö",
-        "puolustusvoimat", "puolustus", "armeija", "sotilas",
-        "poliisi", "vartija", "turvallisuusselvitys"
-    ]
+    try:
+        response = requests.get(ICT_DIRECT_URL, headers=headers, timeout=20)
+        response.raise_for_status()
 
-    for search_url in DUUNITORI_URLS:
-        try:
-            response = requests.get(
-                search_url,
-                headers={"User-Agent": "Mozilla/5.0"},
-                timeout=20
-            )
-            response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+        job_links = []
 
-            soup = BeautifulSoup(response.text, "html.parser")
-            links = soup.find_all("a", href=True)
-            total_links_read += len(links)
+        for link in soup.find_all("a", href=True):
+            href = urljoin(ICT_DIRECT_URL, link["href"])
+            parsed = urlparse(href)
 
-            for link in links:
-                title = link.get_text(" ", strip=True)
-                href = urljoin("https://duunitori.fi", link["href"])
+            if "careers.ictdirect.io" not in parsed.netloc.lower():
+                continue
+
+            if not parsed.path.lower().startswith("/jobs/"):
+                continue
+
+            if parsed.path.lower().rstrip("/") == "/jobs":
+                continue
+
+            clean_url = f"https://careers.ictdirect.io{parsed.path.rstrip('/')}"
+
+            if clean_url in seen_links:
+                continue
+
+            read_count += 1
+            listing_title = link.get_text(" ", strip=True)
+            if not title_may_be_relevant(listing_title):
+                continue
+
+            seen_links.add(clean_url)
+            candidate_count += 1
+            job_links.append(clean_url)
+
+
+        for href in job_links:
+            try:
+                response = requests.get(href, headers=headers, timeout=20)
+                response.raise_for_status()
+
+                soup = BeautifulSoup(response.text, "html.parser")
+                structured = extract_jobposting_jsonld(soup)
+                page_text = soup.get_text(" ", strip=True)
+
+                h1 = soup.find("h1")
+
+                title = clean_html_text(
+                    structured.get("title")
+                    or (h1.get_text(" ", strip=True) if h1 else "")
+                )
 
                 if not title:
                     continue
 
-                href_normalized = normalize(href)
-                text = normalize(f"{title} {href}")
+                description = (
+                    clean_html_text(structured.get("description", ""))
+                    or page_text
+                )
 
-                if href in seen_links:
-                    continue
+                employer = extract_jsonld_employer(structured)
 
-                if "/tyopaikat/" not in href_normalized:
-                    continue
+                # ICT DIRECT is the recruiter. Do not treat it as client employer.
+                if normalize_company_for_dedupe(employer) in ["ict direct", "ictdirect"]:
+                    employer = ""
 
-                if "lisaa_suosikkeihin" in href_normalized:
-                    continue
+                location = extract_jsonld_location(structured)
 
-                if any(word in text for word in excluded_words):
-                    continue
+                if not location:
+                    locations_match = re.search(
+                        r"Locations?\s+(.+?)(?:\s+Remote status|\s+Employment type|\s+Apply)",
+                        page_text,
+                        flags=re.IGNORECASE
+                    )
 
-                if not any(word in text for word in relevant_words):
-                    continue
+                    if locations_match:
+                        location = locations_match.group(1).strip()
 
-                seen_links.add(href)
+                posted_on = str(structured.get("datePosted", "")).strip()
+                deadline = str(structured.get("validThrough", "")).strip()
 
-                description = fetch_job_description(href)
-                full_text = normalize(f"{title} {description}")
+                if not deadline:
+                    deadline = extract_deadline_from_text(page_text)
 
-                if any(word in full_text for word in excluded_words):
-                    continue
+                work_mode = detect_work_mode_from_text(
+                    f"{title} {location} {description}"
+                )
 
-                if not any(word in full_text for word in relevant_words):
-                    continue
+                remote_match = re.search(
+                    r"Remote status\s+(Fully Remote|Hybrid|Remote|No Remote|On-site)",
+                    page_text,
+                    flags=re.IGNORECASE
+                )
+
+                if remote_match:
+                    work_mode = remote_match.group(1).strip()
+
+                job_id_match = re.search(
+                    r"/jobs/(\d+)",
+                    urlparse(href).path
+                )
+
+                job_id = (
+                    job_id_match.group(1)
+                    if job_id_match
+                    else normalize_url_for_dedupe(href)
+                )
 
                 jobs.append({
-                    "id": f"duunitori:{href}",
-                    "company": "Duunitori",
+                    "id": f"ictdirect:{job_id}",
+                    "company": "ICT DIRECT",
+                    "employer": employer,
+                    "source": "ICT DIRECT",
+                    "source_type": "recruiter",
                     "title": title,
-                    "location": "Duunitori",
-                    "deadline": "",
-                    "posted_on": "",
-                    "description": description or title,
+                    "location": location,
+                    "work_mode": work_mode,
+                    "deadline": deadline,
+                    "posted_on": posted_on,
+                    "description": description,
                     "url": href,
                 })
 
-        except Exception as error:
-            error_count += 1
-            print(f"Could not fetch Duunitori: {search_url} — {error}")
+            except Exception as error:
+                error_count += 1
+                debug_print(f"ICT DIRECT detail failed: {href} — {error}")
+
+    except Exception as error:
+        error_count += 1
+        print(f"Could not fetch ICT DIRECT jobs: {error}")
+
+    status, base_note = source_health_status(read_count, error_count)
+    note = f"{base_note}; {candidate_count} title-prefilter candidate(s)"
 
     update_source_stats(
-        "Duunitori",
-        total_links_read,
+        "ICT DIRECT",
+        read_count,
         len(jobs),
-        status="WARNING" if error_count else "OK",
-        note=(
-            f"HTML parsed; read means links scanned, not job count; "
-            f"{error_count} search URL(s) failed"
-            if error_count
-            else "HTML parsed from configured searches; read means links scanned, not job count"
-        )
+        status=status,
+        note=note
     )
 
-    print(f"Duunitori found: {len(jobs)}")
+    print(f"ICT DIRECT found: {len(jobs)} (from {read_count} listed, {candidate_count} candidates)")
     return jobs
 
+def fetch_adecco_jobs():
+    jobs = []
+    seen_links = set()
+    read_count = 0
+    candidate_count = 0
+    error_count = 0
+
+    headers = {"User-Agent": "Mozilla/5.0"}
+
+    try:
+        response = requests.get(ADECCO_URL, headers=headers, timeout=20)
+        response.raise_for_status()
+
+        soup = BeautifulSoup(response.text, "html.parser")
+        job_links = []
+
+        for link in soup.find_all("a", href=True):
+            href = urljoin(ADECCO_URL, link["href"])
+            parsed = urlparse(href)
+
+            if "recruitment.fi.adecco.com" not in parsed.netloc.lower():
+                continue
+
+            if not parsed.path.lower().startswith("/jobs/"):
+                continue
+
+            if parsed.path.lower().rstrip("/") == "/jobs":
+                continue
+
+            clean_url = f"https://recruitment.fi.adecco.com{parsed.path.rstrip('/')}"
+
+            if clean_url in seen_links:
+                continue
+
+            read_count += 1
+            listing_title = link.get_text(" ", strip=True)
+            if not title_may_be_relevant(listing_title):
+                continue
+
+            seen_links.add(clean_url)
+            candidate_count += 1
+            job_links.append(clean_url)
+
+
+        for href in job_links:
+            try:
+                response = requests.get(href, headers=headers, timeout=20)
+                response.raise_for_status()
+
+                soup = BeautifulSoup(response.text, "html.parser")
+                structured = extract_jobposting_jsonld(soup)
+                page_text = soup.get_text(" ", strip=True)
+
+                h1 = soup.find("h1")
+
+                title = clean_html_text(
+                    structured.get("title")
+                    or (h1.get_text(" ", strip=True) if h1 else "")
+                )
+
+                if not title:
+                    continue
+
+                description = (
+                    clean_html_text(structured.get("description", ""))
+                    or page_text
+                )
+
+                employer = extract_jsonld_employer(structured)
+
+                if normalize_company_for_dedupe(employer) in ["adecco", "adecco finland"]:
+                    employer = ""
+
+                location = extract_jsonld_location(structured)
+
+                if not location:
+                    match = re.search(
+                        r"(?:Locations?|Sijainnit)\s+(.+?)(?:\s+Employment type|\s+Työsuhteen tyyppi|\s+Remote status|\s+Etätyö)",
+                        page_text,
+                        flags=re.IGNORECASE
+                    )
+
+                    if match:
+                        location = match.group(1).strip()
+
+                posted_on = str(structured.get("datePosted", "")).strip()
+                deadline = str(structured.get("validThrough", "")).strip()
+
+                if not deadline:
+                    deadline = extract_deadline_from_text(page_text)
+
+                work_mode = detect_work_mode_from_text(
+                    f"{title} {location} {description}"
+                )
+
+                remote_match = re.search(
+                    r"(?:Remote status|Etätyömahdollisuus|Etätyömahdollisuudet)\s+"
+                    r"(Fully Remote|Remote|Hybrid|Hybridi|Onsite|On-site|Paikan päällä)",
+                    page_text,
+                    flags=re.IGNORECASE
+                )
+
+                if remote_match:
+                    work_mode = remote_match.group(1).strip()
+
+                job_id_match = re.search(
+                    r"/jobs/(\d+)",
+                    urlparse(href).path
+                )
+
+                job_id = (
+                    job_id_match.group(1)
+                    if job_id_match
+                    else normalize_url_for_dedupe(href)
+                )
+
+                jobs.append({
+                    "id": f"adecco:{job_id}",
+                    "company": "Adecco",
+                    "employer": employer,
+                    "source": "Adecco",
+                    "source_type": "recruiter",
+                    "title": title,
+                    "location": location,
+                    "work_mode": work_mode,
+                    "deadline": deadline,
+                    "posted_on": posted_on,
+                    "description": description,
+                    "url": href,
+                })
+
+            except Exception as error:
+                error_count += 1
+                debug_print(f"Adecco detail failed: {href} — {error}")
+
+    except Exception as error:
+        error_count += 1
+        print(f"Could not fetch Adecco jobs: {error}")
+
+    status, base_note = source_health_status(read_count, error_count)
+    note = f"{base_note}; {candidate_count} title-prefilter candidate(s)"
+
+    update_source_stats(
+        "Adecco", read_count, len(jobs),
+        status=status, note=note
+    )
+
+    print(f"Adecco found: {len(jobs)} (from {read_count} listed, {candidate_count} candidates)")
+    return jobs
+
+def fetch_staffpoint_jobs():
+    jobs = []
+    seen_links = set()
+    listing_count = 0
+    candidate_count = 0
+    error_count = 0
+    headers = {"User-Agent": "Mozilla/5.0"}
+
+    try:
+        response = requests.get(STAFFPOINT_URL, headers=headers, timeout=20)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+        job_links = []
+
+        def collect_links(source_soup):
+            nonlocal listing_count, candidate_count
+            for link in source_soup.find_all("a", href=True):
+                href = urljoin(STAFFPOINT_URL, link["href"])
+                parsed = urlparse(href)
+                if "staffpoint.fi" not in parsed.netloc.lower() or not parsed.path.lower().startswith("/tyopaikat/"):
+                    continue
+                if parsed.path.lower().rstrip("/") == "/tyopaikat":
+                    continue
+                clean_url = f"https://www.staffpoint.fi{parsed.path.rstrip('/')}"
+                if clean_url in seen_links:
+                    continue
+
+                listing_count += 1
+                listing_title = link.get_text(" ", strip=True)
+                if not title_may_be_relevant(listing_title):
+                    continue
+
+                seen_links.add(clean_url)
+                candidate_count += 1
+                job_links.append(clean_url)
+
+        collect_links(soup)
+        if not job_links:
+            html = fetch_page_html_browser(STAFFPOINT_URL)
+            if html:
+                collect_links(BeautifulSoup(html, "html.parser"))
+
+        for href in job_links:
+            try:
+                response = requests.get(href, headers=headers, timeout=20)
+                response.raise_for_status()
+                soup = BeautifulSoup(response.text, "html.parser")
+                structured = extract_jobposting_jsonld(soup)
+                page_text = soup.get_text(" ", strip=True)
+                h1 = soup.find("h1")
+                title = clean_html_text(structured.get("title") or (h1.get_text(" ", strip=True) if h1 else ""))
+                if not title:
+                    continue
+
+                description = clean_html_text(structured.get("description", "")) or page_text
+                employer = extract_jsonld_employer(structured)
+                if normalize_company_for_dedupe(employer) in ["staffpoint", "staffpoint group", "staffpoint konserni"]:
+                    employer = ""
+
+                location = extract_jsonld_location(structured)
+                if not location and h1:
+                    location_parts = []
+                    for node in h1.next_elements:
+                        if not isinstance(node, str):
+                            continue
+                        candidate = " ".join(node.split())
+                        if not candidate or candidate == title:
+                            continue
+                        candidate_normalized = normalize(candidate)
+                        if "työsuhteen tyyppi" in candidate_normalized or "vacancy type" in candidate_normalized:
+                            break
+                        if candidate_normalized in ["haku päättyy", "expires"]:
+                            break
+                        if len(candidate) > 180:
+                            continue
+                        if candidate not in location_parts:
+                            location_parts.append(candidate)
+                        if len(location_parts) >= 2:
+                            break
+                    location = ", ".join(location_parts).strip(" ,")
+
+                deadline = str(structured.get("validThrough", "")).strip()
+                posted_on = str(structured.get("datePosted", "")).strip()
+                if not deadline:
+                    match = re.search(r"(?:Haku päättyy|Expires)\s*:?\s*(.+?)(?:\s+Tehtävän tiedot|\s+Job details|$)", page_text, flags=re.IGNORECASE)
+                    if match:
+                        deadline = match.group(1).strip()
+
+                work_mode = detect_work_mode_from_text(f"{title} {location} {description}")
+                job_id = urlparse(href).path.rstrip("/").split("/")[-1]
+                jobs.append({
+                    "id": f"staffpoint:{job_id}", "company": "StaffPoint", "employer": employer, "source": "StaffPoint",
+                    "source_type": "recruiter", "title": title, "location": location, "work_mode": work_mode,
+                    "deadline": deadline, "posted_on": posted_on, "description": description, "url": href,
+                })
+            except Exception as error:
+                error_count += 1
+                debug_print(f"StaffPoint detail failed: {href} — {error}")
+    except Exception as error:
+        error_count += 1
+        print(f"Could not fetch StaffPoint jobs: {error}")
+
+    status, base_note = source_health_status(listing_count, error_count)
+    note = f"{base_note}; {candidate_count} title-prefilter candidate(s)"
+    update_source_stats("StaffPoint", listing_count, len(jobs), status=status, note=note)
+    print(f"StaffPoint found: {len(jobs)} (from {listing_count} listed, {candidate_count} candidates)")
+    return jobs
+
+def fetch_adiente_jobs():
+    jobs = []
+    seen_links = set()
+    listing_count = 0
+    candidate_count = 0
+    error_count = 0
+    headers = {"User-Agent": "Mozilla/5.0"}
+
+    try:
+        html = ""
+        try:
+            response = requests.get(ADIENTE_URL, headers=headers, timeout=20)
+            response.raise_for_status()
+            html = response.text
+        except Exception as request_error:
+            debug_print(f"Adiente requests listing failed, trying browser: {request_error}")
+            html = fetch_page_html_browser(ADIENTE_URL)
+
+        if not html:
+            raise RuntimeError("empty Adiente page")
+
+        soup = BeautifulSoup(html, "html.parser")
+        job_links = []
+
+        # Adiente's actual open vacancies currently point to external TalentAdore pages.
+        # Restricting to those links prevents service/blog pages from being treated as jobs.
+        for link in soup.find_all("a", href=True):
+            href = urljoin(ADIENTE_URL, link["href"])
+            parsed = urlparse(href)
+
+            if "talentadore.com" not in parsed.netloc.lower() or "/apply/" not in parsed.path.lower():
+                continue
+            if href in seen_links:
+                continue
+
+            listing_count += 1
+            listing_title = link.get_text(" ", strip=True)
+            if not listing_title:
+                slug = parsed.path.rstrip("/").split("/")[-2] if "/apply/" in parsed.path else ""
+                listing_title = " ".join(part for part in slug.split("-") if part)
+
+            if not title_may_be_relevant(listing_title):
+                continue
+
+            seen_links.add(href)
+            candidate_count += 1
+            job_links.append((listing_title, href))
+
+        for listing_title, href in job_links:
+            try:
+                response = requests.get(href, headers=headers, timeout=20)
+                response.raise_for_status()
+                detail_soup = BeautifulSoup(response.text, "html.parser")
+                structured = extract_jobposting_jsonld(detail_soup)
+                page_text = detail_soup.get_text(" ", strip=True)
+                h1 = detail_soup.find("h1")
+
+                title = clean_html_text(
+                    structured.get("title")
+                    or (h1.get_text(" ", strip=True) if h1 else "")
+                    or listing_title
+                )
+                if not title:
+                    continue
+
+                description = clean_html_text(structured.get("description", "")) or page_text
+                employer = extract_jsonld_employer(structured)
+                if normalize_company_for_dedupe(employer) in ["adiente", "oy adiente"]:
+                    employer = ""
+                if not employer:
+                    match = re.search(r",\s*([^,]+(?:Oy|Ab|Oyj))\s*$", title, flags=re.IGNORECASE)
+                    if match:
+                        employer = match.group(1).strip()
+
+                location = extract_jsonld_location(structured)
+
+                # TalentAdore may expose only a street name in its generic location field.
+                # Prefer a recognizable city found on the page when the parsed value has no city.
+                known_cities = [
+                    "Helsinki", "Espoo", "Vantaa", "Turku", "Kaarina", "Raisio", "Naantali",
+                    "Lieto", "Parainen", "Salo", "Uusikaupunki", "Kerava", "Tampere",
+                ]
+                location_has_city = any(normalize(city) in normalize(location) for city in known_cities)
+                if not location_has_city:
+                    city_hits = [
+                        city for city in known_cities
+                        if re.search(
+                            r"(?<![A-Za-zÅÄÖåäö])" + re.escape(city) + r"(?![A-Za-zÅÄÖåäö])",
+                            page_text,
+                            flags=re.IGNORECASE,
+                        )
+                    ]
+                    if city_hits:
+                        location = ", ".join(dict.fromkeys(city_hits))
+
+                posted_on = str(structured.get("datePosted", "")).strip()
+                deadline = str(structured.get("validThrough", "")).strip() or extract_deadline_from_text(page_text)
+                work_mode = detect_work_mode_from_text(f"{title} {location} {description}")
+                job_id = normalize_url_for_dedupe(href)
+
+                jobs.append({
+                    "id": f"adiente:{job_id}", "company": "Adiente", "employer": employer, "source": "Adiente",
+                    "source_type": "recruiter", "title": title, "location": location, "work_mode": work_mode,
+                    "deadline": deadline, "posted_on": posted_on, "description": description, "url": href,
+                })
+            except Exception as error:
+                error_count += 1
+                debug_print(f"Adiente detail failed: {href} — {error}")
+
+    except Exception as error:
+        error_count += 1
+        print(f"Could not fetch Adiente jobs: {error}")
+
+    status, base_note = source_health_status(listing_count, error_count)
+    note = f"{base_note}; {candidate_count} title-prefilter candidate(s)"
+    update_source_stats("Adiente", listing_count, len(jobs), status=status, note=note)
+    print(f"Adiente found: {len(jobs)} (from {listing_count} listed, {candidate_count} candidates)")
+    return jobs
+
+def fetch_eezy_jobs():
+    jobs = []
+    seen_links = set()
+    listing_count = 0
+    candidate_count = 0
+    error_count = 0
+    headers = {"User-Agent": "Mozilla/5.0"}
+
+    try:
+        response = requests.get(EEZY_PERSONNEL_URL, headers=headers, timeout=20)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        for row in soup.find_all("tr"):
+            cells = row.find_all(["td", "th"])
+            if len(cells) < 3:
+                continue
+            link = row.find("a", href=True)
+            if not link:
+                continue
+
+            href = urljoin(EEZY_PERSONNEL_URL, link["href"])
+            if "talentadore.com" not in urlparse(href).netloc.lower() or href in seen_links:
+                continue
+            seen_links.add(href)
+            listing_count += 1
+
+            cell_texts = [cell.get_text(" ", strip=True) for cell in cells]
+            first_cell_text = cell_texts[0].strip()
+            location = cell_texts[1].strip() if len(cell_texts) > 1 else ""
+            deadline = cell_texts[2].strip() if len(cell_texts) > 2 else ""
+            title = (link.get_text(" ", strip=True) or link.get("aria-label", "") or link.get("title", "")).strip()
+
+            if not title:
+                slug = urlparse(href).path.rstrip("/").split("/")[-2] if "/apply/" in urlparse(href).path else ""
+                title = " ".join(part for part in slug.replace("---", "-").split("-") if part).strip()
+
+            if not title_may_be_relevant(title):
+                continue
+            candidate_count += 1
+
+            employer = ""
+            if title and first_cell_text:
+                employer_candidate = re.sub(r"^" + re.escape(title) + r"\s*[,–—-]*\s*", "", first_cell_text, count=1, flags=re.IGNORECASE).strip()
+                if employer_candidate and employer_candidate != first_cell_text:
+                    employer = employer_candidate
+
+            description = ""
+            posted_on = ""
+            work_mode = ""
+            job_id = normalize_url_for_dedupe(href)
+
+            try:
+                detail_response = requests.get(href, headers=headers, timeout=20)
+                detail_response.raise_for_status()
+                detail_soup = BeautifulSoup(detail_response.text, "html.parser")
+                structured = extract_jobposting_jsonld(detail_soup)
+                page_text = detail_soup.get_text(" ", strip=True)
+                h1 = detail_soup.find("h1")
+
+                detail_title = clean_html_text(structured.get("title") or (h1.get_text(" ", strip=True) if h1 else ""))
+                if detail_title:
+                    title = detail_title
+                structured_employer = extract_jsonld_employer(structured)
+                if structured_employer:
+                    employer = structured_employer
+                structured_location = extract_jsonld_location(structured)
+                if structured_location:
+                    location = structured_location
+                description = clean_html_text(structured.get("description", "")) or page_text
+                posted_on = str(structured.get("datePosted", "")).strip()
+                structured_deadline = str(structured.get("validThrough", "")).strip()
+                if structured_deadline:
+                    deadline = structured_deadline
+                work_mode = detect_work_mode_from_text(f"{title} {location} {description}")
+                job_id = extract_jsonld_identifier(structured) or job_id
+            except Exception as error:
+                error_count += 1
+                debug_print(f"Eezy detail failed, keeping listing data: {href} — {error}")
+
+            jobs.append({
+                "id": f"eezy:{job_id}", "company": "Eezy", "employer": employer, "source": "Eezy", "source_type": "recruiter",
+                "title": title, "location": location, "work_mode": work_mode, "deadline": deadline, "posted_on": posted_on,
+                "description": description or f"{title} {employer} {location}", "url": href,
+            })
+    except Exception as error:
+        error_count += 1
+        print(f"Could not fetch Eezy jobs: {error}")
+
+    status, base_note = source_health_status(listing_count, error_count)
+    note = f"{base_note}; {candidate_count} title-prefilter candidate(s); listing data retained if TalentAdore detail fails"
+    update_source_stats("Eezy", listing_count, len(jobs), status=status, note=note)
+    print(f"Eezy found: {len(jobs)} (from {listing_count} listed, {candidate_count} candidates)")
+    return jobs
+
+def fetch_duunitori_jobs():
+    jobs = []
+    seen_links = set()
+    total_jobs_read = 0
+    candidate_count = 0
+    error_count = 0
+    headers = {"User-Agent": "Mozilla/5.0"}
+
+    relevant_words = [
+        "sap", "s/4hana", "vim", "erp", "p2p", "procure-to-pay", "purchase-to-pay", "ostolasku", "laskutus",
+        "taloushallinto", "application specialist", "application support", "system specialist", "system support",
+        "järjestelmäasiantuntija", "sovellusasiantuntija", "järjestelmätuki", "sovellustuki", "käyttäjätuki", "user support",
+        "key user", "pääkäyttäjä", "back office", "backoffice", "service specialist", "palveluasiantuntija", "process specialist",
+        "process support", "koordinaattori", "coordinator", "project coordinator", "projektikoordinaattori", "project support",
+        "pmo", "hallinto", "administration", "master data", "document management", "kyc", "compliance",
+    ]
+
+    for search_url in DUUNITORI_URLS:
+        try:
+            response = requests.get(search_url, headers=headers, timeout=20)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, "html.parser")
+            candidate_links = []
+
+            for link in soup.find_all("a", href=True):
+                href = urljoin("https://duunitori.fi", link["href"])
+                parsed = urlparse(href)
+                if parsed.netloc.lower() not in ["duunitori.fi", "www.duunitori.fi"] or not parsed.path.startswith("/tyopaikat/tyo/"):
+                    continue
+
+                clean_url = f"{parsed.scheme or 'https'}://{parsed.netloc}{parsed.path.rstrip('/')}"
+                if clean_url in seen_links:
+                    continue
+
+                listing_title = link.get_text(" ", strip=True)
+                if not listing_title:
+                    continue
+
+                total_jobs_read += 1
+                if not title_may_be_relevant(listing_title):
+                    continue
+
+                seen_links.add(clean_url)
+                candidate_count += 1
+                candidate_links.append(clean_url)
+
+            for href in candidate_links:
+                try:
+                    detail_response = requests.get(href, headers=headers, timeout=20)
+                    detail_response.raise_for_status()
+                    detail_soup = BeautifulSoup(detail_response.text, "html.parser")
+                    structured = extract_jobposting_jsonld(detail_soup)
+                    h1 = detail_soup.find("h1")
+                    title = clean_html_text(structured.get("title") or (h1.get_text(" ", strip=True) if h1 else ""))
+                    if not title:
+                        continue
+
+                    page_text = detail_soup.get_text(" ", strip=True)
+                    description = clean_html_text(structured.get("description", "")) or page_text
+                    full_text = normalize(f"{title} {description}")
+                    if not any(word in full_text for word in relevant_words):
+                        continue
+
+                    employer = extract_jsonld_employer(structured)
+                    location = extract_jsonld_location(structured)
+                    reference_id = extract_jsonld_identifier(structured) or normalize_url_for_dedupe(href)
+                    posted_on = str(structured.get("datePosted", "")).strip()
+                    deadline = str(structured.get("validThrough", "")).strip() or extract_deadline_from_text(page_text)
+                    work_mode = detect_work_mode_from_text(f"{title} {location} {description}")
+                    jobs.append({
+                        "id": f"duunitori:{reference_id}", "company": employer or "Duunitori", "employer": employer,
+                        "source": "Duunitori", "source_type": "aggregator", "title": title, "location": location,
+                        "work_mode": work_mode, "deadline": deadline, "posted_on": posted_on, "description": description, "url": href,
+                    })
+                except Exception as error:
+                    error_count += 1
+                    debug_print(f"Duunitori detail failed: {href} — {error}")
+        except Exception as error:
+            error_count += 1
+            print(f"Could not fetch Duunitori search: {search_url} — {error}")
+
+    status, base_note = source_health_status(total_jobs_read, error_count)
+    note = f"{base_note}; {candidate_count} title-prefilter candidate(s)"
+    update_source_stats("Duunitori", total_jobs_read, len(jobs), status=status, note=note)
+    print(f"Duunitori found: {len(jobs)} (from {total_jobs_read} listed, {candidate_count} candidates)")
+    return jobs
 
 def format_match_summary(matches, limit_groups=3, limit_words=4):
     if not matches:
@@ -1375,6 +2797,12 @@ def print_job_card(job, analysis):
     if analysis["hard_domain_detected"]:
         print("- Text may contain a hard experience requirement")
 
+    if analysis.get("english_working_language_found"):
+        print("- English appears to be a strong daily working-language requirement")
+
+    if analysis.get("technical_degree_required"):
+        print("- Specific technical degree appears to be required")
+
     print(f"\nLink: {job['url']}")
 
 
@@ -1386,13 +2814,38 @@ def main():
     print(f"Job Radar run: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("Checking jobs...")
 
+
     seen_jobs = load_seen_jobs()
 
-    finavia_jobs = fetch_finavia_jobs()
-    kuntarekry_jobs = fetch_kuntarekry_jobs()
-    valtiolle_jobs = fetch_valtiolle_jobs()
-    generic_jobs = fetch_generic_jobs()
-    duunitori_jobs = fetch_duunitori_jobs()
+    finavia_jobs = fetch_finavia_jobs() if source_enabled("Finavia") else []
+    kuntarekry_jobs = fetch_kuntarekry_jobs() if source_enabled("Kuntarekry") else []
+    valtiolle_jobs = fetch_valtiolle_jobs() if source_enabled("Valtiolle") else []
+    generic_jobs = fetch_generic_jobs() if source_enabled("Company career pages") else []
+    duunitori_jobs = fetch_duunitori_jobs() if source_enabled("Duunitori") else []
+
+    manpower_jobs = fetch_manpower_jobs() if source_enabled("Manpower") else []
+    barona_jobs = fetch_barona_jobs() if source_enabled("Barona") else []
+    atalent_jobs = fetch_atalent_jobs() if source_enabled("aTalent") else []
+    ict_direct_jobs = fetch_ict_direct_jobs() if source_enabled("ICT DIRECT") else []
+    adecco_jobs = fetch_adecco_jobs() if source_enabled("Adecco") else []
+    staffpoint_jobs = fetch_staffpoint_jobs() if source_enabled("StaffPoint") else []
+    adiente_jobs = fetch_adiente_jobs() if source_enabled("Adiente") else []
+    eezy_jobs = fetch_eezy_jobs() if source_enabled("Eezy") else []
+
+    all_source_names = [
+        "Finavia", "Kuntarekry", "Valtiolle", "Duunitori", "Company career pages", "Manpower", "Barona", "aTalent",
+        "ICT DIRECT", "Adecco", "StaffPoint", "Adiente", "Eezy",
+    ]
+
+    for source_name in all_source_names:
+        if not source_enabled(source_name):
+            update_source_stats(
+                source_name,
+                0,
+                0,
+                status="OFF",
+                note=f"disabled in {SOURCE_MODE} mode"
+            )
 
     all_jobs = []
     all_jobs.extend(finavia_jobs)
@@ -1400,33 +2853,96 @@ def main():
     all_jobs.extend(valtiolle_jobs)
     all_jobs.extend(generic_jobs)
     all_jobs.extend(duunitori_jobs)
-    deduped_jobs = []
-    seen_dedupe_keys = set()
+
+    all_jobs.extend(manpower_jobs)
+    all_jobs.extend(barona_jobs)
+    all_jobs.extend(atalent_jobs)
+    all_jobs.extend(ict_direct_jobs)
+    all_jobs.extend(adecco_jobs)
+    all_jobs.extend(staffpoint_jobs)
+    all_jobs.extend(adiente_jobs)
+    all_jobs.extend(eezy_jobs)
+
+    dedupe_map = {}
+    relaxed_dedupe_map = {}
+    no_key_jobs = []
     duplicates_removed = 0
 
     for job in all_jobs:
-        title_key = normalize_job_title_for_dedupe(job.get("title", ""))
+        dedupe_key = get_dedupe_key(job)
+        relaxed_key = get_relaxed_dedupe_key(job)
 
-        if not title_key:
-            deduped_jobs.append(job)
+        if not dedupe_key:
+            no_key_jobs.append(job)
             continue
 
-        if title_key in seen_dedupe_keys:
+        existing_job = dedupe_map.get(dedupe_key)
+
+        if existing_job is not None:
             duplicates_removed += 1
+
+            if get_source_priority(job) < get_source_priority(existing_job):
+                dedupe_map[dedupe_key] = job
+
+                if relaxed_key:
+                    relaxed_dedupe_map[relaxed_key] = dedupe_key
+
             continue
 
-        seen_dedupe_keys.add(title_key)
-        deduped_jobs.append(job)
+        existing_exact_key = (
+            relaxed_dedupe_map.get(relaxed_key)
+            if relaxed_key
+            else None
+        )
 
-    all_jobs = deduped_jobs
+        if existing_exact_key:
+            existing_job = dedupe_map[existing_exact_key]
 
-    print("\nSource summary:")    
+            existing_employer = normalize_company_for_dedupe(
+                get_job_employer(existing_job)
+            )
+            new_employer = normalize_company_for_dedupe(
+                get_job_employer(job)
+            )
 
+            employers_compatible = (
+                not existing_employer
+                or not new_employer
+                or existing_employer == new_employer
+            )
+
+            if employers_compatible:
+                duplicates_removed += 1
+
+                if get_source_priority(job) < get_source_priority(existing_job):
+                    del dedupe_map[existing_exact_key]
+
+                    dedupe_map[dedupe_key] = job
+                    relaxed_dedupe_map[relaxed_key] = dedupe_key
+
+                continue
+
+        dedupe_map[dedupe_key] = job
+
+        if relaxed_key:
+            relaxed_dedupe_map[relaxed_key] = dedupe_key
+
+    all_jobs = list(dedupe_map.values()) + no_key_jobs
+
+    print("\nSource summary:")
     print(f"- Finavia: {len(finavia_jobs)} job(s)")
     print(f"- Kuntarekry: {len(kuntarekry_jobs)} job(s)")
     print(f"- Valtiolle: {len(valtiolle_jobs)} job(s)")
     print(f"- Company career pages: {len(generic_jobs)} job(s)")
     print(f"- Duunitori: {len(duunitori_jobs)} job(s)")
+    print(f"- Manpower: {len(manpower_jobs)} job(s)")
+    print(f"- Barona: {len(barona_jobs)} job(s)")
+    print(f"- aTalent: {len(atalent_jobs)} job(s)")
+    print(f"- ICT DIRECT: {len(ict_direct_jobs)} job(s)")
+    print(f"- Adecco: {len(adecco_jobs)} job(s)")
+    print(f"- StaffPoint: {len(staffpoint_jobs)} job(s)")
+    print(f"- Adiente: {len(adiente_jobs)} job(s)")
+    print(f"- Eezy: {len(eezy_jobs)} job(s)")
     print(f"- Duplicates removed: {duplicates_removed}")
     print(f"- Total after filters: {len(all_jobs)} job(s)\n")
 
@@ -1448,12 +2964,25 @@ def main():
         if analysis["recommendation"] == "Review":
             review_jobs.append((job, analysis))
 
-        if job["id"] in seen_jobs:
+        canonical_seen_key = get_dedupe_key(job)
+
+        already_seen = (
+            job["id"] in seen_jobs
+            or (
+                canonical_seen_key
+                and f"jobkey:{canonical_seen_key}" in seen_jobs
+            )
+        )
+
+        if already_seen:
             continue
 
         print_job_card(job, analysis)
 
         seen_jobs.add(job["id"])
+
+        if canonical_seen_key:
+            seen_jobs.add(f"jobkey:{canonical_seen_key}")
 
         if analysis["recommendation"] in ["Apply", "Maybe"]:
             new_jobs.append((job, analysis))
