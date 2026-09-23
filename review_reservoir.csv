@@ -1,10 +1,13 @@
-﻿date_seen,company,title,location,score,recommendation,risk_groups,trigger_terms,url
-2026-08-21,Finavia,"Hankintapäällikkö, Vantaa","Hankintapäällikkö, Vantaa",63,Review,seniority risk,"johtava, päällikkö",https://finavia.rekrytointi.com/paikat/index.php?jid=1100&key=&o=A_RJ&rspvt=gok7u5svt5sk4k8w848c0wcokg88w0o
-2026-08-21,Kuntarekry,"Palveluasiantuntija, Lähipalvelut",Monetra Oy,36,Review,,,https://www.kuntarekry.fi/fi/tyopaikat/palveluasiantuntija-lahipalvelut-736382/
-2026-08-28,Valtiolle,Ylipäivystäjä,Hätäkeskuslaitos,51,Review,seniority risk,päällikkö,https://valtiolle.fi/fi/tyopaikat/ylipaivystaja-21612/
-2026-08-28,Valtiolle,Maanmittausinsinööri,Maanmittauslaitos,51,Review,seniority risk,päällikkö,https://valtiolle.fi/fi/tyopaikat/maanmittausinsinoori-24302/
-2026-09-11,Kuntarekry,Hankinta-asiantuntija,Vihdin kunta,54,Review,seniority risk,päällikkö,https://www.kuntarekry.fi/fi/tyopaikat/hankinta-asiantuntija-vih-05-9-26/
-2026-09-11,Valtiolle,Pääkirjanpitäjä,Valtion talous- ja henkilöstöhallinnon palvelukeskus Palkeet,100,Review,data / BI / analytics risk,etl,https://valtiolle.fi/fi/tyopaikat/paakirjanpitaja-24867/
-2026-09-11,Valtiolle,HR-suunnittelija,Verohallinto,37,Review,"seniority risk, domain experience risk","päällikkö, verohallinto, verotus",https://valtiolle.fi/fi/tyopaikat/hr-suunnittelija-24779/
-2026-09-18,Valtiolle,Johtava asiantuntija (teollisuuspolitiikka),Työ- ja elinkeinoministeriö,61,Review,seniority risk,"johtava asiantuntija, johtava",https://valtiolle.fi/fi/tyopaikat/johtava-asiantuntija-teollisuuspolitiikka-24761/
-2026-09-18,Valtiolle,"Talousasiantuntija, vt 5",Valtion talous- ja henkilöstöhallinnon palvelukeskus Palkeet,94,Review,"seniority risk, data / BI / analytics risk","päällikkö, etl",https://valtiolle.fi/fi/tyopaikat/talousasiantuntija-vt-5-24762/
+﻿dedupe_key,date_seen,company,title,location,score,recommendation,risk_groups,trigger_terms,url
+,2026-08-28,Valtiolle,Ylipäivystäjä,Hätäkeskuslaitos,51,Review,seniority risk,päällikkö,https://valtiolle.fi/fi/tyopaikat/ylipaivystaja-21612/
+,2026-08-28,Valtiolle,Maanmittausinsinööri,Maanmittauslaitos,51,Review,seniority risk,päällikkö,https://valtiolle.fi/fi/tyopaikat/maanmittausinsinoori-24302/
+,2026-09-11,Kuntarekry,Hankinta-asiantuntija,Vihdin kunta,54,Review,seniority risk,päällikkö,https://www.kuntarekry.fi/fi/tyopaikat/hankinta-asiantuntija-vih-05-9-26/
+,2026-09-11,Valtiolle,Pääkirjanpitäjä,Valtion talous- ja henkilöstöhallinnon palvelukeskus Palkeet,100,Review,data / BI / analytics risk,etl,https://valtiolle.fi/fi/tyopaikat/paakirjanpitaja-24867/
+,2026-09-11,Valtiolle,HR-suunnittelija,Verohallinto,37,Review,"seniority risk, domain experience risk","päällikkö, verohallinto, verotus",https://valtiolle.fi/fi/tyopaikat/hr-suunnittelija-24779/
+,2026-09-18,Valtiolle,Johtava asiantuntija (teollisuuspolitiikka),Työ- ja elinkeinoministeriö,61,Review,seniority risk,"johtava asiantuntija, johtava",https://valtiolle.fi/fi/tyopaikat/johtava-asiantuntija-teollisuuspolitiikka-24761/
+,2026-09-18,Valtiolle,"Talousasiantuntija, vt 5",Valtion talous- ja henkilöstöhallinnon palvelukeskus Palkeet,94,Review,"seniority risk, data / BI / analytics risk","päällikkö, etl",https://valtiolle.fi/fi/tyopaikat/talousasiantuntija-vt-5-24762/
+finavia|hankintapäällikkö vantaa|vantaa,2026-09-23,Finavia,"Hankintapäällikkö, Vantaa","Hankintapäällikkö, Vantaa",28,Review,seniority risk,"johtava, päällikkö",https://finavia.rekrytointi.com/paikat/index.php?jid=1143&key=&o=A_RJ&rspvt=rsv0m931hn48skkokw0kc4csgg80sw4
+?|veni energia service specialist project specialist asiakaspalvelu 2 paikkaa|tampere,2026-09-23,aTalent,"VENI Energia Service Specialist / Project Specialist, Asiakaspalvelu (2 paikkaa)","Tampere, Hämeenlinna",100,Review,"seniority risk, domain experience risk","johtava, sähkömarkkina, energia-ala",https://atalent.fi/open-position/veni-energia-service-specialist-project-specialist-asiakaspalvelu-2-paikkaa-383581
+?|avoin hakemus hr konsultin työtehtäviin atalentille|helsinki,2026-09-23,aTalent,Avoin hakemus HR-konsultin työtehtäviin aTalentille,Helsinki,48,Review,,,https://atalent.fi/open-position/atalent-avoin-hakemus-hr-konsultin-tyotehtaviin-atalentille-169466
+?|d365 ja power platform asiantuntija|vantaa,2026-09-23,Adecco,D365- ja Power Platform asiantuntija,Vantaa,31,Review,"seniority risk, data / BI / analytics risk","johtava, power bi,  bi ",https://recruitment.fi.adecco.com/jobs/8366376-d365-ja-power-platform-asiantuntija
+?|senior financial controller|helsinki,2026-09-23,Adiente,Senior Financial Controller,Helsinki,51,Review,payroll / TE domain,palkanlaskenta,https://ats.talentadore.com/apply/senior-financial-controller/ZAYBvW
