@@ -257,6 +257,45 @@ PROFILE_KEYWORDS = {
     ],
 }
 
+OPERATIONS_COORDINATION_CORE = {
+    "operations": ["operations", "operational", "operatiivinen", "service operations", "operational support", "operations coordinator", "operations specialist", "service delivery"],
+    "coordination": ["coordination", "coordinator", "koordinaattori", "service coordinator", "palvelukoordinaattori", "process coordinator", "prosessikoordinaattori", "project coordinator", "projektikoordinaattori", "implementation coordinator"],
+    "process": ["process", "prosessi", "process specialist", "prosessi-asiantuntija", "process development", "prosessien kehittäminen", "continuous improvement", "jatkuva parantaminen", "palveluprosessi", "palveluprosessit", "asiakasprosessit"],
+    "stakeholders": ["stakeholder", "stakeholders", "sidosryhmä", "sidosryhmäyhteistyö", "cross-functional collaboration", "moniammatillinen yhteistyö"],
+    "systems": ["system", "systems", "järjestelmä", "erp", "application support", "system support", "key user", "pääkäyttäjä", "käyttövaltuushallinta"],
+    "documentation": ["documentation", "dokumentointi", "document management", "dokumentinhallinta", "ohjeistus", "tiedonhallinta"],
+    "issue resolution": ["issue resolution", "problem solving", "ongelmanratkaisu", "poikkeamien selvittäminen", "incident handling", "case management", "asianhallinta"],
+    "support / service": ["business support", "project support", "projektituki", "customer support", "internal support", "service specialist", "palveluasiantuntija", "customer operations", "asiakaspalvelu"],
+    "implementation / onboarding": ["implementation", "käyttöönotto", "onboarding", "customer onboarding", "client onboarding", "perehdytys"],
+    "workflow monitoring": ["workflow", "workflow monitoring", "process monitoring", "prosessin seuranta", "työjonojen seuranta"],
+}
+
+SYSTEM_ROLE_TITLES = [
+    "järjestelmäasiantuntija", "system specialist", "application specialist", "erp specialist", "sap specialist",
+]
+
+TECHNICAL_SYSTEM_MARKERS = [
+    "configuration", "konfigurointi", "abap", "api", "integration development", "integraatiokehitys",
+    "server", "network", "cloud infrastructure", "devops", "linux", "database administration",
+    "database administrator", "architecture", "technical implementation", "tekninen toteutus",
+]
+
+SAP_CONSULTING_ROLE_MARKERS = [
+    "sap consultant", "sap-konsultti", "sap konsultti", "sap logistics consultant", "sap logistiikan konsultti",
+    "sap functional consultant", "sap architect", "sap arkkitehti", "solution architect", "ratkaisuarkkitehti",
+    "pre-sales architect", "pre-sales arkkitehti", "presales architect", "pre-sales consultant", "presales consultant",
+]
+
+SAP_CONSULTING_TECH_MARKERS = [
+    "configuration", "konfigurointi", "implementation", "technical implementation", "tekninen toteutus",
+    "architecture", "arkkitehtuuri", "integration", "integraatio", "integration development", "integraatiokehitys",
+    "consulting", "konsultointi", "pre-sales", "presales", "abap", "api",
+]
+
+STRONG_OPERATIONS_CORE_GROUPS = {
+    "operations", "coordination", "stakeholders", "documentation", "issue resolution", "support / service", "workflow monitoring",
+}
+
 POSITIVE_KEYWORDS = {
     "SAP / P2P / invoices": [
         "sap", "sap mm", "sap ariba", "p2p", "purchase to pay", "procure to pay", "tarpeesta maksuun", "ostolasku",
@@ -805,43 +844,71 @@ def detect_hard_gates(job):
 def calculate_fit_score(job):
     text = f"{job.get('title', '')} {job.get('location', '')} {job.get('description', '')}"
     text_lower = normalize(text)
+    title_lower = normalize(job.get("title", ""))
 
     gates = detect_hard_gates(job)
 
     positive_matches = find_matches(text, POSITIVE_KEYWORDS)
     profile_matches = find_matches(text, PROFILE_KEYWORDS)
+    core_matches = find_matches(text, OPERATIONS_COORDINATION_CORE)
     negative_matches = find_matches(text, NEGATIVE_KEYWORDS)
 
     if gates["hard_skip_matches"]:
         negative_matches.extend(gates["hard_skip_matches"])
 
+    core_match_count = len(core_matches)
+    core_keywords = sorted({
+        keyword
+        for match in core_matches
+        for keyword in match["keywords"]
+    })
+
+    # Keep the existing output format, but surface the new core fit in Why it may fit.
+    if core_match_count >= 2:
+        positive_matches.insert(0, {
+            "group": "operations / coordination / process core",
+            "keywords": core_keywords[:8],
+        })
+
     score = 30
 
-    # Strong profile-based scoring
+    # Profile scoring: SAP/ERP remains useful evidence, but no longer defines the profession.
     for match in profile_matches:
         group = match["group"]
 
         if group == "ERP / talous / process support":
-            score += 30
+            score += 16
         elif group == "Application / system / back office support":
-            score += 28
+            score += 18
         elif group == "Administration / coordination":
-            score += 22
+            score += 18
         elif group == "Työllisyys / employer services / integration":
             score += 25
         elif group == "KYC / compliance support":
             score += 18
 
-    # Existing softer positive signals
+    # Main identity: operations + coordination + process + stakeholder/service/system work.
+    if core_match_count >= 4:
+        score += 44
+    elif core_match_count == 3:
+        score += 34
+    elif core_match_count == 2:
+        score += 18
+    elif core_match_count == 1:
+        score += 5
+
+    # Existing softer positive signals. SAP/P2P is supporting evidence, not the primary identity.
     for match in positive_matches:
         group = match["group"]
 
+        if group == "operations / coordination / process core":
+            continue
         if group == "SAP / P2P / invoices":
-            score += 18
+            score += 8
         elif group == "resource planning":
-            score += 15
+            score += 12
         elif group == "process development":
-            score += 10
+            score += 8
         elif group == "coordination / project":
             score += 6
         elif group == "location":
@@ -876,7 +943,7 @@ def calculate_fit_score(job):
         score -= 20
 
     seniority_risk_detected = any(
-        keyword in normalize(job.get("title", ""))
+        keyword in title_lower
         for match in negative_matches
         if match["group"] == "seniority risk"
         for keyword in match["keywords"]
@@ -892,31 +959,56 @@ def calculate_fit_score(job):
         for match in negative_matches
     )
 
-    # Hard gate cap: final score cannot exceed gate limit
+    # Anti-overfit: generic system titles are not strong matches when the real work is technical.
+    technical_system_role = any(keyword_found(title_lower, marker) for marker in SYSTEM_ROLE_TITLES)
+    technical_system_content = any(keyword_found(text_lower, marker) for marker in TECHNICAL_SYSTEM_MARKERS)
+    technical_system_overfit = technical_system_role and technical_system_content and core_match_count < 3
+
+    # SAP consulting / architecture / pre-sales must not outrank real operations roles just because
+    # the vacancy contains ERP/process/implementation vocabulary. Require a genuine operations/service layer.
+    core_groups = {match["group"] for match in core_matches}
+    strong_operations_layer = len(core_groups & STRONG_OPERATIONS_CORE_GROUPS) >= 2
+    sap_consulting_role = any(keyword_found(text_lower, marker) for marker in SAP_CONSULTING_ROLE_MARKERS)
+    sap_consulting_technical = any(keyword_found(text_lower, marker) for marker in SAP_CONSULTING_TECH_MARKERS)
+    sap_consulting_overfit = sap_consulting_role and sap_consulting_technical and not strong_operations_layer
+
+    # Hard gate cap: final score cannot exceed gate limit.
     score = max(0, min(100, score))
     score = min(score, gates["gate_limit"])
 
+    if technical_system_overfit:
+        score = min(score, 50)
+    if sap_consulting_overfit:
+        score = min(score, 55)
+
     if gates["english_working_language_found"]:
         score = max(0, score - 8)
+
     if hard_reject_domain_detected:
         recommendation = "Skip"
     elif "wrong geography + on-site/location-bound work" in gates["gate_reasons"]:
         recommendation = "Skip"
     elif "wrong geography" in gates["gate_reasons"]:
         recommendation = "Skip"
-    elif gates["gate_limit"] <= 55 and positive_matches:
+    elif technical_system_overfit:
+        recommendation = "Review" if (positive_matches or core_matches) else "Skip"
+    elif sap_consulting_overfit:
+        recommendation = "Review" if (positive_matches or core_matches) else "Skip"
+    elif gates["gate_limit"] <= 55 and (positive_matches or core_matches):
         recommendation = "Review"
-    elif data_bi_risk_detected and positive_matches and score >= 25:
+    elif data_bi_risk_detected and (positive_matches or core_matches) and score >= 25:
         recommendation = "Review"
-    elif (domain_risk_detected or seniority_risk_detected) and positive_matches and score >= 25:
+    elif (domain_risk_detected or seniority_risk_detected) and (positive_matches or core_matches) and score >= 25:
         recommendation = "Review"
+    elif score >= 75 and core_match_count >= 3:
+        recommendation = "Apply"
     elif score >= 75 and profile_matches:
         recommendation = "Apply"
     elif score >= 75:
         recommendation = "Maybe"
     elif score >= 55:
         recommendation = "Maybe"
-    elif positive_matches and score >= 35:
+    elif (positive_matches or core_matches) and score >= 35:
         recommendation = "Review"
     else:
         recommendation = "Skip"
@@ -926,6 +1018,10 @@ def calculate_fit_score(job):
         "recommendation": recommendation,
         "positive_matches": positive_matches,
         "profile_matches": profile_matches,
+        "core_matches": core_matches,
+        "core_match_count": core_match_count,
+        "technical_system_overfit": technical_system_overfit,
+        "sap_consulting_overfit": sap_consulting_overfit,
         "negative_matches": negative_matches,
         "domain_risk_detected": domain_risk_detected,
         "seniority_risk_detected": seniority_risk_detected,
