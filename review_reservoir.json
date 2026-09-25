@@ -310,5 +310,121 @@
       }
     ],
     "url": "https://ats.talentadore.com/apply/senior-financial-controller/ZAYBvW"
+  },
+  {
+    "dedupe_key": "verohallinto|toiminnallinen asiantuntija vt 12|verohallinto",
+    "date_seen": "2026-09-25",
+    "company": "Valtiolle",
+    "title": "Toiminnallinen asiantuntija, vt.12",
+    "location": "Verohallinto",
+    "score": 44,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "domain experience risk"
+    ],
+    "trigger_terms": [
+      "johtava asiantuntija",
+      "johtava",
+      "päällikkö",
+      "verohallinto",
+      "verotus"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "johtava asiantuntija",
+          "johtava",
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "domain experience risk",
+        "keywords": [
+          "verohallinto",
+          "verotus"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/toiminnallinen-asiantuntija-vt.12-25072/"
+  },
+  {
+    "dedupe_key": "verohallinto|pääanalyytikko vt 14|verohallinto",
+    "date_seen": "2026-09-25",
+    "company": "Valtiolle",
+    "title": "Pääanalyytikko, vt.14",
+    "location": "Verohallinto",
+    "score": 78,
+    "recommendation": "Review",
+    "risk_groups": [
+      "domain experience risk",
+      "data / BI / analytics risk"
+    ],
+    "trigger_terms": [
+      "verohallinto",
+      "sql",
+      "databricks",
+      "analytiikka"
+    ],
+    "risks": [
+      {
+        "group": "domain experience risk",
+        "keywords": [
+          "verohallinto"
+        ]
+      },
+      {
+        "group": "data / BI / analytics risk",
+        "keywords": [
+          "sql",
+          "databricks",
+          "analytiikka"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/paaanalyytikko-vt.14-25086/"
+  },
+  {
+    "dedupe_key": "lupa- ja valvontavirasto|erityisasiantuntija työsuojelu|lupa- ja valvontavirasto",
+    "date_seen": "2026-09-25",
+    "company": "Valtiolle",
+    "title": "Erityisasiantuntija (työsuojelu)",
+    "location": "Lupa- ja valvontavirasto",
+    "score": 71,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "payroll / TE domain",
+      "data / BI / analytics risk"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "lainsäädäntö",
+      "power bi",
+      " bi "
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "payroll / TE domain",
+        "keywords": [
+          "lainsäädäntö"
+        ]
+      },
+      {
+        "group": "data / BI / analytics risk",
+        "keywords": [
+          "power bi",
+          " bi "
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/erityisasiantuntija-tyosuojelu-24415/"
   }
 ]

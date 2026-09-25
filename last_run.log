@@ -1,7 +1,7 @@
-Job Radar run: 2026-09-23 13:03:42
+Job Radar run: 2026-09-25 13:23:50
 Checking jobs...
-Kuntarekry found: 1
-Valtiolle found: 7
+Kuntarekry found: 2
+Valtiolle found: 14
 Could not fetch job description: https://www.turunvesihuolto.fi/tyopaikat/ — 404 Client Error: Not Found for url: https://www.turunvesihuolto.fi/tyopaikat/
 Company career pages found: 0
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=sap — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=sap
@@ -9,77 +9,56 @@ Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=koordinaat
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=taloushallinto — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=taloushallinto
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi
 Duunitori found: 0 (from 0 listed, 0 candidates)
-Manpower found: 5 (from 75 listed, 5 candidates)
-Barona found: 8 (from 198 listed, 8 candidates)
-aTalent found: 9 (from 24 listed, 10 candidates)
+Manpower found: 4 (from 76 listed, 4 candidates)
+Barona found: 11 (from 201 listed, 11 candidates)
+aTalent found: 10 (from 29 listed, 12 candidates)
 ICT DIRECT found: 3 (from 8 listed, 3 candidates)
-Adecco found: 6 (from 18 listed, 6 candidates)
+Could not fetch Adecco jobs: 400 Client Error: Bad Request for url: https://recruitment.fi.adecco.com/jobs
+Adecco found: 0 (from 0 listed, 0 candidates)
 StaffPoint found: 2 (from 14 listed, 2 candidates)
 Adiente found: 1 (from 4 listed, 1 candidates)
-Eezy found: 7 (from 23 listed, 7 candidates)
+Eezy found: 7 (from 21 listed, 7 candidates)
 
 Source summary:
 - Finavia: 3 job(s)
-- Kuntarekry: 1 job(s)
-- Valtiolle: 7 job(s)
+- Kuntarekry: 2 job(s)
+- Valtiolle: 14 job(s)
 - Company career pages: 0 job(s)
 - Duunitori: 0 job(s)
-- Manpower: 5 job(s)
-- Barona: 8 job(s)
-- aTalent: 9 job(s)
+- Manpower: 4 job(s)
+- Barona: 11 job(s)
+- aTalent: 10 job(s)
 - ICT DIRECT: 3 job(s)
-- Adecco: 6 job(s)
+- Adecco: 0 job(s)
 - StaffPoint: 2 job(s)
 - Adiente: 1 job(s)
 - Eezy: 7 job(s)
-- Duplicates removed: 7
+- Duplicates removed: 12
 - Total after filters: 45 job(s)
 
 
 Source health report:
 - Finavia: read 3, matched 3 — OK. read OK
-- Kuntarekry: read 24, matched 1 — OK. read OK
-- Valtiolle: read 24, matched 7 — OK. read OK
+- Kuntarekry: read 24, matched 2 — OK. read OK
+- Valtiolle: read 24, matched 14 — OK. read OK
 - Company career pages: read 3, matched 0 — OK. checked configured generic pages; matched job links only
 - Duunitori: read 0, matched 0 — WARNING. 4 request(s) failed; 0 title-prefilter candidate(s)
-- Manpower: read 75, matched 5 — OK. read OK; 5 title-prefilter candidate(s)
-- Barona: read 198, matched 8 — OK. read OK; 14 listing page(s), 8 title-prefilter candidate(s)
-- aTalent: read 24, matched 9 — OK. read OK; 10 title-prefilter candidate(s)
+- Manpower: read 76, matched 4 — OK. read OK; 4 title-prefilter candidate(s)
+- Barona: read 201, matched 11 — OK. read OK; 15 listing page(s), 11 title-prefilter candidate(s)
+- aTalent: read 29, matched 10 — OK. read OK; 12 title-prefilter candidate(s)
 - ICT DIRECT: read 8, matched 3 — OK. read OK; 3 title-prefilter candidate(s)
-- Adecco: read 18, matched 6 — OK. read OK; 6 title-prefilter candidate(s)
+- Adecco: read 0, matched 0 — WARNING. 1 request(s) failed; 0 title-prefilter candidate(s)
 - StaffPoint: read 14, matched 2 — OK. read OK; 2 title-prefilter candidate(s)
 - Adiente: read 4, matched 1 — OK. read OK; 1 title-prefilter candidate(s)
-- Eezy: read 23, matched 7 — OK. read OK; 7 title-prefilter candidate(s); listing data retained if TalentAdore detail fails
+- Eezy: read 21, matched 7 — OK. read OK; 7 title-prefilter candidate(s); listing data retained if TalentAdore detail fails
 
 ======================================================================
-Kuntarekry — Taloushallinnon assistentti
+Kuntarekry — Projektipäällikkö
 ======================================================================
-Location: Pielaveden kunta
-Posted: 23.9.2026
-Deadline: 19.10.2026
-Fit score: 35/100
-Recommendation: Skip
-Gate limit: 35/100
-Gate reasons:
-- wrong geography + on-site/location-bound work
-
-Why it may fit:
-- SAP / P2P / invoices: ostolasku, lasku
-- process development: koulutus
-- location: etätyö
-
-Risks:
-- No obvious hard-domain risks found
-
-Link: https://www.kuntarekry.fi/fi/tyopaikat/taloushallinnon-assistentti-pie-01-9-26/
-
-======================================================================
-Valtiolle — Ruokapalveluvastaava (Lagmansgårdenin koulukoti)
-======================================================================
-Location: Valtion koulukodit
-Posted: Unknown
-Deadline: Unknown
-Fit score: 0/100
+Location: Kajaanin Ammattikorkeakoulu Oy
+Posted: 25.9.2026
+Deadline: 7.10.2026
+Fit score: 20/100
 Recommendation: Skip
 Gate limit: 20/100
 Gate reasons:
@@ -87,24 +66,25 @@ Gate reasons:
 - wrong geography + on-site/location-bound work
 
 Why it may fit:
-- SAP / P2P / invoices: lasku
-- coordination / project: muutos
+- operations / coordination / process core: järjestelmä, prosessi
+- process development: koulutus, prosessi
 - location: etätyö
 
 Risks:
-- hard reject domain: lastensuojelu, vastaava ohjaaja
-- kitchen_cleaning_production: hygieniapassi
+- seniority risk: päällikkö
+- cyber_infrastructure: siem
+- Seniority / too high level risk detected
 - Hard reject domain detected
 
-Link: https://valtiolle.fi/fi/tyopaikat/ruokapalveluvastaava-lagmansgardenin-koulukoti-25139/
+Link: https://www.kuntarekry.fi/fi/tyopaikat/projektipaallikko-744024/
 
 ======================================================================
-Valtiolle — Keittiöapulainen (Lagmansgårdenin koulukoti)
+Kuntarekry — Erityisasiantuntija, tekoäly
 ======================================================================
-Location: Valtion koulukodit
-Posted: Unknown
-Deadline: Unknown
-Fit score: 0/100
+Location: Savon koulutuskuntayhtymä
+Posted: 25.9.2026
+Deadline: 9.10.2026
+Fit score: 20/100
 Recommendation: Skip
 Gate limit: 20/100
 Gate reasons:
@@ -112,21 +92,20 @@ Gate reasons:
 - wrong geography + on-site/location-bound work
 
 Why it may fit:
+- operations / coordination / process core: järjestelmä, käyttöönotto
 - process development: koulutus
-- coordination / project: muutos
-- location: etätyö
+- coordination / project: fasilitointi
 
 Risks:
-- hard reject domain: lastensuojelu, vastaava ohjaaja
-- kitchen_cleaning_production: keittiö, astiahuolto, omavalvonta, hygieniapassi
+- cyber_infrastructure: tietoturva
 - Hard reject domain detected
 
-Link: https://valtiolle.fi/fi/tyopaikat/keittioapulainen-lagmansgardenin-koulukoti-25124/
+Link: https://www.kuntarekry.fi/fi/tyopaikat/erityisasiantuntija-tekoaly-sakky-00-58-26/
 
 ======================================================================
-Valtiolle — Suunnittelija
+Valtiolle — Järjestelmäasiantuntija
 ======================================================================
-Location: Opetus- ja kulttuuriministeriö
+Location: Valtion tieto- ja viestintätekniikkakeskus Valtori
 Posted: Unknown
 Deadline: Unknown
 Fit score: 35/100
@@ -136,22 +115,46 @@ Gate reasons:
 - wrong geography + on-site/location-bound work
 
 Why it may fit:
-- operations / coordination / process core: asianhallinta, järjestelmä, pääkäyttäjä
-- process development: koulutus
-- location: helsinki, hybridi, hybrid, etätyö
+- operations / coordination / process core: dokumentointi, järjestelmä
+- process development: dokumentointi, koulutus
+- location: helsinki, etätyö
 
 Risks:
 - No obvious hard-domain risks found
+- Text may contain a hard experience requirement
 
-Link: https://valtiolle.fi/fi/tyopaikat/suunnittelija-25144/
+Link: https://valtiolle.fi/fi/tyopaikat/jarjestelmaasiantuntija-25204/
+
+======================================================================
+aTalent — S1 Networks Tietoverkkoasiantuntija
+======================================================================
+Location: Helsinki
+Posted: Unknown
+Deadline: 11.10.2026
+Fit score: 20/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+
+Why it may fit:
+- operations / coordination / process core: asiakaspalvelu, järjestelmä, ongelmanratkaisu, perehdytys
+- process development: perehdytys, prosessi
+- coordination / project: muutos, asiakaspalvelu
+
+Risks:
+- technical_infrastructure: dns, palvelinympäristö
+- Hard reject domain detected
+
+Link: https://atalent.fi/open-position/s1-networks-tietoverkkoasiantuntija-385088
 
 Recommendation summary:
 - 🟢 APPLY: 5
 - 🟡 MAYBE: 0
-- 🔵 REVIEW: 5
-- Review reservoir candidates: 5
-- ⚪ SKIP: 35
+- 🔵 REVIEW: 7
+- Review reservoir candidates: 7
+- ⚪ SKIP: 33
 No new jobs found.
 Checked 45 jobs total.
-Review reservoir saved: 12 item(s).
+Review reservoir saved: 15 item(s).
 Weekly review email sent.
