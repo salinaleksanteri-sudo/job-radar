@@ -1,7 +1,7 @@
-Job Radar run: 2026-10-02 14:33:41
+Job Radar run: 2026-10-09 15:04:36
 Checking jobs...
-Kuntarekry found: 4
-Valtiolle found: 11
+Kuntarekry found: 3
+Valtiolle found: 8
 Could not fetch job description: https://www.turunvesihuolto.fi/tyopaikat/ — 404 Client Error: Not Found for url: https://www.turunvesihuolto.fi/tyopaikat/
 Company career pages found: 0
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=sap — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=sap
@@ -9,54 +9,54 @@ Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=koordinaat
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=taloushallinto — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=taloushallinto
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi
 Duunitori found: 0 (from 0 listed, 0 candidates)
-Manpower found: 3 (from 77 listed, 3 candidates)
-Barona found: 20 (from 203 listed, 20 candidates)
-aTalent found: 11 (from 25 listed, 13 candidates)
+Manpower found: 9 (from 71 listed, 9 candidates)
+Barona found: 24 (from 215 listed, 24 candidates)
+aTalent found: 10 (from 24 listed, 11 candidates)
 ICT DIRECT found: 4 (from 9 listed, 4 candidates)
-Adecco found: 4 (from 20 listed, 4 candidates)
+Adecco found: 5 (from 20 listed, 5 candidates)
 StaffPoint found: 3 (from 16 listed, 3 candidates)
-Adiente found: 2 (from 5 listed, 2 candidates)
-Eezy found: 8 (from 24 listed, 8 candidates)
+Adiente found: 1 (from 4 listed, 1 candidates)
+Eezy found: 5 (from 24 listed, 5 candidates)
 
 Source summary:
-- Finavia: 2 job(s)
-- Kuntarekry: 4 job(s)
-- Valtiolle: 11 job(s)
+- Finavia: 4 job(s)
+- Kuntarekry: 3 job(s)
+- Valtiolle: 8 job(s)
 - Company career pages: 0 job(s)
 - Duunitori: 0 job(s)
-- Manpower: 3 job(s)
-- Barona: 20 job(s)
-- aTalent: 11 job(s)
+- Manpower: 9 job(s)
+- Barona: 24 job(s)
+- aTalent: 10 job(s)
 - ICT DIRECT: 4 job(s)
-- Adecco: 4 job(s)
+- Adecco: 5 job(s)
 - StaffPoint: 3 job(s)
-- Adiente: 2 job(s)
-- Eezy: 8 job(s)
-- Duplicates removed: 20
-- Total after filters: 52 job(s)
+- Adiente: 1 job(s)
+- Eezy: 5 job(s)
+- Duplicates removed: 23
+- Total after filters: 53 job(s)
 
 
 Source health report:
-- Finavia: read 2, matched 2 — OK. read OK
-- Kuntarekry: read 24, matched 4 — OK. read OK
-- Valtiolle: read 24, matched 11 — OK. read OK
+- Finavia: read 4, matched 4 — OK. read OK
+- Kuntarekry: read 24, matched 3 — OK. read OK
+- Valtiolle: read 24, matched 8 — OK. read OK
 - Company career pages: read 3, matched 0 — OK. checked configured generic pages; matched job links only
 - Duunitori: read 0, matched 0 — WARNING. 4 request(s) failed; 0 title-prefilter candidate(s)
-- Manpower: read 77, matched 3 — OK. read OK; 3 title-prefilter candidate(s)
-- Barona: read 203, matched 20 — OK. read OK; 15 listing page(s), 20 title-prefilter candidate(s)
-- aTalent: read 25, matched 11 — OK. read OK; 13 title-prefilter candidate(s)
+- Manpower: read 71, matched 9 — OK. read OK; 9 title-prefilter candidate(s)
+- Barona: read 215, matched 24 — OK. read OK; 15 listing page(s), 24 title-prefilter candidate(s)
+- aTalent: read 24, matched 10 — OK. read OK; 11 title-prefilter candidate(s)
 - ICT DIRECT: read 9, matched 4 — OK. read OK; 4 title-prefilter candidate(s)
-- Adecco: read 20, matched 4 — OK. read OK; 4 title-prefilter candidate(s)
+- Adecco: read 20, matched 5 — OK. read OK; 5 title-prefilter candidate(s)
 - StaffPoint: read 16, matched 3 — OK. read OK; 3 title-prefilter candidate(s)
-- Adiente: read 5, matched 2 — OK. read OK; 2 title-prefilter candidate(s)
-- Eezy: read 24, matched 8 — OK. read OK; 8 title-prefilter candidate(s); listing data retained if TalentAdore detail fails
+- Adiente: read 4, matched 1 — OK. read OK; 1 title-prefilter candidate(s)
+- Eezy: read 24, matched 5 — OK. read OK; 5 title-prefilter candidate(s); listing data retained if TalentAdore detail fails
 
 ======================================================================
-Kuntarekry — Hitsauksen asiantuntija
+Kuntarekry — TE-asiantuntija
 ======================================================================
-Location: PäteWin Oy
-Posted: 2.10.2026
-Deadline: 25.10.2026
+Location: Raahen kaupunki
+Posted: 9.10.2026
+Deadline: 28.10.2026
 Fit score: 35/100
 Recommendation: Skip
 Gate limit: 35/100
@@ -64,171 +64,43 @@ Gate reasons:
 - wrong geography + on-site/location-bound work
 
 Why it may fit:
-- SAP / P2P / invoices: sap
 - process development: koulutus
+- coordination / project: asiakaspalvelu
+- location: etätyö
 
 Risks:
-- No obvious hard-domain risks found
+- payroll / TE domain: lainsäädäntö
 
-Link: https://www.kuntarekry.fi/fi/tyopaikat/hitsauksen-asiantuntija-win-01-1-26/
+Link: https://www.kuntarekry.fi/fi/tyopaikat/te-asiantuntija-741067/
 
 ======================================================================
-Kuntarekry — Asiantuntija, verkkopedagogiikka
+Kuntarekry — Asiantuntija, rekrytoinnin strateginen kehittäminen
 ======================================================================
-Location: Keski-Uudenmaan koulutuskuntayhtymä
-Posted: 2.10.2026
-Deadline: 26.10.2026
+Location: Helsingin kaupunki
+Posted: 9.10.2026
+Deadline: 29.10.2026
 Fit score: 64/100
 Recommendation: Maybe
 
 Why it may fit:
-- operations / coordination / process core: käyttöönotto, prosessi
-- process development: koulutus, prosessi
-- location: etätyö
-
-Risks:
-- No obvious hard-domain risks found
-
-Link: https://www.kuntarekry.fi/fi/tyopaikat/asiantuntija-verkkopedagogiikka-742657/
-
-======================================================================
-Kuntarekry — Asiantuntija, työllisyyspalvelut
-======================================================================
-Location: Helsingin kaupunki
-Posted: 2.10.2026
-Deadline: 16.10.2026
-Fit score: 77/100
-Recommendation: Apply
-
-Why it may fit:
-- operations / coordination / process core: asiakaspalvelu, palveluprosessi, prosessi
-- process development: prosessi
-- coordination / project: asiakaspalvelu
-
-Risks:
-- No obvious hard-domain risks found
-
-Link: https://www.kuntarekry.fi/fi/tyopaikat/asiantuntija-tyollisyyspalvelut-typa-03-8-26/
-
-======================================================================
-Kuntarekry — Projektiasiantuntija, EdTech
-======================================================================
-Location: Helsingin kaupunki
-Posted: 2.10.2026
-Deadline: 21.10.2026
-Fit score: 64/100
-Recommendation: Maybe
-
-Why it may fit:
-- operations / coordination / process core: järjestelmä, ongelmanratkaisu
+- operations / coordination / process core: järjestelmä, käyttöönotto
 - process development: koulutus
-- location: vantaa, helsinki
+- location: helsinki, hybridi, hybrid
 
 Risks:
 - No obvious hard-domain risks found
+- Text may contain a hard experience requirement
 
-Link: https://www.kuntarekry.fi/fi/tyopaikat/projektiasiantuntija-edtech-kanslia-01-19-26/
-
-======================================================================
-Valtiolle — Erityisohjaaja (Limingan toimintayksikkö)
-======================================================================
-Location: Valtion lastensuojelulaitos
-Posted: Unknown
-Deadline: Unknown
-Fit score: 0/100
-Recommendation: Skip
-Gate limit: 20/100
-Gate reasons:
-- hard skip professional domain
-- wrong geography + on-site/location-bound work
-- formal language requirement risk
-
-Why it may fit:
-- process development: koulutus
-- location: etätyö
-
-Risks:
-- hard reject domain: lastensuojelu
-- social_health_education_sport: sosionomi, sairaanhoitaja, yhteisöpedagogi, kasvatusala
-- Hard reject domain detected
-
-Link: https://valtiolle.fi/fi/tyopaikat/erityisohjaaja-limingan-toimintayksikko-24964/
-
-======================================================================
-aTalent — ASRO Project Manager, space radiation instrument projects
-======================================================================
-Location: Turku
-Posted: Unknown
-Deadline: 13.10.2026
-Fit score: 20/100
-Recommendation: Skip
-Gate limit: 20/100
-Gate reasons:
-- hard skip professional domain
-
-Why it may fit:
-- operations / coordination / process core: process, prosessi, stakeholder, stakeholders
-- process development: prosessi
-- coordination / project: muutos
-
-Risks:
-- seniority risk: manager
-- embedded_low_level: embedded software
-- Seniority / too high level risk detected
-- Hard reject domain detected
-
-Link: https://atalent.fi/open-position/asro-project-manager-space-radiation-instrument-projects-386702
-
-======================================================================
-aTalent — ASRO Jr. Project Manager, space microscope projects
-======================================================================
-Location: Turku
-Posted: Unknown
-Deadline: 13.10.2026
-Fit score: 100/100
-Recommendation: Review
-
-Why it may fit:
-- operations / coordination / process core: documentation, process, prosessi, stakeholder
-- SAP / P2P / invoices: supplier
-- process development: prosessi
-
-Risks:
-- seniority risk: manager, director
-- Seniority / too high level risk detected
-
-Link: https://atalent.fi/open-position/asro-jr-project-manager-space-microscope-projects-386694
-
-======================================================================
-Eezy — Kirjanpitäjä/hallintosihteeri
-======================================================================
-Location: Akaa
-Posted: 2026-10-01T21:00:00
-Deadline: 2026-10-23T20:59:00
-Fit score: 35/100
-Recommendation: Skip
-Gate limit: 35/100
-Gate reasons:
-- wrong geography + on-site/location-bound work
-
-Why it may fit:
-- operations / coordination / process core: asiakaspalvelu, järjestelmä
-- SAP / P2P / invoices: lasku
-- coordination / project: asiakaspalvelu
-
-Risks:
-- No obvious hard-domain risks found
-
-Link: https://ats.talentadore.com/apply/kirjanpitaja-hallintosihteeri/DPVz5w
+Link: https://www.kuntarekry.fi/fi/tyopaikat/asiantuntija-rekrytoinnin-strateginen-kehittaminen-kanslia-03-30-26/
 
 Recommendation summary:
-- 🟢 APPLY: 6
-- 🟡 MAYBE: 5
-- 🔵 REVIEW: 7
-- Review reservoir candidates: 7
-- ⚪ SKIP: 34
-Job Radar: found 3 new job(s).
-Checked 52 jobs total.
+- 🟢 APPLY: 7
+- 🟡 MAYBE: 3
+- 🔵 REVIEW: 5
+- Review reservoir candidates: 5
+- ⚪ SKIP: 38
+Job Radar: found 1 new job(s).
+Checked 53 jobs total.
 Telegram secrets are missing.
 Review reservoir saved: 17 item(s).
 Weekly review email sent.
