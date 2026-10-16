@@ -1,7 +1,7 @@
-Job Radar run: 2026-10-09 15:04:36
+Job Radar run: 2026-10-16 13:05:06
 Checking jobs...
-Kuntarekry found: 3
-Valtiolle found: 8
+Kuntarekry found: 1
+Valtiolle found: 4
 Could not fetch job description: https://www.turunvesihuolto.fi/tyopaikat/ — 404 Client Error: Not Found for url: https://www.turunvesihuolto.fi/tyopaikat/
 Company career pages found: 0
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=sap — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=sap
@@ -9,98 +9,97 @@ Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=koordinaat
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=taloushallinto — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=taloushallinto
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi
 Duunitori found: 0 (from 0 listed, 0 candidates)
-Manpower found: 9 (from 71 listed, 9 candidates)
-Barona found: 24 (from 215 listed, 24 candidates)
-aTalent found: 10 (from 24 listed, 11 candidates)
+Manpower found: 8 (from 72 listed, 8 candidates)
+Barona found: 27 (from 223 listed, 27 candidates)
+aTalent found: 5 (from 18 listed, 5 candidates)
 ICT DIRECT found: 4 (from 9 listed, 4 candidates)
-Adecco found: 5 (from 20 listed, 5 candidates)
-StaffPoint found: 3 (from 16 listed, 3 candidates)
-Adiente found: 1 (from 4 listed, 1 candidates)
-Eezy found: 5 (from 24 listed, 5 candidates)
+Adecco found: 4 (from 18 listed, 4 candidates)
+StaffPoint found: 2 (from 15 listed, 2 candidates)
+Adiente found: 2 (from 6 listed, 2 candidates)
+Eezy found: 5 (from 26 listed, 5 candidates)
 
 Source summary:
-- Finavia: 4 job(s)
-- Kuntarekry: 3 job(s)
-- Valtiolle: 8 job(s)
+- Finavia: 2 job(s)
+- Kuntarekry: 1 job(s)
+- Valtiolle: 4 job(s)
 - Company career pages: 0 job(s)
 - Duunitori: 0 job(s)
-- Manpower: 9 job(s)
-- Barona: 24 job(s)
-- aTalent: 10 job(s)
+- Manpower: 8 job(s)
+- Barona: 27 job(s)
+- aTalent: 5 job(s)
 - ICT DIRECT: 4 job(s)
-- Adecco: 5 job(s)
-- StaffPoint: 3 job(s)
-- Adiente: 1 job(s)
+- Adecco: 4 job(s)
+- StaffPoint: 2 job(s)
+- Adiente: 2 job(s)
 - Eezy: 5 job(s)
-- Duplicates removed: 23
-- Total after filters: 53 job(s)
+- Duplicates removed: 26
+- Total after filters: 38 job(s)
 
 
 Source health report:
-- Finavia: read 4, matched 4 — OK. read OK
-- Kuntarekry: read 24, matched 3 — OK. read OK
-- Valtiolle: read 24, matched 8 — OK. read OK
+- Finavia: read 2, matched 2 — OK. read OK
+- Kuntarekry: read 24, matched 1 — OK. read OK
+- Valtiolle: read 24, matched 4 — OK. read OK
 - Company career pages: read 3, matched 0 — OK. checked configured generic pages; matched job links only
 - Duunitori: read 0, matched 0 — WARNING. 4 request(s) failed; 0 title-prefilter candidate(s)
-- Manpower: read 71, matched 9 — OK. read OK; 9 title-prefilter candidate(s)
-- Barona: read 215, matched 24 — OK. read OK; 15 listing page(s), 24 title-prefilter candidate(s)
-- aTalent: read 24, matched 10 — OK. read OK; 11 title-prefilter candidate(s)
+- Manpower: read 72, matched 8 — OK. read OK; 8 title-prefilter candidate(s)
+- Barona: read 223, matched 27 — OK. read OK; 15 listing page(s), 27 title-prefilter candidate(s)
+- aTalent: read 18, matched 5 — OK. read OK; 5 title-prefilter candidate(s)
 - ICT DIRECT: read 9, matched 4 — OK. read OK; 4 title-prefilter candidate(s)
-- Adecco: read 20, matched 5 — OK. read OK; 5 title-prefilter candidate(s)
-- StaffPoint: read 16, matched 3 — OK. read OK; 3 title-prefilter candidate(s)
-- Adiente: read 4, matched 1 — OK. read OK; 1 title-prefilter candidate(s)
-- Eezy: read 24, matched 5 — OK. read OK; 5 title-prefilter candidate(s); listing data retained if TalentAdore detail fails
+- Adecco: read 18, matched 4 — OK. read OK; 4 title-prefilter candidate(s)
+- StaffPoint: read 15, matched 2 — OK. read OK; 2 title-prefilter candidate(s)
+- Adiente: read 6, matched 2 — OK. read OK; 2 title-prefilter candidate(s)
+- Eezy: read 26, matched 5 — OK. read OK; 5 title-prefilter candidate(s); listing data retained if TalentAdore detail fails
 
 ======================================================================
-Kuntarekry — TE-asiantuntija
+Kuntarekry — Projektipäällikkö,Miten lähiruokahankinnoilla huoltovarmuutta - malli
 ======================================================================
-Location: Raahen kaupunki
-Posted: 9.10.2026
-Deadline: 28.10.2026
-Fit score: 35/100
+Location: Sodankylän kunta
+Posted: 16.10.2026
+Deadline: 29.10.2026
+Fit score: 0/100
 Recommendation: Skip
-Gate limit: 35/100
+Gate limit: 20/100
 Gate reasons:
+- hard skip professional domain
 - wrong geography + on-site/location-bound work
 
 Why it may fit:
-- process development: koulutus
-- coordination / project: asiakaspalvelu
 - location: etätyö
 
 Risks:
-- payroll / TE domain: lainsäädäntö
+- seniority risk: päällikkö
+- kitchen_cleaning_production: keittiö
+- Seniority / too high level risk detected
+- Hard reject domain detected
 
-Link: https://www.kuntarekry.fi/fi/tyopaikat/te-asiantuntija-741067/
+Link: https://www.kuntarekry.fi/fi/tyopaikat/projektipaallikko-miten-lahiruokahankinnoilla-huoltovarmuutta-malli-746373/
 
 ======================================================================
-Kuntarekry — Asiantuntija, rekrytoinnin strateginen kehittäminen
+Valtiolle — Toiminnallinen asiantuntija, TOS, vt.12
 ======================================================================
-Location: Helsingin kaupunki
-Posted: 9.10.2026
-Deadline: 29.10.2026
-Fit score: 64/100
-Recommendation: Maybe
+Location: Verohallinto
+Posted: Unknown
+Deadline: Unknown
+Fit score: 25/100
+Recommendation: Review
 
 Why it may fit:
-- operations / coordination / process core: järjestelmä, käyttöönotto
-- process development: koulutus
-- location: helsinki, hybridi, hybrid
+- location: turku, helsinki, etätyö
 
 Risks:
-- No obvious hard-domain risks found
-- Text may contain a hard experience requirement
+- domain experience risk: verohallinto, verotus
+- Domain experience risk detected
 
-Link: https://www.kuntarekry.fi/fi/tyopaikat/asiantuntija-rekrytoinnin-strateginen-kehittaminen-kanslia-03-30-26/
+Link: https://valtiolle.fi/fi/tyopaikat/toiminnallinen-asiantuntija-tos-vt.12-25612/
 
 Recommendation summary:
-- 🟢 APPLY: 7
-- 🟡 MAYBE: 3
-- 🔵 REVIEW: 5
-- Review reservoir candidates: 5
-- ⚪ SKIP: 38
-Job Radar: found 1 new job(s).
-Checked 53 jobs total.
-Telegram secrets are missing.
+- 🟢 APPLY: 9
+- 🟡 MAYBE: 1
+- 🔵 REVIEW: 6
+- Review reservoir candidates: 6
+- ⚪ SKIP: 22
+No new jobs found.
+Checked 38 jobs total.
 Review reservoir saved: 17 item(s).
 Weekly review email sent.

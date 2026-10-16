@@ -1,84 +1,5 @@
 [
   {
-    "date_seen": "2026-09-11",
-    "company": "Kuntarekry",
-    "title": "Hankinta-asiantuntija",
-    "location": "Vihdin kunta",
-    "score": 54,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "päällikkö"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "päällikkö"
-        ]
-      }
-    ],
-    "url": "https://www.kuntarekry.fi/fi/tyopaikat/hankinta-asiantuntija-vih-05-9-26/"
-  },
-  {
-    "date_seen": "2026-09-11",
-    "company": "Valtiolle",
-    "title": "Pääkirjanpitäjä",
-    "location": "Valtion talous- ja henkilöstöhallinnon palvelukeskus Palkeet",
-    "score": 100,
-    "recommendation": "Review",
-    "risk_groups": [
-      "data / BI / analytics risk"
-    ],
-    "trigger_terms": [
-      "etl"
-    ],
-    "risks": [
-      {
-        "group": "data / BI / analytics risk",
-        "keywords": [
-          "etl"
-        ]
-      }
-    ],
-    "url": "https://valtiolle.fi/fi/tyopaikat/paakirjanpitaja-24867/"
-  },
-  {
-    "date_seen": "2026-09-11",
-    "company": "Valtiolle",
-    "title": "HR-suunnittelija",
-    "location": "Verohallinto",
-    "score": 37,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk",
-      "domain experience risk"
-    ],
-    "trigger_terms": [
-      "päällikkö",
-      "verohallinto",
-      "verotus"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "päällikkö"
-        ]
-      },
-      {
-        "group": "domain experience risk",
-        "keywords": [
-          "verohallinto",
-          "verotus"
-        ]
-      }
-    ],
-    "url": "https://valtiolle.fi/fi/tyopaikat/hr-suunnittelija-24779/"
-  },
-  {
     "date_seen": "2026-09-18",
     "company": "Valtiolle",
     "title": "Johtava asiantuntija (teollisuuspolitiikka)",
@@ -498,5 +419,95 @@
       }
     ],
     "url": "https://ats.talentadore.com/apply/senior-financial-controller/ZAYBvW"
+  },
+  {
+    "dedupe_key": "verohallinto|toiminnallinen asiantuntija tos vt 12|verohallinto",
+    "date_seen": "2026-10-16",
+    "company": "Valtiolle",
+    "title": "Toiminnallinen asiantuntija, TOS, vt.12",
+    "location": "Verohallinto",
+    "score": 25,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "domain experience risk"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "verohallinto",
+      "verotus"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "domain experience risk",
+        "keywords": [
+          "verohallinto",
+          "verotus"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/toiminnallinen-asiantuntija-tos-vt.12-25612/"
+  },
+  {
+    "dedupe_key": "european chemicals agency (echa)|administrative support litigation support|helsinki",
+    "date_seen": "2026-10-16",
+    "company": "Manpower",
+    "title": "Administrative Support (Litigation support)",
+    "location": "Helsinki, Uusimaa",
+    "score": 64,
+    "recommendation": "Review",
+    "risk_groups": [
+      "data / BI / analytics risk"
+    ],
+    "trigger_terms": [
+      "metadata"
+    ],
+    "risks": [
+      {
+        "group": "data / BI / analytics risk",
+        "keywords": [
+          "metadata"
+        ]
+      }
+    ],
+    "url": "https://www.manpower.fi/tyo/administrative-support-litigation-support-286311"
+  },
+  {
+    "dedupe_key": "?|sok kehityspäällikkö talousjärjestelmät ja prosessit|helsinki",
+    "date_seen": "2026-10-16",
+    "company": "aTalent",
+    "title": "SOK Kehityspäällikkö (talousjärjestelmät ja -prosessit)",
+    "location": "Helsinki",
+    "score": 100,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "data / BI / analytics risk"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "analytiikka"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "data / BI / analytics risk",
+        "keywords": [
+          "analytiikka"
+        ]
+      }
+    ],
+    "url": "https://atalent.fi/open-position/sok-kehityspaallikko-talousjarjestelmat-ja-prosessit-390842"
   }
 ]
