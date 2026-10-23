@@ -1,61 +1,5 @@
 [
   {
-    "date_seen": "2026-09-18",
-    "company": "Valtiolle",
-    "title": "Johtava asiantuntija (teollisuuspolitiikka)",
-    "location": "Työ- ja elinkeinoministeriö",
-    "score": 61,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "johtava asiantuntija",
-      "johtava"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "johtava asiantuntija",
-          "johtava"
-        ]
-      }
-    ],
-    "url": "https://valtiolle.fi/fi/tyopaikat/johtava-asiantuntija-teollisuuspolitiikka-24761/"
-  },
-  {
-    "date_seen": "2026-09-18",
-    "company": "Valtiolle",
-    "title": "Talousasiantuntija, vt 5",
-    "location": "Valtion talous- ja henkilöstöhallinnon palvelukeskus Palkeet",
-    "score": 94,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk",
-      "data / BI / analytics risk"
-    ],
-    "trigger_terms": [
-      "päällikkö",
-      "etl"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "päällikkö"
-        ]
-      },
-      {
-        "group": "data / BI / analytics risk",
-        "keywords": [
-          "etl"
-        ]
-      }
-    ],
-    "url": "https://valtiolle.fi/fi/tyopaikat/talousasiantuntija-vt-5-24762/"
-  },
-  {
     "dedupe_key": "finavia|hankintapäällikkö vantaa|vantaa",
     "date_seen": "2026-09-23",
     "company": "Finavia",
@@ -509,5 +453,209 @@
       }
     ],
     "url": "https://atalent.fi/open-position/sok-kehityspaallikko-talousjarjestelmat-ja-prosessit-390842"
+  },
+  {
+    "dedupe_key": "verohallinto|valikointivastaava vt 13|verohallinto",
+    "date_seen": "2026-10-23",
+    "company": "Valtiolle",
+    "title": "Valikointivastaava, vt.13",
+    "location": "Verohallinto",
+    "score": 43,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "domain experience risk",
+      "data / BI / analytics risk"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "sote",
+      "verohallinto",
+      "verotus",
+      "analytiikka"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "domain experience risk",
+        "keywords": [
+          "sote",
+          "verohallinto",
+          "verotus"
+        ]
+      },
+      {
+        "group": "data / BI / analytics risk",
+        "keywords": [
+          "analytiikka"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/valikointivastaava-vt.13-25644/"
+  },
+  {
+    "dedupe_key": "verohallinto|veroasiantuntija työnantajan ennakkoperintä 1 3 paikkaa vt 11|verohallinto",
+    "date_seen": "2026-10-23",
+    "company": "Valtiolle",
+    "title": "Veroasiantuntija (työnantajan ennakkoperintä) 1-3 paikkaa, vt.11",
+    "location": "Verohallinto",
+    "score": 34,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "domain experience risk",
+      "tax domain"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "verohallinto",
+      "verotus",
+      "oikaisuvaatimus",
+      "lautakuntaesittely"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "domain experience risk",
+        "keywords": [
+          "verohallinto",
+          "verotus"
+        ]
+      },
+      {
+        "group": "tax domain",
+        "keywords": [
+          "oikaisuvaatimus",
+          "lautakuntaesittely"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/veroasiantuntija-tyonantajan-ennakkoperinta-1-3-paikkaa-vt.11-25646/"
+  },
+  {
+    "dedupe_key": "verohallinto|työnantajan ennakkoperinnän talent ohjelma 6 7 paikkaa useita paikkakuntia vt 9|verohallinto",
+    "date_seen": "2026-10-23",
+    "company": "Valtiolle",
+    "title": "Työnantajan ennakkoperinnän Talent -ohjelma, 6-7 paikkaa, useita paikkakuntia, vt.9",
+    "location": "Verohallinto",
+    "score": 25,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "domain experience risk"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "verohallinto",
+      "verotus"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "domain experience risk",
+        "keywords": [
+          "verohallinto",
+          "verotus"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/tyonantajan-ennakkoperinnan-talent-ohjelma-6-7-paikkaa-useita-paikkakuntia-vt.9-25642/"
+  },
+  {
+    "dedupe_key": "?|projektipäällikkö datacenter|uusimaa",
+    "date_seen": "2026-10-23",
+    "company": "Manpower",
+    "title": "Projektipäällikkö, datacenter",
+    "location": "Tuusula, Uusimaa",
+    "score": 54,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "päällikkö"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      }
+    ],
+    "url": "https://www.manpower.fi/tyo/projektipaallikko-datacenter-286594"
+  },
+  {
+    "dedupe_key": "?|administrative support echa|helsinki",
+    "date_seen": "2026-10-23",
+    "company": "Manpower",
+    "title": "Administrative Support - ECHA",
+    "location": "Helsinki, Uusimaa",
+    "score": 41,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "manager"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "manager"
+        ]
+      }
+    ],
+    "url": "https://www.manpower.fi/tyo/administrative-support-echa-277041"
+  },
+  {
+    "dedupe_key": "?|ict data support echa|helsinki",
+    "date_seen": "2026-10-23",
+    "company": "Manpower",
+    "title": "ICT / Data support - ECHA",
+    "location": "Helsinki, Uusimaa",
+    "score": 34,
+    "recommendation": "Review",
+    "risk_groups": [
+      "seniority risk",
+      "data / BI / analytics risk"
+    ],
+    "trigger_terms": [
+      "manager",
+      "sql",
+      " bi "
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "manager"
+        ]
+      },
+      {
+        "group": "data / BI / analytics risk",
+        "keywords": [
+          "sql",
+          " bi "
+        ]
+      }
+    ],
+    "url": "https://www.manpower.fi/tyo/ict-slash-data-support-echa-277039"
   }
 ]
