@@ -32,6 +32,12 @@ EXTENDED_SOURCES = [
 
 QUIET_SOURCES = ["Company career pages"]
 SOURCE_STATS = {}
+BUILD_ID = "TZ1-SERVICE-COORDINATION-FINAL-20261026-B"
+
+KUNTAREKRY_CONTROL_TITLES = [
+    "Unity C#",
+    "Hankeasiantuntija, mielenterveys ja hyvinvointi",
+]
 
 FINAVIA_URL = "https://finavia.rekrytointi.com/paikat/?list=1&navref=paragraph&o=A_LOJ"
 
@@ -258,17 +264,47 @@ PROFILE_KEYWORDS = {
 }
 
 OPERATIONS_COORDINATION_CORE = {
-    "operations": ["operations", "operational", "operatiivinen", "service operations", "operational support", "operations coordinator", "operations specialist", "service delivery"],
-    "coordination": ["coordination", "coordinator", "koordinaattori", "service coordinator", "palvelukoordinaattori", "process coordinator", "prosessikoordinaattori", "project coordinator", "projektikoordinaattori", "implementation coordinator"],
-    "process": ["process", "prosessi", "process specialist", "prosessi-asiantuntija", "process development", "prosessien kehittäminen", "continuous improvement", "jatkuva parantaminen", "palveluprosessi", "palveluprosessit", "asiakasprosessit"],
-    "stakeholders": ["stakeholder", "stakeholders", "sidosryhmä", "sidosryhmäyhteistyö", "cross-functional collaboration", "moniammatillinen yhteistyö"],
-    "systems": ["system", "systems", "järjestelmä", "erp", "application support", "system support", "key user", "pääkäyttäjä", "käyttövaltuushallinta"],
-    "documentation": ["documentation", "dokumentointi", "document management", "dokumentinhallinta", "ohjeistus", "tiedonhallinta"],
-    "issue resolution": ["issue resolution", "problem solving", "ongelmanratkaisu", "poikkeamien selvittäminen", "incident handling", "case management", "asianhallinta"],
-    "support / service": ["business support", "project support", "projektituki", "customer support", "internal support", "service specialist", "palveluasiantuntija", "customer operations", "asiakaspalvelu"],
+    "operations": ["operations", "operational", "operatiivinen", "service operations", "operational support", "operations coordinator", "operations specialist", "service delivery", "operational development", "toiminnan kehittäminen"],
+    "coordination": ["coordination", "coordinator", "koordinaattori", "service coordinator", "palvelukoordinaattori", "process coordinator", "prosessikoordinaattori", "project coordinator", "projektikoordinaattori", "implementation coordinator", "project coordination", "stakeholder coordination"],
+    "process": ["process", "prosessi", "process specialist", "prosessi-asiantuntija", "process development", "prosessien kehittäminen", "prosessijohtaminen", "toimintatapojen kehittäminen", "prosessien kuvaaminen", "prosessien yhtenäistäminen", "continuous improvement", "jatkuva parantaminen", "palveluprosessi", "palveluprosessit", "asiakasprosessit", "digital process development"],
+    "stakeholders": ["stakeholder", "stakeholders", "sidosryhmä", "sidosryhmäyhteistyö", "stakeholder coordination", "coordinate stakeholders", "cross-functional collaboration", "moniammatillinen yhteistyö"],
+    "systems": ["system", "systems", "järjestelmä", "erp", "master data", "application support", "system support", "user support", "key user", "pääkäyttäjä", "käyttövaltuushallinta"],
+    "documentation": ["documentation", "dokumentointi", "document management", "dokumentinhallinta", "ohjeistus", "ohjeistusten kehittäminen", "tiedonhallinta", "tiedonhallinnan kehittäminen"],
+    "issue resolution": ["issue resolution", "problem solving", "ongelmanratkaisu", "poikkeamien selvittäminen", "poikkeamien selvitys", "solve deviations", "identify missing information", "puuttuvien tietojen selvittäminen", "incident handling", "case management", "asianhallinta"],
+    "support / service": ["business support", "project support", "projektituki", "customer support", "internal support", "service specialist", "palveluasiantuntija", "service development", "palvelukehitys", "customer operations", "asiakaspalvelu", "administrative specialist", "hallinto", "back office", "backoffice"],
+    "order / administration": ["order management", "tilaus-toimitus-laskutus", "supplier administration", "customer administration", "supplier/customer administration", "toimittajahallinta", "asiakashallinta"],
     "implementation / onboarding": ["implementation", "käyttöönotto", "onboarding", "customer onboarding", "client onboarding", "perehdytys"],
-    "workflow monitoring": ["workflow", "workflow monitoring", "process monitoring", "prosessin seuranta", "työjonojen seuranta"],
+    "workflow monitoring": ["workflow", "workflow monitoring", "process monitoring", "prosessin seuranta", "työjonojen seuranta", "follow queues", "monitor process", "keep process moving", "ensure data correctness"],
 }
+
+PROCESS_PROBLEM_SOLVING_SIGNALS = {
+    "deviations": ["poikkeamien selvittäminen", "poikkeamien selvitys", "solve deviations", "issue resolution"],
+    "missing information": ["identify missing information", "puuttuvien tietojen selvittäminen", "missing information"],
+    "stakeholder coordination": ["coordinate stakeholders", "stakeholder coordination", "sidosryhmäyhteistyö"],
+    "process flow": ["keep process moving", "process monitoring", "prosessin seuranta"],
+    "queues": ["follow queues", "työjonojen seuranta", "workflow monitoring"],
+    "data correctness": ["ensure data correctness", "data correctness", "tietojen oikeellisuus"],
+    "end-to-end ownership": ["start to finish", "end-to-end ownership", "end to end ownership", "kokonaisvastuu"],
+}
+
+SERVICE_COORDINATION_TITLE_MARKERS = [
+    "service coordinator", "palvelukoordinaattori", "assistance coordinator", "customer support coordinator",
+    "asiakaspalvelukoordinaattori", "operations coordinator", "operational support coordinator",
+]
+
+SENIORITY_TITLE_MARKERS = [
+    "päällikkö", "paallikko", "johtaja", "head of", "director", "senior manager", "team lead", "lead ",
+    "manager", "principal consultant", "senior architect", "enterprise architect",
+]
+
+PURE_MARKETING_MARKERS = [
+    "brand", "campaign", "performance marketing", "growth marketing", "growth", "cmo", "customer acquisition",
+    "meta ads", "e-commerce marketing", "digital marketing", "marketing manager", "markkinointipäällikkö",
+]
+
+PURE_STRATEGY_LEADERSHIP_MARKERS = [
+    "corporate strategy", "strategic leadership", "strategy director", "head of strategy", "liiketoimintastrategia",
+]
 
 SYSTEM_ROLE_TITLES = [
     "järjestelmäasiantuntija", "system specialist", "application specialist", "erp specialist", "sap specialist",
@@ -335,11 +371,10 @@ NEGATIVE_KEYWORDS = {
         "tulostavoite", "provisio",
     ],
     "data / BI / analytics risk": [
-        "power bi", "dax", "sql", "databricks", "purview", "data governance", "metadata", "data quality",
-        "data model", "data vault", "snowflake", "azure synapse", "etl", "etl/elt", "pipeline", "semantic layer",
-        "business intelligence", " bi ", "analytics engineer", "tietoasiantuntija", "analytiikka",
-        "raportointi ja analytiikka", "kpi management system", "dashboard", "visualisointi", "asiakasdata",
-        "asiointidata", "asiakaskokemusdata",
+        "power bi", "tableau", "dax", "sql", "databricks", "data warehouse", "data model", "data vault",
+        "snowflake", "azure synapse", "etl", "etl/elt", "semantic layer", "business intelligence", " bi ",
+        "bi developer", "analytics engineer", "data engineer", "data architect", "analytiikka",
+        "raportointi ja analytiikka",
     ],
     "hard reject domain": [
         "machine learning", "deep learning", "neural networks", "model training", "hpc", "satellite modeling",
@@ -409,7 +444,6 @@ def save_review_jobs(review_jobs):
         except Exception:
             existing_items = []
 
-    
     today = datetime.now()
 
     existing_items = [
@@ -433,14 +467,40 @@ def save_review_jobs(review_jobs):
         if dedupe_key in existing_keys:
             continue
 
+        positive_signals = [
+            f"{match.get('group', '')}: {', '.join(match.get('keywords', []))}"
+            for match in analysis.get("positive_matches", [])
+        ]
+        negative_signals = [
+            f"{match.get('group', '')}: {', '.join(match.get('keywords', []))}"
+            for match in analysis.get("negative_matches", [])
+        ]
+        gate_reasons = analysis.get("gate_reasons", [])
+
         existing_items.append({
             "dedupe_key": dedupe_key,
             "date_seen": datetime.now().strftime("%Y-%m-%d"),
             "company": job.get("company", ""),
             "title": job.get("title", ""),
             "location": job.get("location", ""),
+            "source": job.get("source", ""),
             "score": analysis.get("score", 0),
             "recommendation": analysis.get("recommendation", ""),
+            "positive_signals": positive_signals,
+            "negative_signals": negative_signals,
+            "gate_reasons": gate_reasons,
+            "gate_limit": analysis.get("gate_limit", 100),
+            "seniority_risk": analysis.get("seniority_risk_detected", False),
+            "domain_risk": analysis.get("domain_risk_detected", False),
+            "data_bi_risk": analysis.get("data_bi_risk_detected", False),
+            "seniority_penalty": analysis.get("seniority_penalty", 0),
+            "domain_penalty": analysis.get("domain_penalty", 0),
+            "data_bi_penalty": analysis.get("data_bi_penalty", 0),
+            "marketing_penalty": analysis.get("marketing_penalty", 0),
+            "problem_solving_bonus": analysis.get("problem_solving_bonus", 0),
+            "location_penalty": analysis.get("location_penalty", 0),
+            "reason_for_inclusion": "recommendation=Review",
+            "reason_for_rejection": "; ".join(gate_reasons),
             "risk_groups": [
                 match.get("group", "")
                 for match in analysis.get("negative_matches", [])
@@ -458,14 +518,16 @@ def save_review_jobs(review_jobs):
     with open(REVIEW_FILE, "w", encoding="utf-8") as file:
         json.dump(existing_items, file, indent=2, ensure_ascii=False)
 
+    fieldnames = [
+        "dedupe_key", "date_seen", "company", "title", "location", "source", "score", "recommendation",
+        "positive_signals", "negative_signals", "gate_reasons", "gate_limit", "seniority_risk", "domain_risk",
+        "data_bi_risk", "seniority_penalty", "domain_penalty", "data_bi_penalty", "marketing_penalty",
+        "problem_solving_bonus", "location_penalty", "reason_for_inclusion", "reason_for_rejection", "risk_groups",
+        "trigger_terms", "url",
+    ]
+
     with open(REVIEW_CSV_FILE, "w", encoding="utf-8-sig", newline="") as file:
-        writer = csv.DictWriter(
-            file,
-            fieldnames=[
-                "dedupe_key", "date_seen", "company", "title", "location", "score", "recommendation", "risk_groups",
-                "trigger_terms", "url",
-            ]
-        )
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
 
         for item in existing_items:
@@ -475,15 +537,30 @@ def save_review_jobs(review_jobs):
                 "company": item.get("company", ""),
                 "title": item.get("title", ""),
                 "location": item.get("location", ""),
+                "source": item.get("source", ""),
                 "score": item.get("score", ""),
                 "recommendation": item.get("recommendation", ""),
+                "positive_signals": " | ".join(item.get("positive_signals", [])),
+                "negative_signals": " | ".join(item.get("negative_signals", [])),
+                "gate_reasons": " | ".join(item.get("gate_reasons", [])),
+                "gate_limit": item.get("gate_limit", ""),
+                "seniority_risk": item.get("seniority_risk", False),
+                "domain_risk": item.get("domain_risk", False),
+                "data_bi_risk": item.get("data_bi_risk", False),
+                "seniority_penalty": item.get("seniority_penalty", 0),
+                "domain_penalty": item.get("domain_penalty", 0),
+                "data_bi_penalty": item.get("data_bi_penalty", 0),
+                "marketing_penalty": item.get("marketing_penalty", 0),
+                "problem_solving_bonus": item.get("problem_solving_bonus", 0),
+                "location_penalty": item.get("location_penalty", 0),
+                "reason_for_inclusion": item.get("reason_for_inclusion", ""),
+                "reason_for_rejection": item.get("reason_for_rejection", ""),
                 "risk_groups": ", ".join(item.get("risk_groups", [])),
                 "trigger_terms": ", ".join(item.get("trigger_terms", [])),
                 "url": item.get("url", ""),
             })
 
     print(f"Review reservoir saved: {len(existing_items)} item(s).")
-
 
 def normalize(text):
     return text.lower().strip()
@@ -678,23 +755,108 @@ def source_enabled(source_name):
     return True
 
 
-def update_source_stats(source, read_count=0, matched_count=0, status="OK", note=""):
+def update_source_stats(
+    source,
+    read_count=0,
+    matched_count=0,
+    status="OK",
+    note="",
+    fetched=None,
+    parsed=None,
+    prefilter_passed=None,
+    hard_filter_passed=None,
+    scored=None,
+    apply=0,
+    maybe=0,
+    review=0,
+    skip=0,
+    errors=0,
+):
+    # Keep read/matched for backwards compatibility with all existing source parsers.
+    if fetched is None:
+        fetched = read_count
+    if parsed is None:
+        parsed = read_count
+    if prefilter_passed is None:
+        prefilter_passed = matched_count
+    if hard_filter_passed is None:
+        hard_filter_passed = 0
+    if scored is None:
+        scored = 0
+
     SOURCE_STATS[source] = {
         "read": read_count,
         "matched": matched_count,
+        "fetched": fetched,
+        "parsed": parsed,
+        "prefilter_passed": prefilter_passed,
+        "hard_filter_passed": hard_filter_passed,
+        "scored": scored,
+        "apply": apply,
+        "maybe": maybe,
+        "review": review,
+        "skip": skip,
+        "errors": errors,
         "status": status,
         "note": note,
     }
+
+
+def record_source_scoring(source, analysis):
+    if source not in SOURCE_STATS:
+        update_source_stats(source)
+
+    stats = SOURCE_STATS[source]
+    stats["scored"] = stats.get("scored", 0) + 1
+
+    hard_block = (
+        analysis.get("hard_reject_domain_detected")
+        or analysis.get("technical_degree_required")
+        or any(
+            reason in ["wrong geography", "wrong geography + on-site/location-bound work"]
+            for reason in analysis.get("gate_reasons", [])
+        )
+    )
+    if not hard_block:
+        stats["hard_filter_passed"] = stats.get("hard_filter_passed", 0) + 1
+
+    recommendation = analysis.get("recommendation", "Skip")
+    key = {
+        "Apply": "apply",
+        "Maybe": "maybe",
+        "Review": "review",
+        "Skip": "skip",
+    }.get(recommendation, "skip")
+    stats[key] = stats.get(key, 0) + 1
 
 
 def print_source_health_report():
     print("\nSource health report:")
 
     for source, stats in SOURCE_STATS.items():
-        read_count = stats["read"]
-        matched_count = stats["matched"]
-        status = stats["status"]
-        note = stats["note"]
+        read_count = stats.get("read", 0)
+        matched_count = stats.get("matched", 0)
+        fetched = stats.get("fetched", read_count)
+        parsed = stats.get("parsed", read_count)
+        prefilter_passed = stats.get("prefilter_passed", matched_count)
+        hard_filter_passed = stats.get("hard_filter_passed", 0)
+        scored = stats.get("scored", 0)
+        apply_count = stats.get("apply", 0)
+        maybe_count = stats.get("maybe", 0)
+        review_count = stats.get("review", 0)
+        skip_count = stats.get("skip", 0)
+        errors = stats.get("errors", 0)
+        status = stats.get("status", "OK")
+        note = stats.get("note", "")
+
+        # Diagnostic warning rules requested in TZ3.
+        if status not in ["OFF", "ERROR"]:
+            if fetched == 0:
+                status = "WARNING"
+                note = (note + "; " if note else "") + "0 fetched"
+            elif parsed == 0:
+                status = "WARNING"
+                note = (note + "; " if note else "") + "0 parsed"
 
         if not note:
             if read_count > 0 and matched_count == 0:
@@ -704,8 +866,12 @@ def print_source_health_report():
             else:
                 note = "read OK"
 
-        print(f"- {source}: read {read_count}, matched {matched_count} — {status}. {note}")
-
+        print(
+            f"- {source}: fetched {fetched}, parsed {parsed}, prefilter {prefilter_passed}, "
+            f"hard-pass {hard_filter_passed}, scored {scored}, "
+            f"A/M/R/S {apply_count}/{maybe_count}/{review_count}/{skip_count}, "
+            f"errors {errors} — {status}. {note}"
+        )
 
 def keyword_found(text, keyword):
     text = normalize(text)
@@ -851,31 +1017,42 @@ def calculate_fit_score(job):
     positive_matches = find_matches(text, POSITIVE_KEYWORDS)
     profile_matches = find_matches(text, PROFILE_KEYWORDS)
     core_matches = find_matches(text, OPERATIONS_COORDINATION_CORE)
+    process_problem_matches = find_matches(text, PROCESS_PROBLEM_SOLVING_SIGNALS)
     negative_matches = find_matches(text, NEGATIVE_KEYWORDS)
 
     if gates["hard_skip_matches"]:
         negative_matches.extend(gates["hard_skip_matches"])
 
     core_match_count = len(core_matches)
+    core_groups = {match["group"] for match in core_matches}
     core_keywords = sorted({
         keyword
         for match in core_matches
         for keyword in match["keywords"]
     })
 
-    # Keep the existing output format, but surface the new core fit in Why it may fit.
     if core_match_count >= 2:
         positive_matches.insert(0, {
             "group": "operations / coordination / process core",
             "keywords": core_keywords[:8],
         })
 
+    process_problem_count = len(process_problem_matches)
+    if process_problem_count >= 2:
+        problem_keywords = sorted({
+            keyword
+            for match in process_problem_matches
+            for keyword in match["keywords"]
+        })
+        positive_matches.insert(0, {
+            "group": "problem solving through process",
+            "keywords": problem_keywords[:8],
+        })
+
     score = 30
 
-    # Profile scoring: SAP/ERP remains useful evidence, but no longer defines the profession.
     for match in profile_matches:
         group = match["group"]
-
         if group == "ERP / talous / process support":
             score += 16
         elif group == "Application / system / back office support":
@@ -887,21 +1064,31 @@ def calculate_fit_score(job):
         elif group == "KYC / compliance support":
             score += 18
 
-    # Main identity: operations + coordination + process + stakeholder/service/system work.
-    if core_match_count >= 4:
+    # Core fit still drives the score, but combinations matter more than isolated generic words.
+    if core_match_count >= 5:
         score += 44
+    elif core_match_count == 4:
+        score += 36
     elif core_match_count == 3:
-        score += 34
+        score += 28
     elif core_match_count == 2:
-        score += 18
+        score += 16
     elif core_match_count == 1:
-        score += 5
+        score += 4
 
-    # Existing softer positive signals. SAP/P2P is supporting evidence, not the primary identity.
+    # Profile-specific process problem solving: only combinations receive a meaningful bonus.
+    problem_solving_bonus = 0
+    if process_problem_count >= 4:
+        problem_solving_bonus = 14
+    elif process_problem_count == 3:
+        problem_solving_bonus = 10
+    elif process_problem_count == 2:
+        problem_solving_bonus = 6
+    score += problem_solving_bonus
+
     for match in positive_matches:
         group = match["group"]
-
-        if group == "operations / coordination / process core":
+        if group in ["operations / coordination / process core", "problem solving through process"]:
             continue
         if group == "SAP / P2P / invoices":
             score += 8
@@ -916,63 +1103,100 @@ def calculate_fit_score(job):
         else:
             score += 5
 
+    seniority_risk_detected = any(keyword_found(title_lower, marker) for marker in SENIORITY_TITLE_MARKERS)
+    data_bi_risk_detected = any(
+        match["group"] == "data / BI / analytics risk"
+        for match in negative_matches
+    )
+
+    seniority_penalty = 0
+    domain_penalty = 0
+    data_bi_penalty = 0
+    marketing_penalty = 0
+
     for match in negative_matches:
         group = match["group"]
-
         if group in [
             "kitchen_cleaning_production", "agriculture_animals", "av_media_technician", "legal_court",
             "public_procurement", "rescue_security_nuclear", "technical_infrastructure",
             "social_health_education_sport", "corporate_finance", "professional_transport",
         ]:
             score -= 60
+            domain_penalty += 60
         elif group == "data / BI / analytics risk":
-            score -= 15
+            score -= 18
+            data_bi_penalty += 18
         elif group == "seniority risk":
-            score -= 15
+            # Only a title-level seniority signal gets the stronger penalty below.
+            if seniority_risk_detected:
+                score -= 25
+                seniority_penalty += 25
         else:
             score -= 18
+            domain_penalty += 18
 
     hard_domain_detected = any(marker in text_lower for marker in HARD_REQUIREMENT_MARKERS)
-
-    domain_risk_detected = any(
-        match["group"] == "domain experience risk"
-        for match in negative_matches
-    )
+    domain_risk_detected = any(match["group"] == "domain experience risk" for match in negative_matches)
 
     if hard_domain_detected and (domain_risk_detected or gates["hard_skip_matches"]):
         score -= 20
-
-    seniority_risk_detected = any(
-        keyword in title_lower
-        for match in negative_matches
-        if match["group"] == "seniority risk"
-        for keyword in match["keywords"]
-    )
-
-    data_bi_risk_detected = any(
-        match["group"] == "data / BI / analytics risk"
-        for match in negative_matches
-    )
+        domain_penalty += 20
 
     hard_reject_domain_detected = bool(gates["hard_skip_matches"]) or any(
-        match["group"] == "hard reject domain"
-        for match in negative_matches
+        match["group"] == "hard reject domain" for match in negative_matches
     )
 
-    # Anti-overfit: generic system titles are not strong matches when the real work is technical.
+    # Small targeted boost for the kind of practical service-coordination roles that match the profile well.
+    # Require coordination + service/support plus a third confirmation from location/process/operations/system work.
+    service_coordination_role = any(
+        keyword_found(title_lower, marker) for marker in SERVICE_COORDINATION_TITLE_MARKERS
+    )
+    service_coordination_core = (
+        "coordination" in core_groups
+        and "support / service" in core_groups
+    )
+    service_coordination_third_signal = (
+        gates["allowed_location_found"]
+        or bool(core_groups & {"operations", "process", "systems", "order / administration", "workflow monitoring"})
+    )
+    service_coordination_bonus = 0
+    if (
+        service_coordination_role
+        and service_coordination_core
+        and service_coordination_third_signal
+        and not seniority_risk_detected
+        and not domain_risk_detected
+        and not hard_reject_domain_detected
+    ):
+        service_coordination_bonus = 10
+        score += service_coordination_bonus
+        positive_matches.insert(0, {
+            "group": "service coordination fit",
+            "keywords": ["coordination", "service/support", "target location/process"],
+        })
+
     technical_system_role = any(keyword_found(title_lower, marker) for marker in SYSTEM_ROLE_TITLES)
     technical_system_content = any(keyword_found(text_lower, marker) for marker in TECHNICAL_SYSTEM_MARKERS)
     technical_system_overfit = technical_system_role and technical_system_content and core_match_count < 3
 
-    # SAP consulting / architecture / pre-sales must not outrank real operations roles just because
-    # the vacancy contains ERP/process/implementation vocabulary. Require a genuine operations/service layer.
-    core_groups = {match["group"] for match in core_matches}
     strong_operations_layer = len(core_groups & STRONG_OPERATIONS_CORE_GROUPS) >= 2
     sap_consulting_role = any(keyword_found(text_lower, marker) for marker in SAP_CONSULTING_ROLE_MARKERS)
     sap_consulting_technical = any(keyword_found(text_lower, marker) for marker in SAP_CONSULTING_TECH_MARKERS)
     sap_consulting_overfit = sap_consulting_role and sap_consulting_technical and not strong_operations_layer
 
-    # Hard gate cap: final score cannot exceed gate limit.
+    pure_marketing_detected = any(keyword_found(text_lower, marker) for marker in PURE_MARKETING_MARKERS)
+    pure_strategy_detected = any(keyword_found(text_lower, marker) for marker in PURE_STRATEGY_LEADERSHIP_MARKERS)
+    operations_overlap = len(core_groups & STRONG_OPERATIONS_CORE_GROUPS) >= 2
+    marketing_overfit = pure_marketing_detected and not operations_overlap
+    strategy_overfit = pure_strategy_detected and not operations_overlap
+
+    if marketing_overfit:
+        score -= 25
+        marketing_penalty += 25
+    if strategy_overfit:
+        score -= 20
+        marketing_penalty += 20
+
     score = max(0, min(100, score))
     score = min(score, gates["gate_limit"])
 
@@ -980,6 +1204,20 @@ def calculate_fit_score(job):
         score = min(score, 50)
     if sap_consulting_overfit:
         score = min(score, 55)
+    if marketing_overfit:
+        score = min(score, 55)
+    if strategy_overfit:
+        score = min(score, 58)
+
+    # Senior titles should not become 90-100 merely through keyword accumulation.
+    # A very strong concrete operations layer may remain a stretch, but not an automatic Apply.
+    if seniority_risk_detected:
+        if core_match_count < 3:
+            score = min(score, 55)
+        elif core_match_count < 5:
+            score = min(score, 65)
+        else:
+            score = min(score, 72)
 
     if gates["english_working_language_found"]:
         score = max(0, score - 8)
@@ -994,11 +1232,15 @@ def calculate_fit_score(job):
         recommendation = "Review" if (positive_matches or core_matches) else "Skip"
     elif sap_consulting_overfit:
         recommendation = "Review" if (positive_matches or core_matches) else "Skip"
+    elif marketing_overfit or strategy_overfit:
+        recommendation = "Review" if score >= 35 else "Skip"
+    elif seniority_risk_detected:
+        recommendation = "Review" if score >= 35 else "Skip"
     elif gates["gate_limit"] <= 55 and (positive_matches or core_matches):
         recommendation = "Review"
     elif data_bi_risk_detected and (positive_matches or core_matches) and score >= 25:
         recommendation = "Review"
-    elif (domain_risk_detected or seniority_risk_detected) and (positive_matches or core_matches) and score >= 25:
+    elif domain_risk_detected and (positive_matches or core_matches) and score >= 25:
         recommendation = "Review"
     elif score >= 75 and core_match_count >= 3:
         recommendation = "Apply"
@@ -1020,14 +1262,24 @@ def calculate_fit_score(job):
         "profile_matches": profile_matches,
         "core_matches": core_matches,
         "core_match_count": core_match_count,
+        "process_problem_matches": process_problem_matches,
+        "problem_solving_bonus": problem_solving_bonus,
+        "service_coordination_bonus": service_coordination_bonus,
         "technical_system_overfit": technical_system_overfit,
         "sap_consulting_overfit": sap_consulting_overfit,
+        "marketing_overfit": marketing_overfit,
+        "strategy_overfit": strategy_overfit,
         "negative_matches": negative_matches,
         "domain_risk_detected": domain_risk_detected,
         "seniority_risk_detected": seniority_risk_detected,
         "data_bi_risk_detected": data_bi_risk_detected,
         "hard_reject_domain_detected": hard_reject_domain_detected,
         "hard_domain_detected": hard_domain_detected,
+        "seniority_penalty": seniority_penalty,
+        "domain_penalty": domain_penalty,
+        "data_bi_penalty": data_bi_penalty,
+        "marketing_penalty": marketing_penalty,
+        "location_penalty": int(any("geography" in reason for reason in gates["gate_reasons"])),
         "gate_limit": gates["gate_limit"],
         "gate_reasons": gates["gate_reasons"],
         "mandatory_language_found": gates["mandatory_language_found"],
@@ -1054,12 +1306,27 @@ def send_weekly_review_email():
         print("No review CSV file to send.")
         return
 
+    hidden_csv_path = None
+    hidden_summary = "Hidden Opportunities: module did not run."
+
+    try:
+        from hidden_opportunities.hidden_monitor import run_hidden_monitor
+        hidden_result = run_hidden_monitor()
+        hidden_csv_path = Path(hidden_result.get("csv_path", "")) if hidden_result.get("csv_path") else None
+        hidden_summary = hidden_result.get("summary_text", "Hidden Opportunities: no summary generated.")
+        print(f"Hidden Opportunities completed: {hidden_result.get('count', 0)} item(s).")
+    except Exception as error:
+        hidden_summary = f"Hidden Opportunities failed this week: {error}\n\nThe normal Job Radar review is still attached."
+        print(f"Hidden Opportunities failed, weekly review continues: {error}")
+
     message = EmailMessage()
-    message["Subject"] = "Weekly Job Radar Review Reservoir"
+    message["Subject"] = "Weekly Job Radar Review + Hidden Opportunities"
     message["From"] = smtp_user
     message["To"] = email_to
     message.set_content(
-        "Attached is the weekly Job Radar review reservoir with skipped/review-risk vacancies."
+        "Weekly Job Radar review is attached.\n\n"
+        + hidden_summary
+        + "\n\nThe Hidden Opportunities module is non-critical: a source/parser failure never blocks the normal weekly review."
     )
 
     with open(REVIEW_CSV_FILE, "rb") as file:
@@ -1070,13 +1337,21 @@ def send_weekly_review_email():
             filename=REVIEW_CSV_FILE.name
         )
 
+    if hidden_csv_path and hidden_csv_path.exists():
+        with open(hidden_csv_path, "rb") as file:
+            message.add_attachment(
+                file.read(),
+                maintype="text",
+                subtype="csv",
+                filename=hidden_csv_path.name
+            )
+
     with smtplib.SMTP(smtp_server, smtp_port) as server:
         server.starttls()
         server.login(smtp_user, smtp_password)
         server.send_message(message)
 
-    print("Weekly review email sent.")
-
+    print("Weekly review email sent with Hidden Opportunities when available.")
 
 def send_telegram_message(message):
     token = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -1190,40 +1465,133 @@ def fetch_finavia_jobs():
 def fetch_kuntarekry_jobs():
     jobs = []
     seen_links = set()
+    fetched_count = 0
+    parsed_count = 0
+    prefilter_count = 0
+    error_count = 0
 
-    api_url = "https://www.kuntarekry.fi/fi/tyopaikat/?format=json"
+    control_state = {
+        control: {"fetched": False, "parsed": False, "prefilter": False}
+        for control in KUNTAREKRY_CONTROL_TITLES
+    }
+
+    # Current Kuntarekry site-wide JSON feed. The old /tyopaikat/?format=json
+    # endpoint only returned a small subset and missed current vacancies.
+    api_url = "https://kuntarekry.fi/fi/api/json-jobs/"
 
     try:
-        response = requests.get(api_url, headers={"User-Agent": "Mozilla/5.0"}, timeout=20)
+        response = requests.get(
+            api_url,
+            headers={
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/155.0.0.0 Safari/537.36",
+                "Accept": "application/json,text/plain,*/*",
+                "Referer": "https://kuntarekry.fi/fi/tyopaikat/",
+            },
+            timeout=30,
+        )
         response.raise_for_status()
-        data = response.json()
-        read_count = len(data)
+        print(f"Kuntarekry endpoint: {response.url} [{response.status_code}]")
+        payload = response.json()
 
-        debug_print(f"Kuntarekry API jobs: {len(data)}")
+        if isinstance(payload, dict):
+            print(f"Kuntarekry payload keys: {sorted(payload.keys())}")
+            data = payload.get("jobs", [])
+        elif isinstance(payload, list):
+            print("Kuntarekry payload type: list")
+            data = payload
+        else:
+            data = []
+            error_count += 1
+            print(f"WARNING: Kuntarekry unexpected API payload type: {type(payload).__name__}")
+
+        # The live site-wide feed contains far more than a few dozen jobs.
+        # If requests receives a suspiciously small payload, fetch the same endpoint
+        # in Chromium and parse the raw body text. This also tells us whether the
+        # problem is HTTP/session-specific rather than the parser itself.
+        if len(data) < 100:
+            print(f"WARNING: Kuntarekry requests feed suspiciously small ({len(data)} jobs); trying browser fallback")
+            try:
+                with sync_playwright() as p:
+                    browser = p.chromium.launch(headless=True)
+                    page = browser.new_page()
+                    page.goto(api_url, wait_until="domcontentloaded", timeout=45000)
+                    page.wait_for_timeout(1500)
+                    body_text = page.locator("body").inner_text().strip()
+                    browser.close()
+                browser_payload = json.loads(body_text)
+                if isinstance(browser_payload, dict):
+                    browser_data = browser_payload.get("jobs", [])
+                elif isinstance(browser_payload, list):
+                    browser_data = browser_payload
+                else:
+                    browser_data = []
+                print(f"Kuntarekry browser fallback jobs: {len(browser_data)}")
+                if len(browser_data) > len(data):
+                    payload = browser_payload
+                    data = browser_data
+            except Exception as fallback_error:
+                error_count += 1
+                print(f"Kuntarekry browser fallback failed: {fallback_error}")
+
+        fetched_count = len(data)
+        print(f"Kuntarekry raw jobs in selected feed: {fetched_count}")
 
         for item in data:
-            title = item.get("title", "")
-            relative_url = item.get("url", "")
-            employer = item.get("profit_center", "")
-            deadline = item.get("publication_end", "")
-
-            if not title or not relative_url:
+            if not isinstance(item, dict):
+                error_count += 1
                 continue
 
-            full_url = urljoin("https://www.kuntarekry.fi", relative_url)
+            title = str(item.get("title", "") or "").strip()
+            relative_url = str(item.get("url", "") or "").strip()
+            employer = str(
+                item.get("organisation", "")
+                or item.get("profit_center", "")
+                or ""
+            ).strip()
+            api_description = clean_html_text(str(item.get("description", "") or ""))
+            deadline = str(
+                item.get("publication_end", "")
+                or item.get("publication_date_end", "")
+                or ""
+            ).strip()
+            posted_on = str(
+                item.get("publication_date_start", "")
+                or item.get("publication_date", "")
+                or ""
+            ).strip()
+
+            for control in control_state:
+                if normalize(control) in normalize(title):
+                    control_state[control]["fetched"] = True
+
+            if not title or not relative_url:
+                error_count += 1
+                continue
+
+            parsed_count += 1
+            for control in control_state:
+                if normalize(control) in normalize(title):
+                    control_state[control]["parsed"] = True
+
+            full_url = urljoin("https://kuntarekry.fi", relative_url)
 
             if full_url in seen_links:
                 continue
-
             seen_links.add(full_url)
 
-            searchable_text = f"{title} {employer}"
+            # Prefilter only after the complete feed has been fetched and parsed.
+            # Use title + organisation + the feed's own short description so that
+            # relevant roles are not lost merely because their title is generic.
+            searchable_text = f"{title} {employer} {api_description}"
+            searchable_text_normalized = normalize(searchable_text)
 
             relevant_words = [
                 "koordinaattori", "asiantuntija", "talous", "projektikoordinaattori", "projektipäällikkö",
                 "resurssisuunnittelu", "vuorosuunnittelu", "työvuorosuunnittelu", "hallinto", "toimisto", "ostolasku",
-                "laskutus", "p2p", "sap", "koulutuspäällikkö", "kehittämis", "pääkäyttäjä", "järjestelmäasiantuntija",
-                "palveluasiantuntija",
+                "laskutus", "p2p", "sap", "koulutuspäällikkö", "kehittämis", "kehittäminen", "pääkäyttäjä",
+                "järjestelmäasiantuntija", "palveluasiantuntija", "palvelukoordinaattori", "projekti", "prosessi",
+                "operations", "operational", "service", "back office", "erp", "master data", "order management",
+                "document management", "asiakaspalvelu", "customer support", "project support", "project coordinator",
             ]
 
             excluded_words = [
@@ -1232,12 +1600,9 @@ def fetch_kuntarekry_jobs():
                 "vartija", "lääkäri", "tuomari", "oikeusavustaja", "lainsäädäntöneuvos", "harjoittelija", "opettaja",
                 "eduskunta", "eduskunnan kanslia", "ulkoministeriö", "kehityspolitiikka", "käräjäoikeus", "oikeus",
                 "tuomioistuin", "lahti", "vaala", "tampere", "terveydenhuolto", "terveys", "sairaanhoito", "hoitaja",
-                "lääkäri", "laakari", "sote", "hyvinvointialue", "terveydenhuolto", "terveys", "sairaanhoito",
-                "hoitaja", "lääkäri", "laakari", "sote", "hyvinvointialue", "sosiaalityöntekijä", "sosiaalityo",
+                "lääkäri", "laakari", "sote", "hyvinvointialue", "sosiaalityöntekijä", "sosiaalityo",
                 "sosiaalityö", "psykiatrinen", "vankisairaala",
             ]
-
-            searchable_text_normalized = normalize(searchable_text)
 
             if any(word in searchable_text_normalized for word in excluded_words):
                 continue
@@ -1245,10 +1610,15 @@ def fetch_kuntarekry_jobs():
             if not any(word in searchable_text_normalized for word in relevant_words):
                 continue
 
+            prefilter_count += 1
+            for control in control_state:
+                if normalize(control) in normalize(title):
+                    control_state[control]["prefilter"] = True
+
             description = fetch_job_description(full_url)
 
             jobs.append({
-                "id": f"kuntarekry:{full_url}",
+                "id": f"kuntarekry:{item.get('id') or item.get('extId') or full_url}",
                 "company": "Kuntarekry",
                 "employer": employer,
                 "source": "Kuntarekry",
@@ -1256,23 +1626,48 @@ def fetch_kuntarekry_jobs():
                 "title": title,
                 "location": employer,
                 "deadline": deadline,
-                "posted_on": item.get("publication_date", ""),
-                "description": description or searchable_text,
+                "posted_on": posted_on,
+                "description": description or api_description or searchable_text,
                 "url": full_url,
             })
 
     except Exception as error:
+        error_count += 1
         print(f"Could not fetch Kuntarekry jobs: {error}")
+
+    control_notes = []
+    for control, state in control_state.items():
+        control_notes.append(
+            f"{control}: fetched={state['fetched']}, parsed={state['parsed']}, prefilter={state['prefilter']}"
+        )
+
+    status = "OK"
+    if fetched_count == 0 or parsed_count == 0 or error_count > 0:
+        status = "WARNING"
 
     update_source_stats(
         "Kuntarekry",
-        read_count if "read_count" in locals() else 0,
-        len(jobs)
+        fetched_count,
+        len(jobs),
+        status=status,
+        note="; ".join(control_notes),
+        fetched=fetched_count,
+        parsed=parsed_count,
+        prefilter_passed=prefilter_count,
+        errors=error_count,
     )
 
-    print(f"Kuntarekry found: {len(jobs)}")
-    return jobs
+    print(
+        f"Kuntarekry found: {len(jobs)} "
+        f"(fetched {fetched_count}, parsed {parsed_count}, prefilter {prefilter_count}, errors {error_count})"
+    )
+    for control, state in control_state.items():
+        print(
+            f"Kuntarekry control — {control}: "
+            f"fetched={state['fetched']}, parsed={state['parsed']}, prefilter={state['prefilter']}"
+        )
 
+    return jobs
 
 def fetch_valtiolle_jobs():
     jobs = []
@@ -2189,6 +2584,25 @@ def fetch_ict_direct_jobs():
                     if locations_match:
                         location = locations_match.group(1).strip()
 
+                # Guard against parser leakage: location must not contain a job-description-sized text block.
+                location = clean_html_text(location)
+                location_invalid = (
+                    len(location) > 120
+                    or "\n" in location
+                    or "\r" in location
+                    or len(location.split()) > 16
+                    or any(marker in normalize(location) for marker in [
+                        "about the job", "about the role", "what you will", "we are looking",
+                        "apply now", "your responsibilities", "your role",
+                    ])
+                )
+                if location_invalid:
+                    error_count += 1
+                    debug_print(
+                        f"ICT DIRECT parsing warning: invalid location for {href}: {location[:180]!r}"
+                    )
+                    location = ""
+
                 posted_on = str(structured.get("datePosted", "")).strip()
                 deadline = str(structured.get("validThrough", "")).strip()
 
@@ -2908,6 +3322,7 @@ def main():
     sys.stdout = TeeLogger(original_stdout, log_file)
 
     print(f"Job Radar run: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"Build: {BUILD_ID}")
     print("Checking jobs...")
 
 
@@ -3042,8 +3457,6 @@ def main():
     print(f"- Duplicates removed: {duplicates_removed}")
     print(f"- Total after filters: {len(all_jobs)} job(s)\n")
 
-    print_source_health_report()
-
     new_jobs = []
     review_jobs = []
     recommendation_counts = {
@@ -3056,6 +3469,7 @@ def main():
     for job in all_jobs:
         analysis = calculate_fit_score(job)
         recommendation_counts[analysis["recommendation"]] += 1
+        record_source_scoring(job.get("source", "Unknown"), analysis)
 
         if analysis["recommendation"] == "Review":
             review_jobs.append((job, analysis))
@@ -3083,6 +3497,8 @@ def main():
         if analysis["recommendation"] in ["Apply", "Maybe"]:
             new_jobs.append((job, analysis))
 
+
+    print_source_health_report()
 
     print("\nRecommendation summary:")
     print(f"- 🟢 APPLY: {recommendation_counts['Apply']}")
