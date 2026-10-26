@@ -1,6 +1,12 @@
-Job Radar run: 2026-10-23 13:11:58
+Job Radar run: 2026-10-26 20:05:50
+Build: TZ1-SERVICE-COORDINATION-FINAL-20261026-B
 Checking jobs...
-Kuntarekry found: 3
+Kuntarekry endpoint: https://kuntarekry.fi/fi/api/json-jobs/ [200]
+Kuntarekry payload keys: ['filters', 'jobs', 'orgs', 'translations']
+Kuntarekry raw jobs in selected feed: 400
+Kuntarekry found: 31 (fetched 400, parsed 400, prefilter 31, errors 0)
+Kuntarekry control — Unity C#: fetched=True, parsed=True, prefilter=False
+Kuntarekry control — Hankeasiantuntija, mielenterveys ja hyvinvointi: fetched=False, parsed=False, prefilter=False
 Valtiolle found: 10
 Could not fetch job description: https://www.turunvesihuolto.fi/tyopaikat/ — 404 Client Error: Not Found for url: https://www.turunvesihuolto.fi/tyopaikat/
 Company career pages found: 0
@@ -10,105 +16,135 @@ Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=taloushall
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi
 Duunitori found: 0 (from 0 listed, 0 candidates)
 Manpower found: 12 (from 68 listed, 12 candidates)
-Barona found: 21 (from 221 listed, 21 candidates)
-aTalent found: 5 (from 12 listed, 6 candidates)
+Barona found: 16 (from 216 listed, 16 candidates)
+aTalent found: 4 (from 12 listed, 5 candidates)
 ICT DIRECT found: 4 (from 9 listed, 4 candidates)
-Adecco found: 4 (from 19 listed, 4 candidates)
-StaffPoint found: 2 (from 14 listed, 2 candidates)
-Adiente found: 2 (from 6 listed, 2 candidates)
-Eezy found: 6 (from 26 listed, 6 candidates)
+Adecco found: 6 (from 18 listed, 6 candidates)
+StaffPoint found: 2 (from 15 listed, 2 candidates)
+Adiente found: 1 (from 5 listed, 1 candidates)
+Eezy found: 6 (from 25 listed, 6 candidates)
 
 Source summary:
 - Finavia: 2 job(s)
-- Kuntarekry: 3 job(s)
+- Kuntarekry: 31 job(s)
 - Valtiolle: 10 job(s)
 - Company career pages: 0 job(s)
 - Duunitori: 0 job(s)
 - Manpower: 12 job(s)
-- Barona: 21 job(s)
-- aTalent: 5 job(s)
+- Barona: 16 job(s)
+- aTalent: 4 job(s)
 - ICT DIRECT: 4 job(s)
-- Adecco: 4 job(s)
+- Adecco: 6 job(s)
 - StaffPoint: 2 job(s)
-- Adiente: 2 job(s)
+- Adiente: 1 job(s)
 - Eezy: 6 job(s)
-- Duplicates removed: 21
-- Total after filters: 50 job(s)
+- Duplicates removed: 15
+- Total after filters: 79 job(s)
 
-
-Source health report:
-- Finavia: read 2, matched 2 — OK. read OK
-- Kuntarekry: read 24, matched 3 — OK. read OK
-- Valtiolle: read 24, matched 10 — OK. read OK
-- Company career pages: read 3, matched 0 — OK. checked configured generic pages; matched job links only
-- Duunitori: read 0, matched 0 — WARNING. 4 request(s) failed; 0 title-prefilter candidate(s)
-- Manpower: read 68, matched 12 — OK. read OK; 12 title-prefilter candidate(s)
-- Barona: read 221, matched 21 — OK. read OK; 15 listing page(s), 21 title-prefilter candidate(s)
-- aTalent: read 12, matched 5 — OK. read OK; 6 title-prefilter candidate(s)
-- ICT DIRECT: read 9, matched 4 — OK. read OK; 4 title-prefilter candidate(s)
-- Adecco: read 19, matched 4 — OK. read OK; 4 title-prefilter candidate(s)
-- StaffPoint: read 14, matched 2 — OK. read OK; 2 title-prefilter candidate(s)
-- Adiente: read 6, matched 2 — OK. read OK; 2 title-prefilter candidate(s)
-- Eezy: read 26, matched 6 — OK. read OK; 6 title-prefilter candidate(s); listing data retained if TalentAdore detail fails
 
 ======================================================================
-Kuntarekry — Projektipäällikkö
+Kuntarekry — Laitoshuoltaja
 ======================================================================
-Location: Kuhmon kaupunki
-Posted: 23.10.2026
-Deadline: 1.11.2026
-Fit score: 1/100
+Location: Kauhavan kaupunki
+Posted: 26.10.2026
+Deadline: 19.4.2027 16:00
+Fit score: 11/100
 Recommendation: Skip
-Gate limit: 35/100
+Gate limit: 20/100
 Gate reasons:
+- hard skip professional domain
 - wrong geography + on-site/location-bound work
 
 Why it may fit:
 - process development: koulutus
-- coordination / project: sidosryhmä
-- supply chain: logistiikka
+- coordination / project: asiakaspalvelu
+- location: etätyö
 
 Risks:
-- seniority risk: päällikkö
-- domain experience risk: energia-ala
-- Domain experience risk detected
-- Seniority / too high level risk detected
-- Text may contain a hard experience requirement
+- kitchen_cleaning_production: laitoshuoltaja, siivous, hygieniapassi
+- Hard reject domain detected
 
-Link: https://www.kuntarekry.fi/fi/tyopaikat/projektipaallikko-733930/
+Link: https://kuntarekry.fi/fi/tyopaikat/laitoshuoltaja-747788/
 
 ======================================================================
-Kuntarekry — Asiakasmaksupäällikkö, asiakasmaksupäätökset ja asiantuntijatuki
+Kuntarekry — Projektisuunnittelija kuntoutukseen
 ======================================================================
-Location: Helsingin kaupunki
-Posted: 23.10.2026
-Deadline: 9.11.2026
-Fit score: 3/100
+Location: Turun ammattikorkeakoulu Oy
+Posted: 26.10.2026
+Deadline: 8.11.2026 23:59
+Fit score: 0/100
 Recommendation: Skip
 Gate limit: 20/100
 Gate reasons:
 - hard skip professional domain
 
 Why it may fit:
-- SAP / P2P / invoices: sap
-- process development: prosessien kehittäminen, prosessi
-- coordination / project: muutos, neuvonta
+- process development: koulutus
+- location: turku, hybridi, hybrid, etätyö
 
 Risks:
-- seniority risk: päällikkö
-- domain experience risk: sote
-- Domain experience risk detected
-- Seniority / too high level risk detected
+- hard reject domain: lehtori, opettaja
+- social_health_education_sport: hoitotyö
 - Hard reject domain detected
 
-Link: https://www.kuntarekry.fi/fi/tyopaikat/asiakasmaksupaallikko-asiakasmaksupaatokset-ja-asiantuntijatuki-sotepe-04-90-26/
+Link: https://kuntarekry.fi/fi/tyopaikat/projektisuunnittelija-kuntoutukseen-tuamk-04-19-26/
 
 ======================================================================
-Kuntarekry — Hankekoordinaattori
+Kuntarekry — Biotekniikan lehtori
 ======================================================================
-Location: Inarin kunta
-Posted: 23.10.2026
-Deadline: 8.11.2026
+Location: Turun ammattikorkeakoulu Oy
+Posted: 26.10.2026
+Deadline: 11.11.2026 23:59
+Fit score: 0/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+
+Why it may fit:
+- process development: koulutus, prosessi
+- location: turku, etätyö
+
+Risks:
+- domain experience risk: sote
+- hard reject domain: lehtori, opettaja
+- Domain experience risk detected
+- Hard reject domain detected
+
+Link: https://kuntarekry.fi/fi/tyopaikat/biotekniikan-lehtori-tuamk-08-15-26/
+
+======================================================================
+Kuntarekry — Kirjaamon koordinaattori, Tiedonhallinta
+======================================================================
+Location: Helsingin kaupunki
+Posted: 26.10.2026
+Deadline: 9.11.2026 15:00
+Fit score: 20/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+
+Why it may fit:
+- operations / coordination / process core: asiakaspalvelu, asianhallinta, järjestelmä, koordinaattori
+- SAP / P2P / invoices: sap
+- process development: ohjeistus, koulutus, prosessi
+
+Risks:
+- domain experience risk: sote
+- rescue_security_nuclear: pelastustoimi
+- Domain experience risk detected
+- Hard reject domain detected
+- Text may contain a hard experience requirement
+
+Link: https://kuntarekry.fi/fi/tyopaikat/kirjaamon-koordinaattori-tiedonhallinta-sotepe-04-87-26/
+
+======================================================================
+Kuntarekry — Projektiasiantuntija
+======================================================================
+Location: Pieksämäen kaupunki
+Posted: 26.10.2026
+Deadline: 15.11.2026 23:59
 Fit score: 35/100
 Recommendation: Skip
 Gate limit: 35/100
@@ -116,20 +152,185 @@ Gate reasons:
 - wrong geography + on-site/location-bound work
 
 Why it may fit:
-- process development: kehittämishanke
-- coordination / project: koordinaattori
+- coordination / project: neuvonta
+- supply chain: toimitusketju
+- location: etätyö
 
 Risks:
 - No obvious hard-domain risks found
 
-Link: https://www.kuntarekry.fi/fi/tyopaikat/hankekoordinaattori-inari-03-2-26/
+Link: https://kuntarekry.fi/fi/tyopaikat/projektiasiantuntija-747185/
 
 ======================================================================
-Valtiolle — Erityisohjaaja (Vuorelan toimintayksikkö)
+Kuntarekry — Erityisasiantuntija, kuntatalous
 ======================================================================
-Location: Valtion lastensuojelulaitos
-Posted: Unknown
-Deadline: Unknown
+Location: Suomen Kuntaliitto
+Posted: 23.10.2026
+Deadline: 16.11.2026 15:00
+Fit score: 5/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- SAP / P2P / invoices: sap
+- coordination / project: neuvonta
+- location: helsinki, etätyö
+
+Risks:
+- legal_court: edunvalvonta
+- Hard reject domain detected
+
+Link: https://kuntarekry.fi/fi/tyopaikat/erityisasiantuntija-kuntatalous-kl-18-2-26/
+
+======================================================================
+Kuntarekry — Kehittämispäällikkö, tietohallinto
+======================================================================
+Location: Järvenpään kaupunki
+Posted: 22.10.2026
+Deadline: 6.11.2026 15:00
+Fit score: 9/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- No strong positive matches yet
+
+Risks:
+- seniority risk: päällikkö
+- cyber_infrastructure: tietoturva
+- Seniority / too high level risk detected
+- Hard reject domain detected
+
+Link: https://kuntarekry.fi/fi/tyopaikat/kehittamispaallikko-tietohallinto-jake-924/
+
+======================================================================
+Kuntarekry — Maksatuskoordinaattori
+======================================================================
+Location: Järvenpään kaupunki
+Posted: 22.10.2026
+Deadline: 5.11.2026 13:00
+Fit score: 35/100
+Recommendation: Skip
+Gate limit: 35/100
+Gate reasons:
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- operations / coordination / process core: asiakaspalvelu, järjestelmä, koordinaattori, prosessi
+- SAP / P2P / invoices: ostolasku, lasku, laskutus
+- process development: prosessi
+
+Risks:
+- No obvious hard-domain risks found
+
+Link: https://kuntarekry.fi/fi/tyopaikat/maksatuskoordinaattori-jake-921/
+
+======================================================================
+Kuntarekry — Kunnossapitoinsinööri
+======================================================================
+Location: Vaasan kaupunki
+Posted: 22.10.2026
+Deadline: 13.11.2026 15:00
+Fit score: 20/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+- wrong geography
+
+Why it may fit:
+- SAP / P2P / invoices: sap
+- location: etätyö
+
+Risks:
+- maintenance_manual_work: kunnossapito
+- Hard reject domain detected
+- Text may contain a hard experience requirement
+
+Link: https://kuntarekry.fi/fi/tyopaikat/kunnossapitoinsinoori-vsa905-04-8-25/
+
+======================================================================
+Kuntarekry — Laitosmies/ vesihuoltolaitos
+======================================================================
+Location: Laitilan kaupunki
+Posted: 22.10.2026
+Deadline: 6.11.2026 12:00
+Fit score: 20/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- SAP / P2P / invoices: sap
+- process development: koulutus
+- location: turku, etätyö
+
+Risks:
+- hard reject domain: pohjavesi
+- maintenance_manual_work: kunnossapito
+- Hard reject domain detected
+
+Link: https://kuntarekry.fi/fi/tyopaikat/laitosmies-vesihuoltolaitos-747314/
+
+======================================================================
+Kuntarekry — Vammaistyön lehtori
+======================================================================
+Location: Turun ammattikorkeakoulu Oy
+Posted: 22.10.2026
+Deadline: 4.11.2026 23:59
+Fit score: 0/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+
+Why it may fit:
+- process development: koulutus
+- location: turku
+
+Risks:
+- hard reject domain: lehtori, opettaja
+- social_health_education_sport: sosionomi, hoitotyö, kasvatusala
+- Hard reject domain detected
+
+Link: https://kuntarekry.fi/fi/tyopaikat/vammaistyon-lehtori-tuamk-04-15-26/
+
+======================================================================
+Kuntarekry — Revontuli-Opisto, toimistosihteeri
+======================================================================
+Location: Kittilän kunta, Revontuli-Opisto
+Posted: 22.10.2026
+Deadline: 15.11.2026 14:00
+Fit score: 35/100
+Recommendation: Skip
+Gate limit: 35/100
+Gate reasons:
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- process development: koulutus
+- coordination / project: asiakaspalvelu
+- location: etätyö
+
+Risks:
+- No obvious hard-domain risks found
+
+Link: https://kuntarekry.fi/fi/tyopaikat/revontuli-opisto-toimistosihteeri-744471/
+
+======================================================================
+Kuntarekry — Projektijohtaja
+======================================================================
+Location: Pieksämäen kaupunki
+Posted: 26.10.2026
+Deadline: 15.11.2026 23:59
 Fit score: 0/100
 Recommendation: Skip
 Gate limit: 20/100
@@ -138,68 +339,68 @@ Gate reasons:
 - wrong geography + on-site/location-bound work
 
 Why it may fit:
-- operations / coordination / process core: dokumentointi, järjestelmä
-- process development: dokumentointi, koulutus
+- coordination / project: sidosryhmä
 - location: etätyö
 
 Risks:
-- hard reject domain: lastensuojelu
-- social_health_education_sport: sosionomi, sairaanhoitaja, yhteisöpedagogi, kasvatusala
+- domain experience risk: energia-ala
+- technical_infrastructure: sähköverkko
+- Domain experience risk detected
+- Seniority / too high level risk detected
 - Hard reject domain detected
 
-Link: https://valtiolle.fi/fi/tyopaikat/erityisohjaaja-vuorelan-toimintayksikko-25909/
+Link: https://kuntarekry.fi/fi/tyopaikat/projektijohtaja-746330/
 
 ======================================================================
-Valtiolle — Assistentti (tieto- ja turvallisuusosasto)
+Kuntarekry — Koulutuspäällikkö
 ======================================================================
-Location: Liikenne- ja viestintäministeriö
-Posted: Unknown
-Deadline: Unknown
-Fit score: 2/100
+Location: Satakunnan koulutuskuntayhtymä
+Posted: 21.10.2026
+Deadline: 8.11.2026 23:59
+Fit score: 0/100
 Recommendation: Skip
-Gate limit: 20/100
+Gate limit: 35/100
 Gate reasons:
-- hard skip professional domain
 - wrong geography + on-site/location-bound work
 
 Why it may fit:
-- operations / coordination / process core: asiakaspalvelu, järjestelmä
-- coordination / project: muutos, asiakaspalvelu
-- location: helsinki, etätyö
+- process development: koulutus
+- location: etätyö
 
 Risks:
-- legal_court: säädösvalmistelu
+- seniority risk: päällikkö
+- hard reject domain: lehtori
+- Seniority / too high level risk detected
 - Hard reject domain detected
 
-Link: https://valtiolle.fi/fi/tyopaikat/assistentti-tieto-ja-turvallisuusosasto-25930/
+Link: https://kuntarekry.fi/fi/tyopaikat/koulutuspaallikko-sata-01-13-26/
 
 ======================================================================
-Manpower — Business Controller
+Kuntarekry — Asiakaspalveluvastaava
 ======================================================================
-Location: Helsinki, Uusimaa
-Posted: 2026-10-23T10:45:13.187Z
-Deadline: 2026-10-27T00:00:00.000Z
-Fit score: 17/100
+Location: Porvoon kaupunki
+Posted: 21.10.2026
+Deadline: 4.11.2026 15:00
+Fit score: 22/100
 Recommendation: Skip
-Gate limit: 20/100
+Gate limit: 35/100
 Gate reasons:
-- hard skip professional domain
+- wrong geography + on-site/location-bound work
 
 Why it may fit:
-- location: helsinki, hybridi, hybrid
+- coordination / project: asiakaspalvelu, neuvonta
 
 Risks:
-- cyber_infrastructure: tietoturva
-- Hard reject domain detected
+- sales / commercial: myynti
 
-Link: https://www.manpower.fi/tyo/business-controller-286606
+Link: https://kuntarekry.fi/fi/tyopaikat/asiakaspalveluvastaava-prv-50-51-26-1/
 
 ======================================================================
-Eezy — Laskenta-asiantuntija
+Kuntarekry — Työllisyysasiantuntija
 ======================================================================
-Location: Kouvola, Kymenlaakso
-Posted: 2026-10-23T12:48:00
-Deadline: 2026-11-08T21:59:00
+Location: Kemin kaupunki
+Posted: 20.10.2026
+Deadline: 5.11.2026 16:00
 Fit score: 35/100
 Recommendation: Skip
 Gate limit: 35/100
@@ -207,41 +408,243 @@ Gate reasons:
 - wrong geography + on-site/location-bound work
 
 Why it may fit:
-- process development: koulutus, prosessi
+- operations / coordination / process core: asiakaspalvelu, ongelmanratkaisu
+- process development: koulutus
+- coordination / project: asiakaspalvelu
 
 Risks:
 - No obvious hard-domain risks found
 
-Link: https://ats.talentadore.com/apply/laskenta-asiantuntija/8VXpdJ
+Link: https://kuntarekry.fi/fi/tyopaikat/tyollisyysasiantuntija-kemi-05-6-26/
 
 ======================================================================
-Eezy — Teknisen myynnin asiantuntija, teollisuuden pumppuratkaisut
+Kuntarekry — Projektipäällikkö
 ======================================================================
-Location: Teknisen myynnin asiantuntija, teollisuuden pumppuratkaisut Processpumpar Norden Ab
-Posted: 2026-10-22T21:00:00
-Deadline: 2026-11-08T21:59:00
-Fit score: 30/100
+Location: Rauman kaupunki
+Posted: 20.10.2026
+Deadline: 15.11.2026 23:59
+Fit score: 35/100
 Recommendation: Skip
-Gate limit: 40/100
+Gate limit: 35/100
 Gate reasons:
-- wrong geography
+- wrong geography + on-site/location-bound work
 
 Why it may fit:
-- process development: prosessi
-- location: vantaa
+- operations / coordination / process core: järjestelmä, sidosryhmä, sidosryhmäyhteistyö
+- SAP / P2P / invoices: sap
+- coordination / project: muutos, sidosryhmä
 
 Risks:
-- sales / commercial: myynti, b2b-myynti
+- seniority risk: päällikkö
+- Seniority / too high level risk detected
 
-Link: https://ats.talentadore.com/apply/teknisen-myynnin-asiantuntija-teollisuuden-pumppuratkaisut/Zja06g
+Link: https://kuntarekry.fi/fi/tyopaikat/projektipaallikko-rau-45-27-26/
+
+======================================================================
+Kuntarekry — Jätehuoltosuunnittelijan sijainen, Jätehuollon viranomaispalvelut, 4.1.2027- 29.2.2028
+======================================================================
+Location: Hämeenlinnan kaupunki
+Posted: 18.10.2026
+Deadline: 15.11.2026 21:59
+Fit score: 35/100
+Recommendation: Skip
+Gate limit: 35/100
+Gate reasons:
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- operations / coordination / process core: asiakaspalvelu, prosessi, tiedonhallinta
+- process development: prosessi
+- coordination / project: asiakaspalvelu
+
+Risks:
+- payroll / TE domain: lainsäädäntö
+
+Link: https://kuntarekry.fi/fi/tyopaikat/jatehuoltosuunnittelijan-sijainen-jatehuollon-viranomaispalvelut-4.1.2027-29.2.2028-hml-3oeoel/
+
+======================================================================
+Valtiolle — Vanhempi asiantuntija, tekoäly
+======================================================================
+Location: Valtion tieto- ja viestintätekniikkakeskus Valtori
+Posted: Unknown
+Deadline: Unknown
+Fit score: 20/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+
+Why it may fit:
+- operations / coordination / process core: hallinto, järjestelmä, käyttöönotto, tiedonhallinta
+- location: helsinki, etätyö
+
+Risks:
+- cyber_infrastructure: tietoturva
+- Hard reject domain detected
+
+Link: https://valtiolle.fi/fi/tyopaikat/vanhempi-asiantuntija-tekoaly-25978/
+
+======================================================================
+Valtiolle — Erityisasiantuntija (Technical Lead in Education), Opetusalan globaalit kumppanuudet
+======================================================================
+Location: Opetushallitus
+Posted: Unknown
+Deadline: Unknown
+Fit score: 16/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- operations / coordination / process core: järjestelmä, perehdytys, sidosryhmä, sidosryhmäyhteistyö
+- process development: koulutus, perehdytys
+- coordination / project: sidosryhmä
+
+Risks:
+- seniority risk: päällikkö
+- hard reject domain: opettaja
+- Seniority / too high level risk detected
+- Hard reject domain detected
+
+Link: https://valtiolle.fi/fi/tyopaikat/erityisasiantuntija-technical-lead-in-education-opetusalan-globaalit-kumppanuudet-25932/
+
+======================================================================
+Valtiolle — Suunnittelija, Velmu-ohjelma
+======================================================================
+Location: Lounais-Suomen elinvoimakeskus
+Posted: Unknown
+Deadline: Unknown
+Fit score: 35/100
+Recommendation: Skip
+Gate limit: 35/100
+Gate reasons:
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- operations / coordination / process core: järjestelmä, prosessi
+- process development: koulutus, prosessi
+- coordination / project: muutos
+
+Risks:
+- No obvious hard-domain risks found
+
+Link: https://valtiolle.fi/fi/tyopaikat/suunnittelija-velmu-ohjelma-25962/
+
+======================================================================
+Manpower — Product & Trade Marketing Coordinator - Imperial Brands Finland
+======================================================================
+Location: Turku, Lounais-Suomi
+Posted: 2026-10-26T11:37:28.811Z
+Deadline: 2026-11-09T00:00:00.000Z
+Fit score: 20/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+
+Why it may fit:
+- operations / coordination / process core: coordinator, sidosryhmä, sidosryhmäyhteistyö
+- SAP / P2P / invoices: sap
+- process development: koulutus
+
+Risks:
+- sales / commercial: myynti
+- cyber_infrastructure: tietoturva
+- Hard reject domain detected
+
+Link: https://www.manpower.fi/tyo/product-and-trade-marketing-coordinator-imperial-brands-finland-286668
+
+======================================================================
+Adecco — Global Mobility & Payroll Senior Specialist / Manager
+======================================================================
+Location: Tampere, Espoo
+Posted: 2026-10-26T00:00:00+02:00
+Deadline: 2026-11-10 23:59:59 +0200
+Fit score: 65/100
+Recommendation: Review
+
+Why it may fit:
+- operations / coordination / process core: hallinto, järjestelmä, prosessi, sidosryhmä
+- SAP / P2P / invoices: lasku
+- process development: prosessi
+
+Risks:
+- seniority risk: johtava, manager
+- domain experience risk: verotus
+- Domain experience risk detected
+- Seniority / too high level risk detected
+
+Link: https://recruitment.fi.adecco.com/jobs/8614865-global-mobility-payroll-senior-specialist-manager
+
+======================================================================
+Adecco — Quality Specialist / Deputy Responsible Person (Project)
+======================================================================
+Location: Helsinki
+Posted: 2026-10-26T00:00:00+02:00
+Deadline: 2026-11-06 23:59:59 +0200
+Fit score: 79/100
+Recommendation: Apply
+
+Why it may fit:
+- operations / coordination / process core: onboarding, operational, process, stakeholder
+- location: helsinki, hybrid
+
+Risks:
+- No obvious hard-domain risks found
+
+Link: https://recruitment.fi.adecco.com/jobs/8612724-quality-specialist-deputy-responsible-person-project
+
+======================================================================
+Kuntarekry — Erityisasiantuntija
+======================================================================
+Location: Pieksämäen kaupunki
+Posted: 26.10.2026
+Deadline: 15.11.2026 23:59
+Fit score: 0/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- supply chain: logistiikka
+- location: etätyö
+
+Risks:
+- domain experience risk: energia-ala
+- technical_infrastructure: sähköverkko
+- Domain experience risk detected
+- Hard reject domain detected
+
+Link: https://kuntarekry.fi/fi/tyopaikat/erityisasiantuntija-746337/
+
+Source health report:
+- Finavia: fetched 2, parsed 2, prefilter 2, hard-pass 0, scored 2, A/M/R/S 0/0/0/2, errors 0 — OK. read OK
+- Kuntarekry: fetched 400, parsed 400, prefilter 31, hard-pass 1, scored 31, A/M/R/S 0/0/1/30, errors 0 — OK. Unity C#: fetched=True, parsed=True, prefilter=False; Hankeasiantuntija, mielenterveys ja hyvinvointi: fetched=False, parsed=False, prefilter=False
+- Valtiolle: fetched 24, parsed 24, prefilter 10, hard-pass 1, scored 10, A/M/R/S 0/0/1/9, errors 0 — OK. read OK
+- Company career pages: fetched 3, parsed 3, prefilter 0, hard-pass 0, scored 0, A/M/R/S 0/0/0/0, errors 0 — OK. checked configured generic pages; matched job links only
+- Duunitori: fetched 0, parsed 0, prefilter 0, hard-pass 0, scored 0, A/M/R/S 0/0/0/0, errors 0 — WARNING. 4 request(s) failed; 0 title-prefilter candidate(s); 0 fetched
+- Manpower: fetched 68, parsed 68, prefilter 12, hard-pass 6, scored 12, A/M/R/S 3/1/2/6, errors 0 — OK. read OK; 12 title-prefilter candidate(s)
+- Barona: fetched 216, parsed 216, prefilter 16, hard-pass 1, scored 1, A/M/R/S 0/0/0/1, errors 0 — OK. read OK; 15 listing page(s), 16 title-prefilter candidate(s)
+- aTalent: fetched 12, parsed 12, prefilter 4, hard-pass 4, scored 4, A/M/R/S 1/0/3/0, errors 0 — OK. read OK; 5 title-prefilter candidate(s)
+- ICT DIRECT: fetched 9, parsed 9, prefilter 4, hard-pass 3, scored 4, A/M/R/S 2/1/0/1, errors 0 — WARNING. 1 request(s) failed; 4 title-prefilter candidate(s)
+- Adecco: fetched 18, parsed 18, prefilter 6, hard-pass 2, scored 6, A/M/R/S 1/0/1/4, errors 0 — OK. read OK; 6 title-prefilter candidate(s)
+- StaffPoint: fetched 15, parsed 15, prefilter 2, hard-pass 1, scored 2, A/M/R/S 1/0/0/1, errors 0 — OK. read OK; 2 title-prefilter candidate(s)
+- Adiente: fetched 5, parsed 5, prefilter 1, hard-pass 1, scored 1, A/M/R/S 0/0/1/0, errors 0 — OK. read OK; 1 title-prefilter candidate(s)
+- Eezy: fetched 25, parsed 25, prefilter 6, hard-pass 0, scored 6, A/M/R/S 0/0/0/6, errors 0 — OK. read OK; 6 title-prefilter candidate(s); listing data retained if TalentAdore detail fails
 
 Recommendation summary:
-- 🟢 APPLY: 9
+- 🟢 APPLY: 8
 - 🟡 MAYBE: 2
-- 🔵 REVIEW: 10
-- Review reservoir candidates: 10
-- ⚪ SKIP: 29
-No new jobs found.
-Checked 50 jobs total.
-Review reservoir saved: 21 item(s).
-Weekly review email sent.
+- 🔵 REVIEW: 9
+- Review reservoir candidates: 9
+- ⚪ SKIP: 60
+Job Radar: found 1 new job(s).
+Checked 79 jobs total.
+Telegram secrets are missing.
+Review reservoir saved: 19 item(s).
+Hidden Opportunities completed: 29 item(s).
+Weekly review email sent with Hidden Opportunities when available.
