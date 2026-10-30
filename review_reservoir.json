@@ -701,5 +701,360 @@
       }
     ],
     "url": "https://recruitment.fi.adecco.com/jobs/8614865-global-mobility-payroll-senior-specialist-manager"
+  },
+  {
+    "dedupe_key": "helsingin kaupunki|kehityspäällikkö ydintietorekisterikokonaisuuden kehittäminen|helsingin kaupunki",
+    "date_seen": "2026-10-30",
+    "company": "Kuntarekry",
+    "title": "Kehityspäällikkö, ydintietorekisterikokonaisuuden kehittäminen",
+    "location": "Helsingin kaupunki",
+    "source": "Kuntarekry",
+    "score": 65,
+    "recommendation": "Review",
+    "positive_signals": [
+      "operations / coordination / process core: hallinto, järjestelmä, sidosryhmä",
+      "SAP / P2P / invoices: toimittaja",
+      "process development: koulutus, kehittämishanke",
+      "coordination / project: muutos, sidosryhmä",
+      "location: helsinki"
+    ],
+    "negative_signals": [
+      "seniority risk: päällikkö"
+    ],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": true,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 25,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "päällikkö"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      }
+    ],
+    "url": "https://kuntarekry.fi/fi/tyopaikat/kehityspaallikko-ydintietorekisterikokonaisuuden-kehittaminen-kymp-04-12-26/"
+  },
+  {
+    "dedupe_key": "helsingin kaupunki|projektinjohtaja taitorakenteiden suunnittelu|helsingin kaupunki",
+    "date_seen": "2026-10-30",
+    "company": "Kuntarekry",
+    "title": "Projektinjohtaja, taitorakenteiden suunnittelu",
+    "location": "Helsingin kaupunki",
+    "source": "Kuntarekry",
+    "score": 44,
+    "recommendation": "Review",
+    "positive_signals": [
+      "operations / coordination / process core: hallinto, järjestelmä",
+      "location: helsinki, hybridi, hybrid"
+    ],
+    "negative_signals": [
+      "seniority risk: päällikkö"
+    ],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": true,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 25,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "päällikkö"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      }
+    ],
+    "url": "https://kuntarekry.fi/fi/tyopaikat/projektinjohtaja-taitorakenteiden-suunnittelu-kymp-01-30-26/"
+  },
+  {
+    "dedupe_key": "verohallinto|ict asiantuntija vt 13|verohallinto",
+    "date_seen": "2026-10-30",
+    "company": "Valtiolle",
+    "title": "ICT-asiantuntija, vt.13",
+    "location": "Verohallinto",
+    "source": "Valtiolle",
+    "score": 39,
+    "recommendation": "Review",
+    "positive_signals": [
+      "operations / coordination / process core: hallinto, järjestelmä, prosessi",
+      "process development: prosessi",
+      "coordination / project: muutos, neuvonta",
+      "location: turku, helsinki, hybridi, hybrid, etätyö"
+    ],
+    "negative_signals": [
+      "seniority risk: päällikkö",
+      "domain experience risk: verohallinto, verotus",
+      "data / BI / analytics risk: databricks, analytiikka"
+    ],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": true,
+    "data_bi_risk": true,
+    "seniority_penalty": 0,
+    "domain_penalty": 38,
+    "data_bi_penalty": 18,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [
+      "seniority risk",
+      "domain experience risk",
+      "data / BI / analytics risk"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "verohallinto",
+      "verotus",
+      "databricks",
+      "analytiikka"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "domain experience risk",
+        "keywords": [
+          "verohallinto",
+          "verotus"
+        ]
+      },
+      {
+        "group": "data / BI / analytics risk",
+        "keywords": [
+          "databricks",
+          "analytiikka"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/ict-asiantuntija-vt.13-25895/"
+  },
+  {
+    "dedupe_key": "?|logistiikkapäällikkö|vantaa",
+    "date_seen": "2026-10-30",
+    "company": "Manpower",
+    "title": "Logistiikkapäällikkö",
+    "location": "Vantaa, Uusimaa",
+    "source": "Manpower",
+    "score": 65,
+    "recommendation": "Review",
+    "positive_signals": [
+      "operations / coordination / process core: järjestelmä, prosessi, toiminnan kehittäminen",
+      "SAP / P2P / invoices: sap",
+      "process development: prosessi",
+      "supply chain: toimitusketju, logistiikka",
+      "location: vantaa"
+    ],
+    "negative_signals": [
+      "seniority risk: päällikkö"
+    ],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": true,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 25,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "päällikkö"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      }
+    ],
+    "url": "https://www.manpower.fi/tyo/logistiikkapaallikko-286827"
+  },
+  {
+    "dedupe_key": "?|sok packaging design specialist|helsinki",
+    "date_seen": "2026-10-30",
+    "company": "aTalent",
+    "title": "SOK Packaging Design Specialist",
+    "location": "Helsinki",
+    "source": "aTalent",
+    "score": 55,
+    "recommendation": "Review",
+    "positive_signals": [
+      "operations / coordination / process core: järjestelmä, prosessi, sidosryhmä",
+      "SAP / P2P / invoices: lasku",
+      "process development: koulutus, prosessi",
+      "coordination / project: projektinhallinta, muutos, sidosryhmä",
+      "location: helsinki, hybridi, hybrid, etätyö"
+    ],
+    "negative_signals": [],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 25,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [],
+    "trigger_terms": [],
+    "risks": [],
+    "url": "https://atalent.fi/open-position/sok-packaging-design-specialist-393212"
+  },
+  {
+    "dedupe_key": "?|payroll specialist helsinki|helsinki",
+    "date_seen": "2026-10-30",
+    "company": "Adecco",
+    "title": "Payroll Specialist (Helsinki)",
+    "location": "Helsinki",
+    "source": "Adecco",
+    "score": 100,
+    "recommendation": "Review",
+    "positive_signals": [
+      "operations / coordination / process core: hallinto, järjestelmä, perehdytys, prosessi, pääkäyttäjä",
+      "SAP / P2P / invoices: lasku",
+      "process development: koulutus, perehdytys, prosessi",
+      "location: helsinki, hybridi, hybrid"
+    ],
+    "negative_signals": [
+      "seniority risk: manager",
+      "payroll / TE domain: palkanlaskenta",
+      "data / BI / analytics risk: analytiikka"
+    ],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": true,
+    "seniority_penalty": 0,
+    "domain_penalty": 18,
+    "data_bi_penalty": 18,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [
+      "seniority risk",
+      "payroll / TE domain",
+      "data / BI / analytics risk"
+    ],
+    "trigger_terms": [
+      "manager",
+      "palkanlaskenta",
+      "analytiikka"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "manager"
+        ]
+      },
+      {
+        "group": "payroll / TE domain",
+        "keywords": [
+          "palkanlaskenta"
+        ]
+      },
+      {
+        "group": "data / BI / analytics risk",
+        "keywords": [
+          "analytiikka"
+        ]
+      }
+    ],
+    "url": "https://recruitment.fi.adecco.com/jobs/8637778-payroll-specialist-helsinki"
+  },
+  {
+    "dedupe_key": "?|vastaanottotyöntekijöitä loma ja poissaolosijaisuuksiin|helsinki",
+    "date_seen": "2026-10-30",
+    "company": "Adecco",
+    "title": "Vastaanottotyöntekijöitä loma- ja poissaolosijaisuuksiin",
+    "location": "Helsinki",
+    "source": "Adecco",
+    "score": 45,
+    "recommendation": "Review",
+    "positive_signals": [
+      "coordination / project: asiakaspalvelu",
+      "location: helsinki"
+    ],
+    "negative_signals": [
+      "seniority risk: johtava"
+    ],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "johtava"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "johtava"
+        ]
+      }
+    ],
+    "url": "https://recruitment.fi.adecco.com/jobs/8622988-vastaanottotyontekijoita-loma-ja-poissaolosijaisuuksiin"
   }
 ]

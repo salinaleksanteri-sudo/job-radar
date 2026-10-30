@@ -1,13 +1,13 @@
-Job Radar run: 2026-10-26 20:37:25
+Job Radar run: 2026-10-30 14:54:45
 Build: TZ1-SERVICE-COORDINATION-FINAL-20261026-B
 Checking jobs...
 Kuntarekry endpoint: https://kuntarekry.fi/fi/api/json-jobs/ [200]
 Kuntarekry payload keys: ['filters', 'jobs', 'orgs', 'translations']
 Kuntarekry raw jobs in selected feed: 400
-Kuntarekry found: 31 (fetched 400, parsed 400, prefilter 31, errors 0)
-Kuntarekry control — Unity C#: fetched=True, parsed=True, prefilter=False
+Kuntarekry found: 42 (fetched 400, parsed 400, prefilter 42, errors 0)
+Kuntarekry control — Unity C#: fetched=False, parsed=False, prefilter=False
 Kuntarekry control — Hankeasiantuntija, mielenterveys ja hyvinvointi: fetched=False, parsed=False, prefilter=False
-Valtiolle found: 10
+Valtiolle found: 7
 Could not fetch job description: https://www.turunvesihuolto.fi/tyopaikat/ — 404 Client Error: Not Found for url: https://www.turunvesihuolto.fi/tyopaikat/
 Company career pages found: 0
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=sap — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=sap
@@ -15,56 +15,193 @@ Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=koordinaat
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=taloushallinto — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=taloushallinto
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi
 Duunitori found: 0 (from 0 listed, 0 candidates)
-Manpower found: 12 (from 68 listed, 12 candidates)
-Barona found: 16 (from 216 listed, 16 candidates)
-aTalent found: 4 (from 12 listed, 5 candidates)
+Manpower found: 6 (from 74 listed, 6 candidates)
+Barona found: 20 (from 226 listed, 20 candidates)
+aTalent found: 8 (from 17 listed, 10 candidates)
 ICT DIRECT found: 4 (from 9 listed, 4 candidates)
-Adecco found: 6 (from 18 listed, 6 candidates)
+Adecco found: 7 (from 19 listed, 7 candidates)
 StaffPoint found: 2 (from 15 listed, 2 candidates)
 Adiente found: 1 (from 5 listed, 1 candidates)
-Eezy found: 6 (from 25 listed, 6 candidates)
+Eezy found: 7 (from 21 listed, 7 candidates)
 
 Source summary:
 - Finavia: 2 job(s)
-- Kuntarekry: 31 job(s)
-- Valtiolle: 10 job(s)
+- Kuntarekry: 42 job(s)
+- Valtiolle: 7 job(s)
 - Company career pages: 0 job(s)
 - Duunitori: 0 job(s)
-- Manpower: 12 job(s)
-- Barona: 16 job(s)
-- aTalent: 4 job(s)
+- Manpower: 6 job(s)
+- Barona: 20 job(s)
+- aTalent: 8 job(s)
 - ICT DIRECT: 4 job(s)
-- Adecco: 6 job(s)
+- Adecco: 7 job(s)
 - StaffPoint: 2 job(s)
 - Adiente: 1 job(s)
-- Eezy: 6 job(s)
-- Duplicates removed: 15
-- Total after filters: 79 job(s)
+- Eezy: 7 job(s)
+- Duplicates removed: 21
+- Total after filters: 85 job(s)
 
+
+======================================================================
+Kuntarekry — Asumisasiantuntijan toimi, toistaiseksi 4.1.2027 alkaen tai sopimuksen mukaan
+======================================================================
+Location: Hämeenlinnan kaupunki
+Posted: 30.10.2026
+Deadline: 21.11.2026 21:59
+Fit score: 20/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- operations / coordination / process core: dokumentointi, erp, prosessi
+- process development: dokumentointi, prosessi
+- coordination / project: neuvonta
+
+Risks:
+- social_health_education_sport: sosionomi
+- Hard reject domain detected
+- Text may contain a hard experience requirement
+
+Link: https://kuntarekry.fi/fi/tyopaikat/asumisasiantuntijan-toimi-toistaiseksi-4.1.2027-alkaen-tai-sopimuksen-mukaan-hml-b20kyz/
+
+======================================================================
+Kuntarekry — Talous- ja hallintojohtaja
+======================================================================
+Location: Keski-Pohjanmaan koulutusyhtymä
+Posted: 30.10.2026
+Deadline: 22.11.2026 23:59
+Fit score: 35/100
+Recommendation: Skip
+Gate limit: 35/100
+Gate reasons:
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- process development: koulutus
+- location: hybridi, hybrid, etätyö
+
+Risks:
+- domain experience risk: sote
+- Domain experience risk detected
+- Seniority / too high level risk detected
+
+Link: https://kuntarekry.fi/fi/tyopaikat/talous-ja-hallintojohtaja-kpedu-01-7-26/
+
+======================================================================
+Kuntarekry — Järjestelmäasiantuntija
+======================================================================
+Location: Savon koulutuskuntayhtymä
+Posted: 30.10.2026
+Deadline: 13.11.2026 14:00
+Fit score: 20/100
+Recommendation: Skip
+Gate limit: 20/100
+Gate reasons:
+- hard skip professional domain
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- operations / coordination / process core: asiakaspalvelu, dokumentointi, hallinto, järjestelmä
+- process development: dokumentointi, koulutus
+- coordination / project: asiakaspalvelu, neuvonta
+
+Risks:
+- cyber_infrastructure: tietoturva
+- Hard reject domain detected
+- Text may contain a hard experience requirement
+
+Link: https://kuntarekry.fi/fi/tyopaikat/jarjestelmaasiantuntija-sakky-00-68-26/
+
+======================================================================
+Valtiolle — Hätäkeskuspäivystäjä
+======================================================================
+Location: Hätäkeskuslaitos
+Posted: Unknown
+Deadline: Unknown
+Fit score: 35/100
+Recommendation: Skip
+Gate limit: 35/100
+Gate reasons:
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- location: etätyö
+
+Risks:
+- No obvious hard-domain risks found
+
+Link: https://valtiolle.fi/fi/tyopaikat/hatakeskuspaivystaja-26068/
+
+======================================================================
+Valtiolle — Hätäkeskuspäivystäjä (11 virkasuhdetta)
+======================================================================
+Location: Hätäkeskuslaitos
+Posted: Unknown
+Deadline: Unknown
+Fit score: 35/100
+Recommendation: Skip
+Gate limit: 35/100
+Gate reasons:
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- location: etätyö
+
+Risks:
+- No obvious hard-domain risks found
+
+Link: https://valtiolle.fi/fi/tyopaikat/hatakeskuspaivystaja-11-virkasuhdetta-26043/
+
+======================================================================
+Valtiolle — Erikoistutkija - päästölaskenta ja ohjauskeinoanalyysit
+======================================================================
+Location: Suomen ympäristökeskus Syke
+Posted: Unknown
+Deadline: Unknown
+Fit score: 3/100
+Recommendation: Skip
+Gate limit: 35/100
+Gate reasons:
+- wrong geography + on-site/location-bound work
+
+Why it may fit:
+- location: helsinki, hybridi, hybrid, etätyö
+
+Risks:
+- data / BI / analytics risk: etl
+- hard reject domain: tutkija
+- Data / BI / analytics risk detected
+- Hard reject domain detected
+- Text may contain a hard experience requirement
+
+Link: https://valtiolle.fi/fi/tyopaikat/erikoistutkija-paastolaskenta-ja-ohjauskeinoanalyysit-25941/
 
 Source health report:
 - Finavia: fetched 2, parsed 2, prefilter 2, hard-pass 0, scored 2, A/M/R/S 0/0/0/2, errors 0 — OK. read OK
-- Kuntarekry: fetched 400, parsed 400, prefilter 31, hard-pass 1, scored 31, A/M/R/S 0/0/1/30, errors 0 — OK. Unity C#: fetched=True, parsed=True, prefilter=False; Hankeasiantuntija, mielenterveys ja hyvinvointi: fetched=False, parsed=False, prefilter=False
-- Valtiolle: fetched 24, parsed 24, prefilter 10, hard-pass 1, scored 10, A/M/R/S 0/0/1/9, errors 0 — OK. read OK
+- Kuntarekry: fetched 400, parsed 400, prefilter 42, hard-pass 6, scored 42, A/M/R/S 3/1/2/36, errors 0 — OK. Unity C#: fetched=False, parsed=False, prefilter=False; Hankeasiantuntija, mielenterveys ja hyvinvointi: fetched=False, parsed=False, prefilter=False
+- Valtiolle: fetched 12, parsed 12, prefilter 7, hard-pass 1, scored 5, A/M/R/S 0/0/1/4, errors 0 — OK. read OK
 - Company career pages: fetched 3, parsed 3, prefilter 0, hard-pass 0, scored 0, A/M/R/S 0/0/0/0, errors 0 — OK. checked configured generic pages; matched job links only
 - Duunitori: fetched 0, parsed 0, prefilter 0, hard-pass 0, scored 0, A/M/R/S 0/0/0/0, errors 0 — WARNING. 4 request(s) failed; 0 title-prefilter candidate(s); 0 fetched
-- Manpower: fetched 68, parsed 68, prefilter 12, hard-pass 6, scored 12, A/M/R/S 3/1/2/6, errors 0 — OK. read OK; 12 title-prefilter candidate(s)
-- Barona: fetched 216, parsed 216, prefilter 16, hard-pass 1, scored 1, A/M/R/S 0/0/0/1, errors 0 — OK. read OK; 15 listing page(s), 16 title-prefilter candidate(s)
-- aTalent: fetched 12, parsed 12, prefilter 4, hard-pass 4, scored 4, A/M/R/S 1/0/3/0, errors 0 — OK. read OK; 5 title-prefilter candidate(s)
+- Manpower: fetched 74, parsed 74, prefilter 6, hard-pass 3, scored 6, A/M/R/S 1/0/2/3, errors 0 — OK. read OK; 6 title-prefilter candidate(s)
+- Barona: fetched 226, parsed 226, prefilter 20, hard-pass 1, scored 1, A/M/R/S 0/0/0/1, errors 0 — OK. read OK; 15 listing page(s), 20 title-prefilter candidate(s)
+- aTalent: fetched 17, parsed 17, prefilter 8, hard-pass 7, scored 8, A/M/R/S 2/0/4/2, errors 0 — OK. read OK; 10 title-prefilter candidate(s)
 - ICT DIRECT: fetched 9, parsed 9, prefilter 4, hard-pass 3, scored 4, A/M/R/S 2/1/0/1, errors 0 — WARNING. 1 request(s) failed; 4 title-prefilter candidate(s)
-- Adecco: fetched 18, parsed 18, prefilter 6, hard-pass 2, scored 6, A/M/R/S 1/0/1/4, errors 0 — OK. read OK; 6 title-prefilter candidate(s)
+- Adecco: fetched 19, parsed 19, prefilter 7, hard-pass 5, scored 7, A/M/R/S 2/0/3/2, errors 0 — OK. read OK; 7 title-prefilter candidate(s)
 - StaffPoint: fetched 15, parsed 15, prefilter 2, hard-pass 1, scored 2, A/M/R/S 1/0/0/1, errors 0 — OK. read OK; 2 title-prefilter candidate(s)
 - Adiente: fetched 5, parsed 5, prefilter 1, hard-pass 1, scored 1, A/M/R/S 0/0/1/0, errors 0 — OK. read OK; 1 title-prefilter candidate(s)
-- Eezy: fetched 25, parsed 25, prefilter 6, hard-pass 0, scored 6, A/M/R/S 0/0/0/6, errors 0 — OK. read OK; 6 title-prefilter candidate(s); listing data retained if TalentAdore detail fails
+- Eezy: fetched 21, parsed 21, prefilter 7, hard-pass 0, scored 7, A/M/R/S 0/0/0/7, errors 0 — OK. read OK; 7 title-prefilter candidate(s); listing data retained if TalentAdore detail fails
 
 Recommendation summary:
-- 🟢 APPLY: 8
+- 🟢 APPLY: 11
 - 🟡 MAYBE: 2
-- 🔵 REVIEW: 9
-- Review reservoir candidates: 9
-- ⚪ SKIP: 60
+- 🔵 REVIEW: 13
+- Review reservoir candidates: 13
+- ⚪ SKIP: 59
 No new jobs found.
-Checked 79 jobs total.
-Review reservoir saved: 19 item(s).
-Hidden Opportunities completed: 18 item(s).
+Checked 85 jobs total.
+Review reservoir saved: 26 item(s).
+Hidden Opportunities completed: 11 item(s).
 Weekly review email sent with Hidden Opportunities when available.
