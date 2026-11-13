@@ -1145,5 +1145,112 @@
       }
     ],
     "url": "https://recruitment.fi.adecco.com/jobs/8655148-tekninen-projektipaallikko-forcit-defence"
+  },
+  {
+    "dedupe_key": "caverion|sähkösuunnittelun projekti insinööri|vantaa",
+    "date_seen": "2026-11-13",
+    "company": "aTalent",
+    "title": "Sähkösuunnittelun projekti-insinööri",
+    "location": "Tampere, Vantaa",
+    "source": "aTalent",
+    "score": 35,
+    "recommendation": "Review",
+    "positive_signals": [
+      "location: vantaa"
+    ],
+    "negative_signals": [
+      "seniority risk: päällikkö"
+    ],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "päällikkö"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      }
+    ],
+    "url": "https://atalent.fi/open-position/caverion-sahkosuunnittelun-projekti-insinoori-396536"
+  },
+  {
+    "dedupe_key": "berner|data & finance trainee medlab|helsinki",
+    "date_seen": "2026-11-13",
+    "company": "aTalent",
+    "title": "Data & Finance Trainee (MedLab)",
+    "location": "Helsinki, Vantaa",
+    "source": "aTalent",
+    "score": 35,
+    "recommendation": "Review",
+    "positive_signals": [
+      "location: vantaa, helsinki"
+    ],
+    "negative_signals": [],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [],
+    "trigger_terms": [],
+    "risks": [],
+    "url": "https://atalent.fi/open-position/berner-oy-data-finance-trainee-medlab-396217"
+  },
+  {
+    "dedupe_key": "berner|supply chain management trainee|vantaa",
+    "date_seen": "2026-11-13",
+    "company": "aTalent",
+    "title": "Supply Chain Management Trainee",
+    "location": "Vantaa",
+    "source": "aTalent",
+    "score": 40,
+    "recommendation": "Review",
+    "positive_signals": [
+      "supply chain: supply chain, toimitusketju",
+      "location: vantaa"
+    ],
+    "negative_signals": [],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [],
+    "trigger_terms": [],
+    "risks": [],
+    "url": "https://atalent.fi/open-position/berner-oy-supply-chain-management-trainee-395889"
   }
 ]
