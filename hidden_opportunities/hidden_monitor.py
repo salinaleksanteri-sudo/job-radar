@@ -21,7 +21,7 @@ HIDDEN_SEEN_FILE = HERE / "hidden_seen.json"
 MAIN_SEEN_FILE = ROOT / "seen_jobs.json"
 REVIEW_FILE = ROOT / "review_reservoir.json"
 
-BUILD = "TZ2-HIDDEN-FINAL-20261026-C"
+BUILD = "ROOT-EXPO-HIDDEN-20261117-A"
 
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/155 Safari/537.36"}
 
@@ -34,19 +34,31 @@ POSITIVE_TERMS = [
     "back office", "user support", "supplier administration", "customer administration", "project coordination",
     "project coordinator", "service development", "document management", "käyttövaltu", "invoicing", "laskutus",
     "logistics coordination", "supply coordination", "business support", "support specialist", "finance support",
-    "purchase order", "ostotilaus", "supplier", "vendor", "workflow", "case management", "onboarding"
+    "purchase order", "ostotilaus", "supplier", "vendor", "workflow", "case management", "onboarding",
+    "product owner", "tuoteomistaja", "product manager", "tuotepäällikkö", "tuotepaallikko",
+    "järjestelmäasiantuntija", "jarjestelmaasiantuntija", "sovellusasiantuntija",
+    "application support", "erp support", "internal it support", "business consultant",
+    "solution consultant", "client executive", "delivery lead", "service operations",
+    "customer success", "business systems", "functional consultant", "service desk",
+    "service management", "customer success manager", "application specialist"
 ]
 
 TITLE_HINTS = [
     "coordinator", "koordinaattori", "specialist", "asiantuntija", "assistant", "assistentti", "administrator",
     "hallinto", "sihteeri", "operations", "service", "support", "customer", "asiakaspalvel", "order", "process",
     "project", "projekti", "erp", "sap", "master data", "controller", "finance", "talous", "procurement", "hankinta",
-    "planner", "suunnittelija", "back office", "logistics", "logistiikka"
+    "planner", "suunnittelija", "back office", "logistics", "logistiikka",
+    "product owner", "tuoteomistaja", "product manager", "tuotepäällikkö", "tuotepaallikko",
+    "järjestelmäasiantuntija", "jarjestelmaasiantuntija", "sovellusasiantuntija",
+    "application support", "erp support", "internal it support", "business consultant",
+    "solution consultant", "client executive", "delivery lead", "service operations",
+    "customer success", "application specialist", "service desk", "functional consultant"
 ]
 
 SENIORITY_TERMS = ["director", "head of", "chief", "c-level", "vice president", "vp ", "general manager", "senior manager", "manager", "johtaja", "päällikkö", "paallikko", "lead "]
+CAUTION_TITLE_TERMS = ["delivery lead", "client executive", "senior consultant", "senior business consultant", "senior solution consultant"]
 TECHNICAL_TITLE_TERMS = [
-    "engineer", "insinööri", "insinoori", "developer", "architect", "product owner", "data scientist",
+    "engineer", "insinööri", "insinoori", "developer", "architect", "data scientist",
     "data engineer", "software", "devops", "cyber", "automation", "commissioning", "programmer", "chemist",
     "laboratory", "lab technician", "designer"
 ]
@@ -55,8 +67,37 @@ DIRECT_BUSINESS_TERMS = [
     "procurement", "hankinta", "administrative", "hallinto", "assistant", "assistentti", "support specialist",
     "service coordinator", "customer service", "asiakaspalvelu", "supplier administration", "customer administration",
     "master data", "back office", "invoicing", "laskutus", "purchase order", "ostotilaus",
-    "project coordination", "project coordinator", "business support", "finance support", "case management"
+    "project coordination", "project coordinator", "business support", "finance support", "case management",
+    "product owner", "tuoteomistaja", "product manager", "tuotepäällikkö", "tuotepaallikko",
+    "järjestelmäasiantuntija", "jarjestelmaasiantuntija", "sovellusasiantuntija",
+    "application support", "erp support", "internal it support", "business consultant",
+    "solution consultant", "service operations", "customer success", "business systems",
+    "functional consultant", "service desk", "service management", "application specialist",
+    "information security governance", "security governance", "tietoturvan hallinta",
+    "tietoturvahallinto", "security process", "security compliance"
 ]
+ROOT_EXPO_COMPANY_RULES = {
+    "finago": {"priority": "HIGH", "terms": ["business systems", "customer success", "application support", "product owner", "product manager"]},
+    "visma": {"priority": "HIGH", "terms": ["product owner", "product manager", "customer success", "application support", "business consultant", "erp", "summer", "trainee", "intern"]},
+    "atea": {"priority": "HIGH", "terms": ["erp", "sap", "internal it support", "service coordination", "service operations", "business consultant", "solution consultant"]},
+    "terveystalo": {"priority": "HIGH", "terms": ["järjestelmäasiantuntija", "jarjestelmaasiantuntija", "sovellusasiantuntija", "hallinto", "digikehitys", "application support"]},
+    "accenture": {"priority": "HIGH", "terms": ["sap", "business consultant", "solution consultant", "functional consultant", "business transformation"]},
+    "knowit": {"priority": "HIGH", "terms": ["client executive", "delivery lead", "customer", "service desk", "business consultant", "project management"]},
+    "vivicta": {"priority": "HIGH", "terms": ["sap", "business consultant", "solution consultant", "functional consultant", "workday"]},
+    "2m-it": {"priority": "HIGH", "terms": ["järjestelmäasiantuntija", "jarjestelmaasiantuntija", "sovellusasiantuntija", "application support", "service desk", "open application", "avoin hakemus"]},
+    "reaktor": {"priority": "LOW", "terms": ["business", "client", "service", "system administrator"]},
+    "wapice": {"priority": "LOW", "terms": ["project", "customer", "service", "business", "open application"]},
+    "sensofusion": {"priority": "LOW", "terms": ["software integration specialist", "quality improvement", "open application"]},
+}
+
+SECURITY_GOVERNANCE_TERMS = [
+    "governance", "compliance", "process", "support", "service", "risk management",
+    "security governance", "information security governance", "tietoturvan hallinta",
+    "tietoturvahallinto", "security process", "security compliance"
+]
+
+VISMA_SUMMER_TERMS = ["summer", "summer job", "kesätyö", "kesatyo", "trainee", "intern", "internship"]
+
 GENERIC_SIGNAL_TERMS = {"operations", "operational", "process", "prosessi", "sap", "erp", "supplier", "vendor", "workflow"}
 DOMAIN_RISKS = [
     "software developer", "software engineer", "data engineer", "data scientist", "machine learning", "devops",
@@ -277,6 +318,41 @@ def relevant_title(title):
     return bool(t) and any(term in t for term in TITLE_HINTS)
 
 
+def company_rule(company):
+    c = norm(company)
+    for key, rule in ROOT_EXPO_COMPANY_RULES.items():
+        if key in c:
+            return rule
+    return {"priority": "NORMAL", "terms": []}
+
+
+def company_relevant_title(company, title):
+    t = norm(title)
+    c = norm(company)
+    rule = company_rule(company)
+    terms = list(rule.get("terms", []))
+    if "visma" in c and datetime.now().month not in [1, 2]:
+        terms = [x for x in terms if x not in VISMA_SUMMER_TERMS and x not in ["summer", "trainee", "intern"]]
+    return bool(t) and any(term in t for term in terms)
+
+
+def security_role_allowed(title, text):
+    combined = norm(f"{title} {text}")
+    if not any(term in combined for term in ["cyber", "security", "tietoturva", "tietoturva-"]):
+        return True
+    return any(term in combined for term in SECURITY_GOVERNANCE_TERMS)
+
+
+def visma_summer_watch(company, title, text):
+    if "visma" not in norm(company):
+        return False
+    month = datetime.now().month
+    if month not in [1, 2]:
+        return False
+    combined = norm(f"{title} {text}")
+    return any(term in combined for term in VISMA_SUMMER_TERMS)
+
+
 def looks_like_non_job(title, url):
     t = norm(title)
     p = urlparse(url).path.lower()
@@ -323,16 +399,16 @@ def concrete_vacancy_evidence(soup, url, title, structured):
     return False, "insufficient vacancy evidence"
 
 
-def discover_candidates(soup, base_url):
+def discover_candidates(soup, base_url, company=""):
     candidates = {}
     for job in jsonld_objects(soup):
         title = clean_text(job.get("title", ""))
         url = job.get("url") or job.get("sameAs") or ""
-        if title and url and relevant_title(title):
+        if title and url and (relevant_title(title) or company_relevant_title(company, title)):
             candidates[urljoin(base_url, url)] = title
     for a in soup.find_all("a", href=True):
         title = clean_text(a.get_text(" ", strip=True))
-        if not title or len(title) > 180 or not relevant_title(title):
+        if not title or len(title) > 180 or not (relevant_title(title) or company_relevant_title(company, title)):
             continue
         href = urljoin(base_url, a.get("href"))
         parsed = urlparse(href)
@@ -418,10 +494,18 @@ def classify(item):
     text = norm(f"{item['title']} {item['location']} {item['description']}")
     positives = sorted({term for term in POSITIVE_TERMS if term in text})
     senior = sorted({term for term in SENIORITY_TERMS if term in title})
+    # Product Owner/Product Manager can be business-side and is not automatically treated as a senior-manager role.
+    if any(term in title for term in ["product owner", "tuoteomistaja", "product manager", "tuotepäällikkö", "tuotepaallikko"]):
+        senior = [x for x in senior if x not in ["manager", "päällikkö", "paallikko"]]
     risks = sorted({term for term in DOMAIN_RISKS if term in text})
     lang_risks = sorted({term for term in LANGUAGE_RISKS + ENGLISH_HEAVY if term in text})
     technical_title = sorted({term for term in TECHNICAL_TITLE_TERMS if term in title})
+    caution_title = sorted({term for term in CAUTION_TITLE_TERMS if term in title})
     geo = geography_status(item.get("location", ""))
+    company = norm(item.get("company", ""))
+    rule = company_rule(company)
+    company_hits = sorted({term for term in rule.get("terms", []) if term in text})
+    summer_watch = visma_summer_watch(company, item.get("title", ""), item.get("description", ""))
 
     # Direct business fit must be based on duties/title, not generic SAP/process/operations words.
     direct_business = sorted({term for term in DIRECT_BUSINESS_TERMS if term in text})
@@ -437,6 +521,11 @@ def classify(item):
         score += 8
     if direct_title:
         score += 8
+    # Root Expo company rules only refine Hidden Opportunities; they do not alter the main Job Radar scoring.
+    if company_hits:
+        score += min(10, 3 * len(company_hits))
+    if summer_watch:
+        score += 8
 
     if geo == "target":
         score += 16
@@ -450,12 +539,21 @@ def classify(item):
         score -= 24
         if len(direct_business) < 3:
             score -= 12
+    if caution_title:
+        score -= 10
 
     # Technical titles are not a fit just because the description contains process/SAP/operations.
     if technical_title:
         score -= 24
         if len(direct_business) < 3:
             score -= 16
+
+    # Security/cyber is relevant only on governance/support/process side, not deep technical cyber.
+    if not security_role_allowed(item.get("title", ""), item.get("description", "")):
+        if any(x in text for x in ["cyber", "security", "tietoturva"]):
+            score -= 28
+            if "technical security" not in risks:
+                risks.append("technical security")
 
     if risks:
         score -= min(42, 18 + 7 * (len(risks) - 1))
@@ -480,6 +578,8 @@ def classify(item):
             fit, action = "MEDIUM", "MONITOR"
         else:
             fit, action = "LOW", "IGNORE"
+    elif caution_title and score < 78:
+        fit, action = "MEDIUM", "MONITOR"
     elif strong_direct_fit and score >= 68:
         fit, action = "HIGH", "APPLY"
     elif score >= 44:
@@ -491,6 +591,10 @@ def classify(item):
     why = []
     if direct_business:
         why.append("Direct profile signals: " + ", ".join(direct_business[:7]))
+    if company_hits:
+        why.append("Root Expo company-specific signals: " + ", ".join(company_hits[:6]))
+    if summer_watch:
+        why.append("Visma seasonal summer-job watch active (Jan-Feb)")
     elif positives:
         why.append("General profile signals: " + ", ".join(positives[:7]))
     if geo == "target":
@@ -503,10 +607,12 @@ def classify(item):
         why.append("Technical-role guard applied")
     if senior:
         why.append("Seniority guard applied")
+    if caution_title:
+        why.append("Cautious senior/client-delivery title guard applied")
     if not why:
         why.append("Weak direct-source match; retained for monitoring only")
 
-    risk_list = senior + technical_title + risks + lang_risks
+    risk_list = senior + caution_title + technical_title + risks + lang_risks
     if geo == "foreign":
         risk_list = ["foreign location"] + risk_list
     elif geo == "unknown":
@@ -565,7 +671,7 @@ def run_hidden_monitor():
                 hidden_seen.add(pool_key)
             talent_seen_companies.add(company)
 
-        candidates = discover_candidates(soup, url)
+        candidates = discover_candidates(soup, url, company)
         parsed = 0
         relevant = 0
         rejected_nonjob = 0
@@ -593,7 +699,7 @@ def run_hidden_monitor():
                 "profile_fit": analysis["profile_fit"], "confidence": analysis["confidence"],
                 "positive_signals": analysis["positive_signals"], "risks": analysis["risks"],
                 "why_relevant": analysis["why_relevant"], "recommended_action": analysis["recommended_action"],
-                "already_seen": False, "notes": (source.get("notes", "") + f"; evidence={detail.get('vacancy_evidence','')}").strip("; "), "score_internal": analysis["score_internal"]
+                "already_seen": False, "notes": (source.get("notes", "") + f"; priority={source.get('priority','NORMAL')}; evidence={detail.get('vacancy_evidence','')}").strip("; "), "score_internal": analysis["score_internal"]
             }
             found.append(row)
             hidden_seen.add(key)
