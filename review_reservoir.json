@@ -1,95 +1,5 @@
 [
   {
-    "dedupe_key": "verohallinto|toiminnallinen asiantuntija tos vt 12|verohallinto",
-    "date_seen": "2026-10-16",
-    "company": "Valtiolle",
-    "title": "Toiminnallinen asiantuntija, TOS, vt.12",
-    "location": "Verohallinto",
-    "score": 25,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk",
-      "domain experience risk"
-    ],
-    "trigger_terms": [
-      "päällikkö",
-      "verohallinto",
-      "verotus"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "päällikkö"
-        ]
-      },
-      {
-        "group": "domain experience risk",
-        "keywords": [
-          "verohallinto",
-          "verotus"
-        ]
-      }
-    ],
-    "url": "https://valtiolle.fi/fi/tyopaikat/toiminnallinen-asiantuntija-tos-vt.12-25612/"
-  },
-  {
-    "dedupe_key": "european chemicals agency (echa)|administrative support litigation support|helsinki",
-    "date_seen": "2026-10-16",
-    "company": "Manpower",
-    "title": "Administrative Support (Litigation support)",
-    "location": "Helsinki, Uusimaa",
-    "score": 64,
-    "recommendation": "Review",
-    "risk_groups": [
-      "data / BI / analytics risk"
-    ],
-    "trigger_terms": [
-      "metadata"
-    ],
-    "risks": [
-      {
-        "group": "data / BI / analytics risk",
-        "keywords": [
-          "metadata"
-        ]
-      }
-    ],
-    "url": "https://www.manpower.fi/tyo/administrative-support-litigation-support-286311"
-  },
-  {
-    "dedupe_key": "?|sok kehityspäällikkö talousjärjestelmät ja prosessit|helsinki",
-    "date_seen": "2026-10-16",
-    "company": "aTalent",
-    "title": "SOK Kehityspäällikkö (talousjärjestelmät ja -prosessit)",
-    "location": "Helsinki",
-    "score": 100,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk",
-      "data / BI / analytics risk"
-    ],
-    "trigger_terms": [
-      "päällikkö",
-      "analytiikka"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "päällikkö"
-        ]
-      },
-      {
-        "group": "data / BI / analytics risk",
-        "keywords": [
-          "analytiikka"
-        ]
-      }
-    ],
-    "url": "https://atalent.fi/open-position/sok-kehityspaallikko-talousjarjestelmat-ja-prosessit-390842"
-  },
-  {
     "dedupe_key": "verohallinto|valikointivastaava vt 13|verohallinto",
     "date_seen": "2026-10-23",
     "company": "Valtiolle",
@@ -1252,5 +1162,144 @@
     "trigger_terms": [],
     "risks": [],
     "url": "https://atalent.fi/open-position/berner-oy-supply-chain-management-trainee-395889"
+  },
+  {
+    "dedupe_key": "helsingin kaupunki|viestintäasiantuntija asiakasviestintä ja sosiaalinen media|helsingin kaupunki",
+    "date_seen": "2026-11-17",
+    "company": "Kuntarekry",
+    "title": "Viestintäasiantuntija, asiakasviestintä ja sosiaalinen media",
+    "location": "Helsingin kaupunki",
+    "source": "Kuntarekry",
+    "score": 48,
+    "recommendation": "Review",
+    "positive_signals": [
+      "coordination / project: muutos",
+      "location: helsinki, etätyö"
+    ],
+    "negative_signals": [
+      "data / BI / analytics risk: analytiikka"
+    ],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": true,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 18,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [
+      "data / BI / analytics risk"
+    ],
+    "trigger_terms": [
+      "analytiikka"
+    ],
+    "risks": [
+      {
+        "group": "data / BI / analytics risk",
+        "keywords": [
+          "analytiikka"
+        ]
+      }
+    ],
+    "url": "https://kuntarekry.fi/fi/tyopaikat/viestintaasiantuntija-asiakasviestinta-ja-sosiaalinen-media-typa-01-9-26/"
+  },
+  {
+    "dedupe_key": "esl shipping|johdon assistentti|helsinki",
+    "date_seen": "2026-11-17",
+    "company": "aTalent",
+    "title": "Johdon assistentti",
+    "location": "Helsinki",
+    "source": "aTalent",
+    "score": 41,
+    "recommendation": "Review",
+    "positive_signals": [
+      "coordination / project: muutos",
+      "location: helsinki"
+    ],
+    "negative_signals": [],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [],
+    "trigger_terms": [],
+    "risks": [],
+    "url": "https://atalent.fi/open-position/esl-shipping-johdon-assistentti-397543"
+  },
+  {
+    "dedupe_key": "continental rengas|senior accountant|espoo",
+    "date_seen": "2026-11-17",
+    "company": "aTalent",
+    "title": "Senior Accountant",
+    "location": "Espoo",
+    "source": "aTalent",
+    "score": 42,
+    "recommendation": "Review",
+    "positive_signals": [
+      "process development: prosessi"
+    ],
+    "negative_signals": [],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [],
+    "trigger_terms": [],
+    "risks": [],
+    "url": "https://atalent.fi/open-position/continental-rengas-oy-senior-accountant-397501"
+  },
+  {
+    "dedupe_key": "supercell|audiovisual support intern|helsinki",
+    "date_seen": "2026-11-17",
+    "company": "aTalent",
+    "title": "Audiovisual Support Intern",
+    "location": "Helsinki",
+    "source": "aTalent",
+    "score": 35,
+    "recommendation": "Review",
+    "positive_signals": [
+      "location: helsinki, hybrid"
+    ],
+    "negative_signals": [],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [],
+    "trigger_terms": [],
+    "risks": [],
+    "url": "https://atalent.fi/open-position/supercell-audiovisual-support-intern-397409"
   }
 ]

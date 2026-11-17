@@ -1,10 +1,10 @@
-Job Radar run: 2026-11-13 15:58:47
+Job Radar run: 2026-11-17 21:15:32
 Build: TZ1-SERVICE-COORDINATION-FINAL-20261026-B
 Checking jobs...
 Kuntarekry endpoint: https://kuntarekry.fi/fi/api/json-jobs/ [200]
 Kuntarekry payload keys: ['filters', 'jobs', 'orgs', 'translations']
 Kuntarekry raw jobs in selected feed: 400
-Kuntarekry found: 25 (fetched 400, parsed 400, prefilter 25, errors 0)
+Kuntarekry found: 36 (fetched 400, parsed 400, prefilter 36, errors 0)
 Kuntarekry control — Unity C#: fetched=False, parsed=False, prefilter=False
 Kuntarekry control — Hankeasiantuntija, mielenterveys ja hyvinvointi: fetched=False, parsed=False, prefilter=False
 Valtiolle found: 4
@@ -16,104 +16,77 @@ Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=taloushall
 Could not fetch Duunitori search: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi — 403 Client Error: Forbidden for url: https://duunitori.fi/tyopaikat?haku=asiantuntija&alue=Varsinais-Suomi
 Duunitori found: 0 (from 0 listed, 0 candidates)
 Manpower found: 6 (from 74 listed, 6 candidates)
-Barona found: 22 (from 218 listed, 22 candidates)
-aTalent found: 11 (from 27 listed, 14 candidates)
+Barona found: 25 (from 220 listed, 25 candidates)
+aTalent found: 15 (from 30 listed, 18 candidates)
 ICT DIRECT found: 4 (from 9 listed, 4 candidates)
 Adecco found: 5 (from 20 listed, 5 candidates)
-StaffPoint found: 3 (from 15 listed, 3 candidates)
+StaffPoint found: 2 (from 13 listed, 2 candidates)
 Adiente found: 0 (from 3 listed, 0 candidates)
-Eezy found: 11 (from 29 listed, 11 candidates)
+Eezy found: 12 (from 28 listed, 12 candidates)
 
 Source summary:
 - Finavia: 2 job(s)
-- Kuntarekry: 25 job(s)
+- Kuntarekry: 36 job(s)
 - Valtiolle: 4 job(s)
 - Company career pages: 0 job(s)
 - Duunitori: 0 job(s)
 - Manpower: 6 job(s)
-- Barona: 22 job(s)
-- aTalent: 11 job(s)
+- Barona: 25 job(s)
+- aTalent: 15 job(s)
 - ICT DIRECT: 4 job(s)
 - Adecco: 5 job(s)
-- StaffPoint: 3 job(s)
+- StaffPoint: 2 job(s)
 - Adiente: 0 job(s)
-- Eezy: 11 job(s)
-- Duplicates removed: 21
-- Total after filters: 72 job(s)
+- Eezy: 12 job(s)
+- Duplicates removed: 24
+- Total after filters: 87 job(s)
 
 
 ======================================================================
-Kuntarekry — PALVELUTYÖNTEKIJÄ (määräaikainen)
+Adecco — Business Controller, Reinvent Yellow
 ======================================================================
-Location: Padasjoen kunta
-Posted: 13.11.2026
-Deadline: 22.11.2026 23:59
-Fit score: 3/100
+Location: Helsinki
+Posted: 2026-11-17T00:00:00+02:00
+Deadline: 2026-12-02T23:59:59+02:00
+Fit score: 5/100
 Recommendation: Skip
-Gate limit: 20/100
-Gate reasons:
-- hard skip professional domain
-- wrong geography + on-site/location-bound work
 
 Why it may fit:
-- operations / coordination / process core: asiakaspalvelu, koordinaattori
-- SAP / P2P / invoices: sap
-- coordination / project: koordinaattori, asiakaspalvelu, neuvonta
+- operations / coordination / process core: järjestelmä, prosessi
+- process development: prosessi
+- location: helsinki, hybridi, hybrid
 
 Risks:
-- sales / commercial: myynti
-- kitchen_cleaning_production: siivous
-- Hard reject domain detected
+- domain experience risk: sote
+- sales / commercial: myynti, sales
+- Domain experience risk detected
+- Data / BI / analytics risk detected
 
-Link: https://kuntarekry.fi/fi/tyopaikat/palvelutyontekija-maaraaikainen-pad-02-3-26/
-
-======================================================================
-Kuntarekry — Projektikoordinaattori
-======================================================================
-Location: Porin kaupunki
-Posted: 13.11.2026
-Deadline: 26.11.2026 15:00
-Fit score: 20/100
-Recommendation: Skip
-Gate limit: 20/100
-Gate reasons:
-- hard skip professional domain
-- wrong geography + on-site/location-bound work
-
-Why it may fit:
-- SAP / P2P / invoices: sap
-- process development: koulutus
-- coordination / project: koordinaattori, projektikoordinaattori
-
-Risks:
-- social_health_education_sport: nuorisotyö
-- Hard reject domain detected
-
-Link: https://kuntarekry.fi/fi/tyopaikat/projektikoordinaattori-pori-06-11-26/
+Link: https://recruitment.fi.adecco.com/jobs/8755585-business-controller-reinvent-yellow
 
 Source health report:
 - Finavia: fetched 2, parsed 2, prefilter 2, hard-pass 0, scored 2, A/M/R/S 0/0/0/2, errors 0 — OK. read OK
-- Kuntarekry: fetched 400, parsed 400, prefilter 25, hard-pass 0, scored 25, A/M/R/S 0/0/0/25, errors 0 — OK. Unity C#: fetched=False, parsed=False, prefilter=False; Hankeasiantuntija, mielenterveys ja hyvinvointi: fetched=False, parsed=False, prefilter=False
+- Kuntarekry: fetched 400, parsed 400, prefilter 36, hard-pass 4, scored 36, A/M/R/S 3/0/1/32, errors 0 — OK. Unity C#: fetched=False, parsed=False, prefilter=False; Hankeasiantuntija, mielenterveys ja hyvinvointi: fetched=False, parsed=False, prefilter=False
 - Valtiolle: fetched 12, parsed 12, prefilter 4, hard-pass 0, scored 4, A/M/R/S 0/0/0/4, errors 0 — OK. read OK
 - Company career pages: fetched 3, parsed 3, prefilter 0, hard-pass 0, scored 0, A/M/R/S 0/0/0/0, errors 0 — OK. checked configured generic pages; matched job links only
 - Duunitori: fetched 0, parsed 0, prefilter 0, hard-pass 0, scored 0, A/M/R/S 0/0/0/0, errors 0 — WARNING. 4 request(s) failed; 0 title-prefilter candidate(s); 0 fetched
-- Manpower: fetched 74, parsed 74, prefilter 6, hard-pass 3, scored 6, A/M/R/S 2/1/0/3, errors 0 — OK. read OK; 6 title-prefilter candidate(s)
-- Barona: fetched 218, parsed 218, prefilter 22, hard-pass 1, scored 1, A/M/R/S 0/0/0/1, errors 0 — OK. read OK; 15 listing page(s), 22 title-prefilter candidate(s)
-- aTalent: fetched 27, parsed 27, prefilter 11, hard-pass 9, scored 11, A/M/R/S 0/0/6/5, errors 0 — OK. read OK; 14 title-prefilter candidate(s)
+- Manpower: fetched 74, parsed 74, prefilter 6, hard-pass 2, scored 6, A/M/R/S 1/1/0/4, errors 0 — OK. read OK; 6 title-prefilter candidate(s)
+- Barona: fetched 220, parsed 220, prefilter 25, hard-pass 1, scored 1, A/M/R/S 0/0/0/1, errors 0 — OK. read OK; 15 listing page(s), 25 title-prefilter candidate(s)
+- aTalent: fetched 30, parsed 30, prefilter 15, hard-pass 13, scored 15, A/M/R/S 0/0/9/6, errors 0 — OK. read OK; 18 title-prefilter candidate(s)
 - ICT DIRECT: fetched 9, parsed 9, prefilter 4, hard-pass 3, scored 4, A/M/R/S 2/0/0/2, errors 0 — WARNING. 1 request(s) failed; 4 title-prefilter candidate(s)
-- Adecco: fetched 20, parsed 20, prefilter 5, hard-pass 1, scored 5, A/M/R/S 1/0/0/4, errors 0 — OK. read OK; 5 title-prefilter candidate(s)
-- StaffPoint: fetched 15, parsed 15, prefilter 3, hard-pass 1, scored 3, A/M/R/S 1/0/0/2, errors 0 — OK. read OK; 3 title-prefilter candidate(s)
+- Adecco: fetched 20, parsed 20, prefilter 5, hard-pass 3, scored 5, A/M/R/S 2/0/0/3, errors 0 — OK. read OK; 5 title-prefilter candidate(s)
+- StaffPoint: fetched 13, parsed 13, prefilter 2, hard-pass 1, scored 2, A/M/R/S 1/0/0/1, errors 0 — OK. read OK; 2 title-prefilter candidate(s)
 - Adiente: fetched 3, parsed 3, prefilter 0, hard-pass 0, scored 0, A/M/R/S 0/0/0/0, errors 0 — OK. read OK; 0 title-prefilter candidate(s)
-- Eezy: fetched 29, parsed 29, prefilter 11, hard-pass 3, scored 11, A/M/R/S 2/0/0/9, errors 0 — OK. read OK; 11 title-prefilter candidate(s); listing data retained if TalentAdore detail fails
+- Eezy: fetched 28, parsed 28, prefilter 12, hard-pass 2, scored 12, A/M/R/S 2/0/0/10, errors 0 — OK. read OK; 12 title-prefilter candidate(s); listing data retained if TalentAdore detail fails
 
 Recommendation summary:
-- 🟢 APPLY: 8
+- 🟢 APPLY: 11
 - 🟡 MAYBE: 1
-- 🔵 REVIEW: 6
-- Review reservoir candidates: 6
-- ⚪ SKIP: 57
+- 🔵 REVIEW: 10
+- Review reservoir candidates: 10
+- ⚪ SKIP: 65
 No new jobs found.
-Checked 72 jobs total.
-Review reservoir saved: 30 item(s).
-Hidden Opportunities completed: 13 item(s).
+Checked 87 jobs total.
+Review reservoir saved: 31 item(s).
+Hidden Opportunities completed: 20 item(s).
 Weekly review email sent with Hidden Opportunities when available.
