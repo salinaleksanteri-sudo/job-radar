@@ -1301,5 +1301,37 @@
     "trigger_terms": [],
     "risks": [],
     "url": "https://atalent.fi/open-position/supercell-audiovisual-support-intern-397409"
+  },
+  {
+    "dedupe_key": "avida bank|credit officer|helsinki",
+    "date_seen": "2026-11-20",
+    "company": "aTalent",
+    "title": "Credit Officer",
+    "location": "Helsinki",
+    "source": "aTalent",
+    "score": 45,
+    "recommendation": "Review",
+    "positive_signals": [
+      "coordination / project: asiakaspalvelu",
+      "location: helsinki"
+    ],
+    "negative_signals": [],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [],
+    "trigger_terms": [],
+    "risks": [],
+    "url": "https://atalent.fi/open-position/avida-bank-credit-officer-398069"
   }
 ]
