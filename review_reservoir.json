@@ -1,500 +1,5 @@
 [
   {
-    "dedupe_key": "verohallinto|valikointivastaava vt 13|verohallinto",
-    "date_seen": "2026-10-23",
-    "company": "Valtiolle",
-    "title": "Valikointivastaava, vt.13",
-    "location": "Verohallinto",
-    "score": 43,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk",
-      "domain experience risk",
-      "data / BI / analytics risk"
-    ],
-    "trigger_terms": [
-      "päällikkö",
-      "sote",
-      "verohallinto",
-      "verotus",
-      "analytiikka"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "päällikkö"
-        ]
-      },
-      {
-        "group": "domain experience risk",
-        "keywords": [
-          "sote",
-          "verohallinto",
-          "verotus"
-        ]
-      },
-      {
-        "group": "data / BI / analytics risk",
-        "keywords": [
-          "analytiikka"
-        ]
-      }
-    ],
-    "url": "https://valtiolle.fi/fi/tyopaikat/valikointivastaava-vt.13-25644/"
-  },
-  {
-    "dedupe_key": "verohallinto|veroasiantuntija työnantajan ennakkoperintä 1 3 paikkaa vt 11|verohallinto",
-    "date_seen": "2026-10-23",
-    "company": "Valtiolle",
-    "title": "Veroasiantuntija (työnantajan ennakkoperintä) 1-3 paikkaa, vt.11",
-    "location": "Verohallinto",
-    "score": 34,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk",
-      "domain experience risk",
-      "tax domain"
-    ],
-    "trigger_terms": [
-      "päällikkö",
-      "verohallinto",
-      "verotus",
-      "oikaisuvaatimus",
-      "lautakuntaesittely"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "päällikkö"
-        ]
-      },
-      {
-        "group": "domain experience risk",
-        "keywords": [
-          "verohallinto",
-          "verotus"
-        ]
-      },
-      {
-        "group": "tax domain",
-        "keywords": [
-          "oikaisuvaatimus",
-          "lautakuntaesittely"
-        ]
-      }
-    ],
-    "url": "https://valtiolle.fi/fi/tyopaikat/veroasiantuntija-tyonantajan-ennakkoperinta-1-3-paikkaa-vt.11-25646/"
-  },
-  {
-    "dedupe_key": "verohallinto|työnantajan ennakkoperinnän talent ohjelma 6 7 paikkaa useita paikkakuntia vt 9|verohallinto",
-    "date_seen": "2026-10-23",
-    "company": "Valtiolle",
-    "title": "Työnantajan ennakkoperinnän Talent -ohjelma, 6-7 paikkaa, useita paikkakuntia, vt.9",
-    "location": "Verohallinto",
-    "score": 25,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk",
-      "domain experience risk"
-    ],
-    "trigger_terms": [
-      "päällikkö",
-      "verohallinto",
-      "verotus"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "päällikkö"
-        ]
-      },
-      {
-        "group": "domain experience risk",
-        "keywords": [
-          "verohallinto",
-          "verotus"
-        ]
-      }
-    ],
-    "url": "https://valtiolle.fi/fi/tyopaikat/tyonantajan-ennakkoperinnan-talent-ohjelma-6-7-paikkaa-useita-paikkakuntia-vt.9-25642/"
-  },
-  {
-    "dedupe_key": "?|projektipäällikkö datacenter|uusimaa",
-    "date_seen": "2026-10-23",
-    "company": "Manpower",
-    "title": "Projektipäällikkö, datacenter",
-    "location": "Tuusula, Uusimaa",
-    "score": 54,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "päällikkö"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "päällikkö"
-        ]
-      }
-    ],
-    "url": "https://www.manpower.fi/tyo/projektipaallikko-datacenter-286594"
-  },
-  {
-    "dedupe_key": "?|administrative support echa|helsinki",
-    "date_seen": "2026-10-23",
-    "company": "Manpower",
-    "title": "Administrative Support - ECHA",
-    "location": "Helsinki, Uusimaa",
-    "score": 41,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "manager"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "manager"
-        ]
-      }
-    ],
-    "url": "https://www.manpower.fi/tyo/administrative-support-echa-277041"
-  },
-  {
-    "dedupe_key": "?|ict data support echa|helsinki",
-    "date_seen": "2026-10-23",
-    "company": "Manpower",
-    "title": "ICT / Data support - ECHA",
-    "location": "Helsinki, Uusimaa",
-    "score": 34,
-    "recommendation": "Review",
-    "risk_groups": [
-      "seniority risk",
-      "data / BI / analytics risk"
-    ],
-    "trigger_terms": [
-      "manager",
-      "sql",
-      " bi "
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "manager"
-        ]
-      },
-      {
-        "group": "data / BI / analytics risk",
-        "keywords": [
-          "sql",
-          " bi "
-        ]
-      }
-    ],
-    "url": "https://www.manpower.fi/tyo/ict-slash-data-support-echa-277039"
-  },
-  {
-    "dedupe_key": "salon kaupunki|yrityskoordinaattori työllisyyspalvelut|salon kaupunki",
-    "date_seen": "2026-10-26",
-    "company": "Kuntarekry",
-    "title": "Yrityskoordinaattori, työllisyyspalvelut",
-    "location": "Salon kaupunki",
-    "source": "Kuntarekry",
-    "score": 55,
-    "recommendation": "Review",
-    "positive_signals": [
-      "operations / coordination / process core: järjestelmä, koordinaattori",
-      "process development: koulutus",
-      "coordination / project: koordinaattori, neuvonta",
-      "location: etätyö"
-    ],
-    "negative_signals": [
-      "seniority risk: päällikkö"
-    ],
-    "gate_reasons": [
-      "formal language requirement risk"
-    ],
-    "gate_limit": 55,
-    "seniority_risk": false,
-    "domain_risk": false,
-    "data_bi_risk": false,
-    "seniority_penalty": 0,
-    "domain_penalty": 0,
-    "data_bi_penalty": 0,
-    "marketing_penalty": 0,
-    "problem_solving_bonus": 0,
-    "location_penalty": 0,
-    "reason_for_inclusion": "recommendation=Review",
-    "reason_for_rejection": "formal language requirement risk",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "päällikkö"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "päällikkö"
-        ]
-      }
-    ],
-    "url": "https://kuntarekry.fi/fi/tyopaikat/yrityskoordinaattori-tyollisyyspalvelut-sal-05-31-26/"
-  },
-  {
-    "dedupe_key": "verohallinto|johtava henkilöstöjuristi|verohallinto",
-    "date_seen": "2026-10-26",
-    "company": "Valtiolle",
-    "title": "Johtava henkilöstöjuristi",
-    "location": "Verohallinto",
-    "source": "Valtiolle",
-    "score": 77,
-    "recommendation": "Review",
-    "positive_signals": [
-      "operations / coordination / process core: hallinto, järjestelmä, ohjeistus",
-      "process development: ohjeistus",
-      "coordination / project: neuvonta",
-      "location: turku, helsinki, hybridi, hybrid, etätyö"
-    ],
-    "negative_signals": [
-      "seniority risk: johtava",
-      "domain experience risk: sote, verohallinto, verotus"
-    ],
-    "gate_reasons": [],
-    "gate_limit": 100,
-    "seniority_risk": false,
-    "domain_risk": true,
-    "data_bi_risk": false,
-    "seniority_penalty": 0,
-    "domain_penalty": 18,
-    "data_bi_penalty": 0,
-    "marketing_penalty": 0,
-    "problem_solving_bonus": 0,
-    "location_penalty": 0,
-    "reason_for_inclusion": "recommendation=Review",
-    "reason_for_rejection": "",
-    "risk_groups": [
-      "seniority risk",
-      "domain experience risk"
-    ],
-    "trigger_terms": [
-      "johtava",
-      "sote",
-      "verohallinto",
-      "verotus"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "johtava"
-        ]
-      },
-      {
-        "group": "domain experience risk",
-        "keywords": [
-          "sote",
-          "verohallinto",
-          "verotus"
-        ]
-      }
-    ],
-    "url": "https://valtiolle.fi/fi/tyopaikat/johtava-henkilostojuristi-25829/"
-  },
-  {
-    "dedupe_key": "?|legal support echa|helsinki",
-    "date_seen": "2026-10-26",
-    "company": "Manpower",
-    "title": "Legal support - ECHA",
-    "location": "Helsinki, Uusimaa",
-    "source": "Manpower",
-    "score": 39,
-    "recommendation": "Review",
-    "positive_signals": [
-      "location: helsinki"
-    ],
-    "negative_signals": [
-      "seniority risk: manager"
-    ],
-    "gate_reasons": [],
-    "gate_limit": 100,
-    "seniority_risk": false,
-    "domain_risk": false,
-    "data_bi_risk": false,
-    "seniority_penalty": 0,
-    "domain_penalty": 0,
-    "data_bi_penalty": 0,
-    "marketing_penalty": 0,
-    "problem_solving_bonus": 0,
-    "location_penalty": 0,
-    "reason_for_inclusion": "recommendation=Review",
-    "reason_for_rejection": "",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "manager"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "manager"
-        ]
-      }
-    ],
-    "url": "https://www.manpower.fi/tyo/legal-support-echa-277044"
-  },
-  {
-    "dedupe_key": "?|avoin hakemus hr konsultin työtehtäviin atalentille|helsinki",
-    "date_seen": "2026-10-26",
-    "company": "aTalent",
-    "title": "Avoin hakemus HR-konsultin työtehtäviin aTalentille",
-    "location": "Helsinki",
-    "source": "aTalent",
-    "score": 47,
-    "recommendation": "Review",
-    "positive_signals": [
-      "process development: prosessi",
-      "location: helsinki"
-    ],
-    "negative_signals": [],
-    "gate_reasons": [],
-    "gate_limit": 100,
-    "seniority_risk": false,
-    "domain_risk": false,
-    "data_bi_risk": false,
-    "seniority_penalty": 0,
-    "domain_penalty": 0,
-    "data_bi_penalty": 0,
-    "marketing_penalty": 0,
-    "problem_solving_bonus": 0,
-    "location_penalty": 0,
-    "reason_for_inclusion": "recommendation=Review",
-    "reason_for_rejection": "",
-    "risk_groups": [],
-    "trigger_terms": [],
-    "risks": [],
-    "url": "https://atalent.fi/open-position/atalent-avoin-hakemus-hr-konsultin-tyotehtaviin-atalentille-169466"
-  },
-  {
-    "dedupe_key": "?|atalent avoin hakemus rekrytoinnin työtehtäviin atalentille|helsinki",
-    "date_seen": "2026-10-26",
-    "company": "aTalent",
-    "title": "aTalent Avoin hakemus rekrytoinnin työtehtäviin aTalentille",
-    "location": "Helsinki",
-    "source": "aTalent",
-    "score": 55,
-    "recommendation": "Review",
-    "positive_signals": [
-      "operations / coordination / process core: coordinator, järjestelmä, koordinaattori, prosessi",
-      "process development: prosessi",
-      "coordination / project: koordinaattori, projektinhallinta, muutos",
-      "location: helsinki"
-    ],
-    "negative_signals": [
-      "seniority risk: manager"
-    ],
-    "gate_reasons": [],
-    "gate_limit": 100,
-    "seniority_risk": false,
-    "domain_risk": false,
-    "data_bi_risk": false,
-    "seniority_penalty": 0,
-    "domain_penalty": 0,
-    "data_bi_penalty": 0,
-    "marketing_penalty": 25,
-    "problem_solving_bonus": 0,
-    "location_penalty": 0,
-    "reason_for_inclusion": "recommendation=Review",
-    "reason_for_rejection": "",
-    "risk_groups": [
-      "seniority risk"
-    ],
-    "trigger_terms": [
-      "manager"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "manager"
-        ]
-      }
-    ],
-    "url": "https://atalent.fi/open-position/atalent-avoin-hakemus-rekrytoinnin-tyotehtaviin-atalentille-77716"
-  },
-  {
-    "dedupe_key": "?|global mobility & payroll senior specialist manager|espoo",
-    "date_seen": "2026-10-26",
-    "company": "Adecco",
-    "title": "Global Mobility & Payroll Senior Specialist / Manager",
-    "location": "Tampere, Espoo",
-    "source": "Adecco",
-    "score": 65,
-    "recommendation": "Review",
-    "positive_signals": [
-      "operations / coordination / process core: hallinto, järjestelmä, prosessi, sidosryhmä",
-      "SAP / P2P / invoices: lasku",
-      "process development: prosessi",
-      "coordination / project: sidosryhmä, neuvonta",
-      "location: hybridi, hybrid"
-    ],
-    "negative_signals": [
-      "seniority risk: johtava, manager",
-      "domain experience risk: verotus"
-    ],
-    "gate_reasons": [],
-    "gate_limit": 100,
-    "seniority_risk": true,
-    "domain_risk": true,
-    "data_bi_risk": false,
-    "seniority_penalty": 25,
-    "domain_penalty": 18,
-    "data_bi_penalty": 0,
-    "marketing_penalty": 0,
-    "problem_solving_bonus": 0,
-    "location_penalty": 0,
-    "reason_for_inclusion": "recommendation=Review",
-    "reason_for_rejection": "",
-    "risk_groups": [
-      "seniority risk",
-      "domain experience risk"
-    ],
-    "trigger_terms": [
-      "johtava",
-      "manager",
-      "verotus"
-    ],
-    "risks": [
-      {
-        "group": "seniority risk",
-        "keywords": [
-          "johtava",
-          "manager"
-        ]
-      },
-      {
-        "group": "domain experience risk",
-        "keywords": [
-          "verotus"
-        ]
-      }
-    ],
-    "url": "https://recruitment.fi.adecco.com/jobs/8614865-global-mobility-payroll-senior-specialist-manager"
-  },
-  {
     "dedupe_key": "helsingin kaupunki|kehityspäällikkö ydintietorekisterikokonaisuuden kehittäminen|helsingin kaupunki",
     "date_seen": "2026-10-30",
     "company": "Kuntarekry",
@@ -1333,5 +838,381 @@
     "trigger_terms": [],
     "risks": [],
     "url": "https://atalent.fi/open-position/avida-bank-credit-officer-398069"
+  },
+  {
+    "dedupe_key": "vantaan kaupunki|controller talousasiantuntija vtk kiinteistöt oy|vantaan kaupunki",
+    "date_seen": "2026-11-27",
+    "company": "Kuntarekry",
+    "title": "Controller / Talousasiantuntija, VTK Kiinteistöt Oy",
+    "location": "Vantaan kaupunki",
+    "source": "Kuntarekry",
+    "score": 55,
+    "recommendation": "Review",
+    "positive_signals": [
+      "operations / coordination / process core: järjestelmä, prosessi",
+      "SAP / P2P / invoices: sap, lasku",
+      "process development: prosessi",
+      "resource planning: tilannekuva",
+      "location: vantaa"
+    ],
+    "negative_signals": [
+      "seniority risk: päällikkö",
+      "sales / commercial: myynti"
+    ],
+    "gate_reasons": [
+      "formal language requirement risk"
+    ],
+    "gate_limit": 55,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 18,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "formal language requirement risk",
+    "risk_groups": [
+      "seniority risk",
+      "sales / commercial"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "myynti"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "sales / commercial",
+        "keywords": [
+          "myynti"
+        ]
+      }
+    ],
+    "url": "https://kuntarekry.fi/fi/tyopaikat/controller-talousasiantuntija-vtk-kiinteistot-oy-vantaa-18830/"
+  },
+  {
+    "dedupe_key": "oriveden kaupunki|talousasiantuntija|oriveden kaupunki",
+    "date_seen": "2026-11-27",
+    "company": "Kuntarekry",
+    "title": "Talousasiantuntija",
+    "location": "Oriveden kaupunki",
+    "source": "Kuntarekry",
+    "score": 55,
+    "recommendation": "Review",
+    "positive_signals": [
+      "operations / coordination / process core: hallinto, prosessi",
+      "process development: koulutus, prosessi",
+      "location: etätyö"
+    ],
+    "negative_signals": [
+      "seniority risk: päällikkö"
+    ],
+    "gate_reasons": [
+      "formal language requirement risk"
+    ],
+    "gate_limit": 55,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "formal language requirement risk",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "päällikkö"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      }
+    ],
+    "url": "https://kuntarekry.fi/fi/tyopaikat/talousasiantuntija-ori-02-3-26/"
+  },
+  {
+    "dedupe_key": "helsingin kaupunki|asiantuntija maanhankinta|helsingin kaupunki",
+    "date_seen": "2026-11-27",
+    "company": "Kuntarekry",
+    "title": "Asiantuntija, Maanhankinta",
+    "location": "Helsingin kaupunki",
+    "source": "Kuntarekry",
+    "score": 47,
+    "recommendation": "Review",
+    "positive_signals": [
+      "process development: koulutus",
+      "location: helsinki"
+    ],
+    "negative_signals": [
+      "seniority risk: päällikkö"
+    ],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "päällikkö"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      }
+    ],
+    "url": "https://kuntarekry.fi/fi/tyopaikat/asiantuntija-maanhankinta-kymp-01-32-26/"
+  },
+  {
+    "dedupe_key": "verohallinto|veroasiantuntija asiakastietojen hallinta kaksikielinen vt 9|verohallinto",
+    "date_seen": "2026-11-27",
+    "company": "Valtiolle",
+    "title": "Veroasiantuntija, asiakastietojen hallinta, kaksikielinen, vt.9",
+    "location": "Verohallinto",
+    "source": "Valtiolle",
+    "score": 39,
+    "recommendation": "Review",
+    "positive_signals": [
+      "operations / coordination / process core: hallinto, järjestelmä",
+      "coordination / project: muutos, neuvonta",
+      "location: turku, helsinki, hybridi, hybrid, etätyö"
+    ],
+    "negative_signals": [
+      "seniority risk: päällikkö",
+      "domain experience risk: verohallinto, verotus",
+      "tax domain: verovalvonta, lautakuntaesittely"
+    ],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": true,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 36,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [
+      "seniority risk",
+      "domain experience risk",
+      "tax domain"
+    ],
+    "trigger_terms": [
+      "päällikkö",
+      "verohallinto",
+      "verotus",
+      "verovalvonta",
+      "lautakuntaesittely"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "päällikkö"
+        ]
+      },
+      {
+        "group": "domain experience risk",
+        "keywords": [
+          "verohallinto",
+          "verotus"
+        ]
+      },
+      {
+        "group": "tax domain",
+        "keywords": [
+          "verovalvonta",
+          "lautakuntaesittely"
+        ]
+      }
+    ],
+    "url": "https://valtiolle.fi/fi/tyopaikat/veroasiantuntija-asiakastietojen-hallinta-kaksikielinen-vt.9-26720/"
+  },
+  {
+    "dedupe_key": "avain asunnot|myyntikoordinaattori|helsinki",
+    "date_seen": "2026-11-27",
+    "company": "aTalent",
+    "title": "Myyntikoordinaattori",
+    "location": "Helsinki",
+    "source": "aTalent",
+    "score": 39,
+    "recommendation": "Review",
+    "positive_signals": [
+      "operations / coordination / process core: asiakaspalvelu, koordinaattori",
+      "coordination / project: koordinaattori, asiakaspalvelu",
+      "location: helsinki"
+    ],
+    "negative_signals": [
+      "sales / commercial: myynti"
+    ],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 18,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [
+      "sales / commercial"
+    ],
+    "trigger_terms": [
+      "myynti"
+    ],
+    "risks": [
+      {
+        "group": "sales / commercial",
+        "keywords": [
+          "myynti"
+        ]
+      }
+    ],
+    "url": "https://atalent.fi/open-position/avain-asunnot-myyntikoordinaattori-399975"
+  },
+  {
+    "dedupe_key": "?|hr consultant|helsinki",
+    "date_seen": "2026-11-27",
+    "company": "aTalent",
+    "title": "HR Consultant",
+    "location": "Salomonkatu 17 B, 00100 Helsinki",
+    "source": "aTalent",
+    "score": 39,
+    "recommendation": "Review",
+    "positive_signals": [
+      "location: helsinki"
+    ],
+    "negative_signals": [],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [],
+    "trigger_terms": [],
+    "risks": [],
+    "url": "https://atalent.fi/open-position/atalent-hr-consultant-399788"
+  },
+  {
+    "dedupe_key": "?|avoin hakemus hr konsultin työtehtäviin atalentille|helsinki",
+    "date_seen": "2026-11-27",
+    "company": "aTalent",
+    "title": "Avoin hakemus HR-konsultin työtehtäviin aTalentille",
+    "location": "Helsinki",
+    "source": "aTalent",
+    "score": 47,
+    "recommendation": "Review",
+    "positive_signals": [
+      "process development: prosessi",
+      "location: helsinki"
+    ],
+    "negative_signals": [],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 0,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [],
+    "trigger_terms": [],
+    "risks": [],
+    "url": "https://atalent.fi/open-position/atalent-avoin-hakemus-hr-konsultin-tyotehtaviin-atalentille-169466"
+  },
+  {
+    "dedupe_key": "?|atalent avoin hakemus rekrytoinnin työtehtäviin atalentille|helsinki",
+    "date_seen": "2026-11-27",
+    "company": "aTalent",
+    "title": "aTalent Avoin hakemus rekrytoinnin työtehtäviin aTalentille",
+    "location": "Helsinki",
+    "source": "aTalent",
+    "score": 55,
+    "recommendation": "Review",
+    "positive_signals": [
+      "operations / coordination / process core: coordinator, järjestelmä, koordinaattori, prosessi",
+      "process development: prosessi",
+      "coordination / project: koordinaattori, projektinhallinta, muutos",
+      "location: helsinki"
+    ],
+    "negative_signals": [
+      "seniority risk: manager"
+    ],
+    "gate_reasons": [],
+    "gate_limit": 100,
+    "seniority_risk": false,
+    "domain_risk": false,
+    "data_bi_risk": false,
+    "seniority_penalty": 0,
+    "domain_penalty": 0,
+    "data_bi_penalty": 0,
+    "marketing_penalty": 25,
+    "problem_solving_bonus": 0,
+    "location_penalty": 0,
+    "reason_for_inclusion": "recommendation=Review",
+    "reason_for_rejection": "",
+    "risk_groups": [
+      "seniority risk"
+    ],
+    "trigger_terms": [
+      "manager"
+    ],
+    "risks": [
+      {
+        "group": "seniority risk",
+        "keywords": [
+          "manager"
+        ]
+      }
+    ],
+    "url": "https://atalent.fi/open-position/atalent-avoin-hakemus-rekrytoinnin-tyotehtaviin-atalentille-77716"
   }
 ]
